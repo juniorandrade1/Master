@@ -37,6 +37,8 @@ int gs(int x) {
   return s;
 }
 
+//PARTIAL STACK
+
 TEST(PartialStackValidation, Int1000) {
   memset(bit, 0, sizeof bit);
   memset(used, 0, sizeof used);
@@ -318,8 +320,185 @@ TEST(StackSpeed, BruteInt100000) {
 }
 
 
+
+
+//FULL STACk
+
+TEST(FullStackValidation, Int1000) {
+  memset(bit, 0, sizeof bit);
+  memset(used, 0, sizeof used);
+  int n = 1000;
+  Brute::FullStack< int > bt;
+  Retroactivity::FullStack< int > st;
+  for(int i = 1; i <= n / 10; ++i) {
+    int t, x;
+    while(1) {
+      t = genRand(1, n);
+      if(used[t] == 0) break;
+    }
+    used[t] = 1;
+    x = genRand(1, (int)1e9);
+    update(t, 1);
+    bt.Insert_Push(t, x);
+    st.Insert_Push(t, x);
+    while(1) {
+      t = genRand(1, n);
+      if(!bt.empty(t)) break;
+    }
+    ASSERT_EQ(bt.peak(t), st.peak(t));
+  }
+  for(int i = 1; i <= n / 10; ++i) {
+    int op = genRand(0, 1);
+    if(op) {
+      int t, x;
+      while(1) {
+        t = genRand(1, n);
+        if(used[t] == 0) break;
+      }
+      used[t] = 1;
+      x = genRand(1, (int)1e9);
+      bt.Insert_Push(t, x);
+      st.Insert_Push(t, x);
+      update(t, 1);
+    }
+    else {
+      int t; 
+      while(1) {
+        t = genRand(1, n);
+        if(used[t] == 0 && gs(t) >= 2) break;
+      }
+      used[t] = 1;
+      bt.Insert_Pop(t);
+      st.Insert_Pop(t);
+      update(t, -1);
+    }
+    int t;
+    while(1) {
+      t = genRand(1, n);
+      if(!bt.empty(t)) break;
+    }
+    ASSERT_EQ(bt.peak(t), st.peak(t));
+  }
+}
+
+TEST(FullStackValidation, Int10000) {
+  memset(bit, 0, sizeof bit);
+  memset(used, 0, sizeof used);
+  int n = 10000;
+  Brute::FullStack< int > bt;
+  Retroactivity::FullStack< int > st;
+  for(int i = 1; i <= n / 10; ++i) {
+    int t, x;
+    while(1) {
+      t = genRand(1, n);
+      if(used[t] == 0) break;
+    }
+    used[t] = 1;
+    x = genRand(1, (int)1e9);
+    update(t, 1);
+    bt.Insert_Push(t, x);
+    st.Insert_Push(t, x);
+    while(1) {
+      t = genRand(1, n);
+      if(!bt.empty(t)) break;
+    }
+    ASSERT_EQ(bt.peak(t), st.peak(t));
+  }
+  for(int i = 1; i <= n / 10; ++i) {
+    int op = genRand(0, 1);
+    if(op) {
+      int t, x;
+      while(1) {
+        t = genRand(1, n);
+        if(used[t] == 0) break;
+      }
+      used[t] = 1;
+      x = genRand(1, (int)1e9);
+      bt.Insert_Push(t, x);
+      st.Insert_Push(t, x);
+      update(t, 1);
+    }
+    else {
+      int t; 
+      while(1) {
+        t = genRand(1, n);
+        if(used[t] == 0 && gs(t) >= 2) break;
+      }
+      used[t] = 1;
+      bt.Insert_Pop(t);
+      st.Insert_Pop(t);
+      update(t, -1);
+    }
+    int t;
+    while(1) {
+      t = genRand(1, n);
+      if(!bt.empty(t)) break;
+    }
+    ASSERT_EQ(bt.peak(t), st.peak(t));
+  }
+}
+
+TEST(FullStackValidation, Int100000) {
+  memset(bit, 0, sizeof bit);
+  memset(used, 0, sizeof used);
+  int n = 100000;
+  Brute::FullStack< int > bt;
+  Retroactivity::FullStack< int > st;
+  for(int i = 1; i <= n / 10; ++i) {
+    int t, x;
+    while(1) {
+      t = genRand(1, n);
+      if(used[t] == 0) break;
+    }
+    used[t] = 1;
+    x = genRand(1, (int)1e9);
+    update(t, 1);
+    bt.Insert_Push(t, x);
+    st.Insert_Push(t, x);
+    while(1) {
+      t = genRand(1, n);
+      if(!bt.empty(t)) break;
+    }
+    ASSERT_EQ(bt.peak(t), st.peak(t));
+  }
+  for(int i = 1; i <= n / 10; ++i) {
+    int op = genRand(0, 1);
+    if(op) {
+      int t, x;
+      while(1) {
+        t = genRand(1, n);
+        if(used[t] == 0) break;
+      }
+      used[t] = 1;
+      x = genRand(1, (int)1e9);
+      bt.Insert_Push(t, x);
+      st.Insert_Push(t, x);
+      update(t, 1);
+    }
+    else {
+      int t; 
+      while(1) {
+        t = genRand(1, n);
+        if(used[t] == 0 && gs(t) >= 2) break;
+      }
+      used[t] = 1;
+      bt.Insert_Pop(t);
+      st.Insert_Pop(t);
+      update(t, -1);
+    }
+    int t;
+    while(1) {
+      t = genRand(1, n);
+      if(!bt.empty(t)) break;
+    }
+    ASSERT_EQ(bt.peak(t), st.peak(t));
+  }
+}
+
+
 int main(int argc, char **argv) {
   srand(time(NULL));
+  //srand(10);
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
