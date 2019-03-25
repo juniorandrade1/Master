@@ -28,9 +28,6 @@ namespace BST {
           max(maxIns, other.maxIns),
           data);
       }
-      Node operator + (int x) const {
-        return Node(ps + x, minIns + x, maxIns + x, data);
-      }
       void showInfo() {
         printf("{%2d, %2d, %2d}\n", ps, minIns, maxIns);
       }
@@ -48,7 +45,7 @@ namespace BST {
       build(nxt, l, mid); build(nxt + 1, mid + 1, r);
     }
     IntervalTree(){
-      n = (int)3e5;
+      n = (int)200000;
       tr.resize(n * 4);
       lz.resize(n * 4);
       L.resize(n * 4);
@@ -57,7 +54,9 @@ namespace BST {
     };
     void propagate(int no, int l, int r) {
       if(!lz[no]) return;
-      tr[no] = tr[no] + lz[no];
+      tr[no].ps += (r - l + 1) * lz[no];
+      tr[no].minIns += lz[no];
+      tr[no].maxIns += lz[no];
       if(l != r) {
         int nxt = (no << 1), mid = (l + r) >> 1;
         lz[nxt] += lz[no];
@@ -103,15 +102,6 @@ namespace BST {
       propagate(nxt, l, mid);
       propagate(nxt + 1, mid + 1, r);
       tr[no] = tr[nxt] + tr[nxt + 1];
-    }
-    T getPeak(int no, int l, int r, int i) {
-      propagate(no, l, r);
-      if(l == r) return tr[no].data;
-      int nxt = (no << 1), mid = (l + r) >> 1;
-      propagate(nxt, l, mid);
-      propagate(nxt + 1, mid + 1, r);
-      if(i >= tr[nxt + 1].minIns && i <= tr[nxt + 1].maxIns) return getPeak(nxt + 1, mid + 1, r, i);
-      else return getPeak(nxt, l, mid, i);
     }
     int getNode(int no, int l, int r, int t) {
       propagate(no, l, r);
