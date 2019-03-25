@@ -1,3 +1,3 @@
-Arquivos do mestrado sobre retroatividade
+### Arquivos do mestrado sobre Estruturas de dados retroativas
 
-Todos os códigos das estruturas foram testados com o googletest. 
+Todos os códigos das estruturas foram testados com o [googletest](https://github.com/google/googletest/). 
