@@ -2,19 +2,6 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-TEST(FullQueue, Example) {
-  Retroactivity::FullQueue< int > q;
-  q.Insert_Enqueue(10, 1);
-  q.Insert_Enqueue(3, 2);
-  EXPECT_EQ(q.front(10), 2);
-  EXPECT_EQ(q.getKth(10, 2), 1);
-  q.Insert_Dequeue(5);
-  EXPECT_EQ(q.front(10), 1);
-  q.Delete_Dequeue(5);
-  EXPECT_EQ(q.front(10), 2);
-  EXPECT_EQ(q.getKth(10, 2), 1);
-}
-
 TEST(FullQueue, int10) {
   int n = 10;
   std::vector<int> v;
