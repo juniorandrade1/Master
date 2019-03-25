@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
-#include "../BST/ABTree.cpp"
+#include "../BST/IntervalTree.cpp"
 
 namespace Retroactivity {
   template<typename T>
   class PartialStack {
   public:
-    BST::ABTree< T > v;
+    BST::IntervalTree< T > v;
     void Insert_Push(int t, const T &x) {
       v.updateInsert(t, x);
     }
@@ -19,7 +19,6 @@ namespace Retroactivity {
     T peak() {
       int n = v.getSize();
       return v.getPeak(v.getPrefixSum(n), n);
-      //return v.getPeak(v.getPrefixSum(n));
     }
     int getSize() {
       int n = v.getSize();
@@ -30,7 +29,7 @@ namespace Retroactivity {
   template<typename T>
   class FullStack {
   public:
-    BST::ABTree< T > v;
+    BST::IntervalTree< T > v;
     void Insert_Push(int t, const T &x) {
       v.updateInsert(t, x);
     }

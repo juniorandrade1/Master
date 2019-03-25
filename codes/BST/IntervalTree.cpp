@@ -6,7 +6,7 @@ using namespace std;
 
 namespace BST {
   template <typename T>
-  class ABTree {
+  class IntervalTree {
     struct Node {
       int ps, maxIns, minIns;
       T data;
@@ -47,7 +47,7 @@ namespace BST {
       int nxt = (no << 1), mid = (l + r) >> 1;
       build(nxt, l, mid); build(nxt + 1, mid + 1, r);
     }
-    ABTree(){
+    IntervalTree(){
       n = (int)3e5;
       tr.resize(n * 4);
       lz.resize(n * 4);
