@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/Treap.cpp
+bits/stdc++.h
+-
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_queue/Priority_queue.cpp
+bits/stdc++.h
+-
+../BST/Treap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/Treap.cpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Priority_queue/Priority_queue.tests.cpp
+../../Priority_queue/Priority_queue.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_queue/Priority_queue.cpp
+gtest/gtest.h
+-
+

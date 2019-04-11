@@ -1,0 +1,3 @@
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Priority_queue/CMakeFiles/edit_cache.dir
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Priority_queue/CMakeFiles/rebuild_cache.dir
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Priority_queue/CMakeFiles/executeTests.dir
