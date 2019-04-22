@@ -118,49 +118,103 @@ namespace Retroactivity {
     Treap< int, T > nqnow;
     IntervalTreeSum< int > bridges;
     void insertPush(int t, T data) {
-      
       int tl = bridges.getLastBridge(t);
       nqnow.insert(t, data);
       bridges.update(t, 1);
-
       pair<T, int> add = nqnow.getMaximumValueAfter(tl);
       nqnow.erase(add.second);
-      
       qnow.insert(add.second, add.first);
       bridges.update(add.second, -1);
-
     }
     void insertPop(int t) {
-
       int tl = bridges.getNextBridge(t);
       bridges.update(t, -1);
-      // printf("IMP\n");
-      // printf("TL %d %d\n", t, tl);
-      
       pair<T, int> rem = qnow.getMinimumValueBefore(tl);
       qnow.erase(rem.second);
-
-      
-      // printf("--> %d %d\n", rem.second, rem.first);
-      // printf("IMP\n");
-      
       nqnow.insert(rem.second, rem.first);
       bridges.update(rem.second, 1);
-      //printf("L shape = %d %d\n", rem.second, t);
+    }
+    void removePush(int t) {
+
+    }
+    void removePop(int t) {
+
     }
     T getPeak() {
-      //printf("Retroactivity\n");
-      // vector< int > allIn = qnow.getTree();
-
-      // //sort(allIn.begin(), allIn.end());
-      // for(int i = 0; i < allIn.size(); ++i) printf("%d ", allIn[i]);
-      // printf("\n\n");
-
-      // vector< int > allRem = nqnow.getTree();
-      // sort(allRem.begin(), allRem.end());
-      // for(int i = 0; i < allRem.size(); ++i) printf("%d ", allRem[i]);
-      // printf("\n----------------------\n\n");
       return qnow.getMinimumValue().first;
+    }
+  };
+
+  template <typename T> 
+  class FullPriorityQueue {
+    struct Operation {
+      int t;
+      int op;
+      T data;
+      Operation(){};
+      Operation(int _t, int _op, T _data) {
+        t = _t;
+        op = _op;
+        data = _data;
+      }
+      bool operator < (Operation o) {
+        if(t != o.t) return t < o.t;
+        if(op != o.op) return op < o.op;
+        return data < o.data;
+      }
+    };
+  public:
+    int m;
+    int b;
+    vector< PartialPriorityQueue< T > > p;
+    multiset< Operation > all;
+    FullPriorityQueue(int _m) {
+      m = _m;
+      b = sqrt(m);
+      p.resize((m + b - 1) / b);
+    }
+    void insertPush(int t, T data) {
+      int st = t / b;
+      for(int i = st + 1; i < p.size(); ++i) p[i].insertPush(t, data);
+      all.insert(Operation(t, 0, data));
+    }
+    void insertPop(int t) {
+      int st = t / b;
+      for(int i = st + 1; i < p.size(); ++i) p[i].insertPop(t);
+      all.insert(Operation(t, 0, -1));
+    }
+    void removePush(int t, T data) {
+      int st = t / b;
+      for(int i = st + 1; i < p.size(); ++i) p[i].removePush(t, data);
+      all.erase(all.find(Operation(t, data, 0)));
+    }
+    void removePop(int t) {
+      int st = t / b;
+      for(int i = st + 1; i < p.size(); ++i) p[i].removePop(t);
+      all.erase(all.find(Operation(t, 0, -1)));
+    }
+    T getPeak(int t) {
+      int st = t / b;
+      //Get operations between last bucket and t
+      vector< Operation > op;
+      typename multiset< Operation >::iterator it = lower_bound(all.begin(), all.end(), Operation(st * b, 0, 0));
+      while(it != all.end() && it->t <= t) {
+        op.emplace_back(*it);
+        it++;
+      }
+      //Make operations between st * b and t
+      for(int i = 0; i < (int)op.size(); ++i) {
+        if(op[i].op == 0) p[st].insertPush(op[i].t, op[i].data);
+        else if(op[i].op == 1) p[st].insertPop(op[i].t);
+      }
+      T peak = p[st].getPeak();
+      //Rollback checkpoint 
+      reverse(op.begin(), op.end());
+      for(int i = 0; i < (int)op.size(); ++i) {
+        if(op[i].op == 0) p[st].removePush(op[i].t, op[i].data);
+        else if(op[i].op == 1) p[st].removePop(op[i].t);
+      }
+      return peak;
     }
   };
 };
@@ -178,19 +232,34 @@ namespace Brute {
     }
     T getPeak() {
       multiset< T > qnow;
-      // printf("BRUTE\n");
-      // vector< int > oi;
       for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
         pair<int, pair<int, T> > foo = *it;
         if(foo.second.first == 1) qnow.insert(foo.second.second);
         else {
-          //oi.push_back(*qnow.begin());
           qnow.erase(qnow.begin());
         }
       }
-      // sort(oi.begin(), oi.end());
-      // for(int i = 0; i < oi.size(); ++i) printf("%d ", oi[i]);
-      // printf("\n________________________\n\n\n");
+      return *qnow.begin();
+    }
+  };
+  template < typename T >
+  class FullPriorityQueue {
+  public:
+    multiset< pair<int, pair<int, T> > > all;
+    void insertPush(int t, T data) {
+      all.insert(make_pair(t, make_pair(1, data)));
+    }
+    void insertPop(int t) {
+      all.insert(make_pair(t, make_pair(-1, T())));
+    }
+    T getPeak(int t) {
+      multiset< T > qnow;
+      for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
+        pair<int, pair<int, T> > foo = *it;
+        if(foo.first > t) break;
+        if(foo.second.first == 1) qnow.insert(foo.second.second);
+        else qnow.erase(qnow.begin());
+      }
       return *qnow.begin();
     }
   };
