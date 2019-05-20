@@ -31,7 +31,7 @@ public:
   vector< int > lz;
   int n;
   IntervalTreeSum(){
-    n = (int)200000;
+    n = (int)500000;
     tr.resize(n * 4);
     lz.resize(n * 4);
   };

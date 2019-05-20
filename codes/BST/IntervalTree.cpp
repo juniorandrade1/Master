@@ -45,7 +45,7 @@ namespace BST {
       build(nxt, l, mid); build(nxt + 1, mid + 1, r);
     }
     IntervalTree(){
-      n = (int)200000;
+      n = (int)500000;
       tr.resize(n * 4);
       lz.resize(n * 4);
       L.resize(n * 4);

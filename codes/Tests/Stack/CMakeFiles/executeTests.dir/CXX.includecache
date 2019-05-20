@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -13,8 +13,8 @@ bits/stdc++.h
 /home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.cpp
 bits/stdc++.h
 -
-../BST/IntervalTree.cpp
 /home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/IntervalTree.cpp
+-
 
 /home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/Stack.tests.cpp
 ../../Stack/Stack.cpp

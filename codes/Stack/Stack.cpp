@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "../BST/IntervalTree.cpp"
+#include "/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/IntervalTree.cpp"
 
 namespace Retroactivity {
   template<typename T>

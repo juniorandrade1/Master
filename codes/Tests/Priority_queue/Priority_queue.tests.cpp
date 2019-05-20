@@ -1,5 +1,67 @@
-#include "../../Priority_queue/Priority_queue.cpp"
+#include "../../Priority_Queue/Priority_queue.cpp"
 #include <gtest/gtest.h>
+
+const int N = (int)2e5 + 1;
+
+class Segtree {
+public:
+  vector< int > sm, mn;
+  vector< int > lz;
+  Segtree(){
+    sm.resize(4 * N);
+    mn.resize(4 * N);
+    lz.resize(4 * N);
+  };
+  void propagate(int no, int l, int r) {
+    sm[no] += (r - l + 1) * lz[no];
+    mn[no] += lz[no];
+    if(l != r) {
+      int nxt = (no << 1);
+      lz[nxt] += lz[no];
+      lz[nxt + 1] += lz[no];
+    }
+    lz[no] = 0;
+  }
+  void join(int no, int nl, int nr) {
+    sm[no] = sm[nl] + sm[nr];
+    mn[no] = min(mn[nl], mn[nr]);
+  }
+  void update(int no, int l, int r, int i, int j, int v) {
+    propagate(no, l, r);
+    if(r < i || l > j) return;
+    if(l >= i && r <= j) {
+      lz[no] += v;
+      propagate(no, l, r);
+      return;
+    }
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    update(nxt, l, mid, i, j, v); update(nxt + 1, mid + 1, r, i, j, v);
+    join(no, nxt, nxt + 1);
+  }
+  int querySm(int no, int l, int r, int i, int j) {
+    propagate(no, l, r);
+    if(r < i || l > j) return 0;
+    if(l >= i && r <= j) return sm[no];
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    return querySm(nxt, l, mid, i, j) + querySm(nxt + 1, mid + 1, r, i, j);
+  }
+  int queryMn(int no, int l, int r, int i, int j) {
+    propagate(no, l, r);
+    if(r < i || l > j) return INT_MAX;
+    if(l >= i && r <= j) return mn[no];
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    return min(queryMn(nxt, l, mid, i, j), queryMn(nxt + 1, mid + 1, r, i, j));
+  }
+  void update(int l, int r, int v) {
+    update(1, 0, N, l, r, v);
+  }
+  int querySm(int l, int r) {
+    return querySm(1, 0, N, l, r);
+  }
+  int queryMn(int l, int r) {
+    return queryMn(1, 0, N, l, r);
+  }
+};
 
 int getRand() {
   int x = (rand() << 16) ^ (rand());
@@ -14,269 +76,158 @@ int genRand(int l, int r) {
   return l + g;
 }
 
-const int N = (int)1000000;
+class PriorityQueueValidation: public ::testing::TestWithParam<int>{};
 
-int bit[N + 10];
-int used[N + 10];
-
-#define LSONE(x) (x & (-x))
-
-void up(int x, int y) {
-  while(x < N) {
-    bit[x] += y;
-    x += LSONE(x);
-  } 
-}
-
-int gs(int x) {
-  int s = 0;
-  while(x) {
-    s += bit[x];
-    x -= LSONE(x);
+TEST_P(PriorityQueueValidation, Validation) {
+  Retroactivity::PartialPriorityQueue< int > rq;
+  Brute::PartialPriorityQueue< int > bq;
+  int n = GetParam();
+  map< int, int > used;
+  Segtree tr;
+  for(int i = 0; i < n / 2; ++i) {
+    int x = genRand(0, N);
+    int t;
+    while(1) {
+      t = genRand(0, N);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    rq.insertPush(t, x);
+    bq.insertPush(t, x);
+    ASSERT_EQ(rq.getPeak(), bq.getPeak());
+    tr.update(t, N, 1);
   }
-  return s;
-}
-
-TEST(PartialPriorityQueueValidation, Int100) {
-  memset(bit, 0, sizeof bit);
-  memset(used, 0, sizeof used);
-  int n = 100;
-
-  Retroactivity::PartialPriorityQueue< int > q1;
-  Brute::PartialPriorityQueue< int > q2;
-  
-  int mnx = INF;
-  set< int > f1;
-  set< int > f2;
-  while(f1.size() < n) f1.insert(genRand(1, 100000));
-  while(f2.size() < n) f2.insert(genRand(1, 100000));
-  vector< int > a1(f1.begin(), f1.end()), a2(f2.begin(), f2.end());
-
-  random_shuffle(a1.begin(), a1.end());
-  random_shuffle(a2.begin(), a2.end());
-
-  vector< pair<int, int> > input;
-  for(int i = 0; i < n; ++i) {
-    used[a1[i]] = 1;
-    mnx = min(mnx, a2[i]);
-    q1.insertPush(a1[i], a2[i]);
-    q2.insertPush(a1[i], a2[i]);
-    up(a1[i], 1);
-    input.push_back(make_pair(a1[i], a2[i]));
-    ASSERT_EQ(q1.getPeak(), q2.getPeak());
-  }
-  for(int i = 0; i < n / 10; ++i) {
-    int tp = genRand(0, 1);
-    int t = genRand(1, 100000);
-    if(!tp) {
-      while(used[t] || gs(t) == 0) t = genRand(1, 100000);
-      up(t, -1);
-      q1.insertPop(t);
-      q2.insertPop(t);
+  for(int i = 0; i < n / 2; ++i) {
+    int op = genRand(0, 1);
+    if(op == 0) {
+      int x = genRand(0, N);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      rq.insertPush(t, x);
+      bq.insertPush(t, x);
+      ASSERT_EQ(rq.getPeak(), bq.getPeak());
+      tr.update(t, N, 1);
     }
     else {
-      while(used[t]) t = genRand(1, 100000);
-      up(t, 1);
-      int x = genRand(1, 100000);
-      q1.insertPush(t, x);
-      q2.insertPush(t, x);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      }
+      used[t] = 1;
+      rq.insertPop(t);
+      bq.insertPop(t);
+      ASSERT_EQ(rq.getPeak(), bq.getPeak());
+      tr.update(t, N, -1);
     }
-    ASSERT_EQ(q1.getPeak(), q2.getPeak());
   }
 }
 
 
-TEST(PartialPriorityQueueValidation, Int1000) {
-  memset(bit, 0, sizeof bit);
-  memset(used, 0, sizeof used);
-  int n = 1000;
+class BrutePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 
-  Retroactivity::PartialPriorityQueue< int > q1;
-  Brute::PartialPriorityQueue< int > q2;
-  
-  int mnx = INF;
-  set< int > f1;
-  set< int > f2;
-  while(f1.size() < n) f1.insert(genRand(1, 100000));
-  while(f2.size() < n) f2.insert(genRand(1, 100000));
-  vector< int > a1(f1.begin(), f1.end()), a2(f2.begin(), f2.end());
-
-  random_shuffle(a1.begin(), a1.end());
-  random_shuffle(a2.begin(), a2.end());
-
-  vector< pair<int, int> > input;
-  for(int i = 0; i < n; ++i) {
-    used[a1[i]] = 1;
-    mnx = min(mnx, a2[i]);
-    q1.insertPush(a1[i], a2[i]);
-    q2.insertPush(a1[i], a2[i]);
-    up(a1[i], 1);
-    input.push_back(make_pair(a1[i], a2[i]));
-    ASSERT_EQ(q1.getPeak(), q2.getPeak());
+TEST_P(BrutePriorityQueueSpeed, BruteSpeed) {
+  Brute::PartialPriorityQueue< int > bq;
+  int n = GetParam();
+  map< int, int > used;
+  Segtree tr;
+  for(int i = 0; i < n / 2; ++i) {
+    int x = genRand(0, N);
+    int t;
+    while(1) {
+      t = genRand(0, N);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    bq.insertPush(t, x);
+    bq.getPeak();
+    tr.update(t, N, 1);
   }
-  for(int i = 0; i < n / 10; ++i) {
-    int tp = genRand(0, 1);
-    int t = genRand(1, 100000);
-    if(!tp) {
-      while(used[t] || gs(t) == 0) t = genRand(1, 100000);
-      up(t, -1);
-      q1.insertPop(t);
-      q2.insertPop(t);
+  for(int i = 0; i < n / 2; ++i) {
+    int op = genRand(0, 1);
+    if(op == 0) {
+      int x = genRand(0, N);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      bq.insertPush(t, x);
+      bq.getPeak();
+      tr.update(t, N, 1);
     }
     else {
-      while(used[t]) t = genRand(1, 100000);
-      up(t, 1);
-      int x = genRand(1, 100000);
-      q1.insertPush(t, x);
-      q2.insertPush(t, x);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      }
+      used[t] = 1;
+      bq.insertPop(t);
+      bq.getPeak();
+      tr.update(t, N, -1);
     }
-    ASSERT_EQ(q1.getPeak(), q2.getPeak());
   }
 }
 
-TEST(PartialPriorityQueueValidation, Int5000) {
-  memset(bit, 0, sizeof bit);
-  memset(used, 0, sizeof used);
-  int n = 5000;
+class RetroactivePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 
-  Retroactivity::PartialPriorityQueue< int > q1;
-  Brute::PartialPriorityQueue< int > q2;
-  
-  int mnx = INF;
-  set< int > f1;
-  set< int > f2;
-  while(f1.size() < n) f1.insert(genRand(1, 200000));
-  while(f2.size() < n) f2.insert(genRand(1, 200000));
-  vector< int > a1(f1.begin(), f1.end()), a2(f2.begin(), f2.end());
-
-  random_shuffle(a1.begin(), a1.end());
-  random_shuffle(a2.begin(), a2.end());
-
-  vector< pair<int, int> > input;
-  for(int i = 0; i < n; ++i) {
-    used[a1[i]] = 1;
-    mnx = min(mnx, a2[i]);
-    q1.insertPush(a1[i], a2[i]);
-    q2.insertPush(a1[i], a2[i]);
-    up(a1[i], 1);
-    input.push_back(make_pair(a1[i], a2[i]));
-    ASSERT_EQ(q1.getPeak(), q2.getPeak());
+TEST_P(RetroactivePriorityQueueSpeed, RetroactiveSpeed) {
+  Retroactivity::PartialPriorityQueue< int > rq;
+  int n = GetParam();
+  map< int, int > used;
+  Segtree tr;
+  for(int i = 0; i < n / 2; ++i) {
+    int x = genRand(0, N);
+    int t;
+    while(1) {
+      t = genRand(0, N);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    rq.insertPush(t, x);
+    rq.getPeak();
+    tr.update(t, N, 1);
   }
-  for(int i = 0; i < n / 10; ++i) {
-    int tp = genRand(0, 1);
-    int t = genRand(1, 200000);
-    if(!tp) {
-      while(used[t] || gs(t) == 0) t = genRand(1, 200000);
-      up(t, -1);
-      q1.insertPop(t);
-      q2.insertPop(t);
+  for(int i = 0; i < n / 2; ++i) {
+    int op = genRand(0, 1);
+    if(op == 0) {
+      int x = genRand(0, N);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      rq.insertPush(t, x);
+      rq.getPeak();
+      tr.update(t, N, 1);
     }
     else {
-      while(used[t]) t = genRand(1, 200000);
-      up(t, 1);
-      int x = genRand(1, 200000);
-      q1.insertPush(t, x);
-      q2.insertPush(t, x);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      }
+      used[t] = 1;
+      rq.insertPop(t);
+      rq.getPeak();
+      tr.update(t, N, -1);
     }
-    ASSERT_EQ(q1.getPeak(), q2.getPeak());
   }
 }
 
 
-TEST(PartialPriorityQueueSpeed, Int5000) {
-  memset(bit, 0, sizeof bit);
-  memset(used, 0, sizeof used);
-  int n = 5000;
-
-  Retroactivity::PartialPriorityQueue< int > q1;
-  //Brute::PartialPriorityQueue< int > q2;
-  
-  int mnx = INF;
-  set< int > f1;
-  set< int > f2;
-  while(f1.size() < n) f1.insert(genRand(1, 100000));
-  while(f2.size() < n) f2.insert(genRand(1, 100000));
-  vector< int > a1(f1.begin(), f1.end()), a2(f2.begin(), f2.end());
-
-  random_shuffle(a1.begin(), a1.end());
-  random_shuffle(a2.begin(), a2.end());
-
-  vector< pair<int, int> > input;
-  for(int i = 0; i < n; ++i) {
-    used[a1[i]] = 1;
-    mnx = min(mnx, a2[i]);
-    q1.insertPush(a1[i], a2[i]);
-    //q2.insertPush(a1[i], a2[i]);
-    up(a1[i], 1);
-    input.push_back(make_pair(a1[i], a2[i]));
-    ASSERT_EQ(q1.getPeak(), q1.getPeak());
-  }
-  for(int i = 0; i < n / 10; ++i) {
-    int tp = genRand(0, 1);
-    int t = genRand(1, 100000);
-    if(!tp) {
-      while(used[t] || gs(t) == 0) t = genRand(1, 100000);
-      up(t, -1);
-      q1.insertPop(t);
-      //q2.insertPop(t);
-    }
-    else {
-      while(used[t]) t = genRand(1, 100000);
-      up(t, 1);
-      int x = genRand(1, 100000);
-      q1.insertPush(t, x);
-      //q2.insertPush(t, x);
-    }
-    ASSERT_EQ(q1.getPeak(), q1.getPeak());
-  }
-}
-
-TEST(PartialBrutePriorityQueueSpeed, Int5000) {
-  memset(bit, 0, sizeof bit);
-  memset(used, 0, sizeof used);
-  int n = 5000;
-
-  Brute::PartialPriorityQueue< int > q1;
-  
-  int mnx = INF;
-  set< int > f1;
-  set< int > f2;
-  while(f1.size() < n) f1.insert(genRand(1, 100000));
-  while(f2.size() < n) f2.insert(genRand(1, 100000));
-  vector< int > a1(f1.begin(), f1.end()), a2(f2.begin(), f2.end());
-
-  random_shuffle(a1.begin(), a1.end());
-  random_shuffle(a2.begin(), a2.end());
-
-  vector< pair<int, int> > input;
-  for(int i = 0; i < n; ++i) {
-    used[a1[i]] = 1;
-    mnx = min(mnx, a2[i]);
-    q1.insertPush(a1[i], a2[i]);
-    up(a1[i], 1);
-    input.push_back(make_pair(a1[i], a2[i]));
-    ASSERT_EQ(q1.getPeak(), q1.getPeak());
-  }
-  for(int i = 0; i < n / 10; ++i) {
-    int tp = genRand(0, 1);
-    int t = genRand(1, 100000);
-    if(!tp) {
-      while(used[t] || gs(t) == 0) t = genRand(1, 100000);
-      up(t, -1);
-      q1.insertPop(t);
-    }
-    else {
-      while(used[t]) t = genRand(1, 100000);
-      up(t, 1);
-      int x = genRand(1, 100000);
-      q1.insertPush(t, x);
-    }
-    ASSERT_EQ(q1.getPeak(), q1.getPeak());
-  }
-}
+INSTANTIATE_TEST_CASE_P(TestPriorityQueueValidation, PriorityQueueValidation, ::testing::Range(500, 5000, 500));
+INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BrutePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
+INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactivePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
 
 int main(int argc, char **argv) {
-  //srand(time(NULL));
   srand(time(NULL));
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
