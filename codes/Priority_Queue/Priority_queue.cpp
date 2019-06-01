@@ -220,7 +220,7 @@ namespace Retroactivity {
     }
     void removePush(int t, T data) {
       int st = t / b;
-      for(int i = st + 1; i < p.size(); ++i) p[i].removePush(t, data);
+      for(int i = st + 1; i < p.size(); ++i) p[i].removePush(t);
       all.erase(all.find(Operation(t, data, 0)));
     }
     void removePop(int t) {
@@ -239,14 +239,14 @@ namespace Retroactivity {
       }
       //Make operations between st * b and t
       for(int i = 0; i < (int)op.size(); ++i) {
-        if(op[i].op == 0) p[st].insertPush(op[i].t, op[i].data);
+        if(op[i].op == 0) p[st].insertPush(op[i].t);
         else if(op[i].op == 1) p[st].insertPop(op[i].t);
       }
       T peak = p[st].getPeak();
       //Rollback checkpoint 
       reverse(op.begin(), op.end());
       for(int i = 0; i < (int)op.size(); ++i) {
-        if(op[i].op == 0) p[st].removePush(op[i].t, op[i].data);
+        if(op[i].op == 0) p[st].removePush(op[i].t);
         else if(op[i].op == 1) p[st].removePop(op[i].t);
       }
       return peak;
