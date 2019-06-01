@@ -97,24 +97,28 @@ private:
     return t->key;
   }
   pair<V, K> getMinimumValueAfter(pNode t, int fkey) {
+    update(t);
     if(!t) return make_pair(numeric_limits<V>::max(),numeric_limits<K>::max());
     pair<V, K> foo = fkey <= t->key ? make_pair(t->data, t->key) : make_pair(numeric_limits<V>::max(),numeric_limits<K>::max());
     if(t->key >= fkey) return min(foo, min(getMinimumVK(t->r), getMinimumValueAfter(t->l, fkey)));
     else return getMinimumValueAfter(t->r, fkey);
   }
   pair<V, K> getMaximumValueAfter(pNode t, int fkey) {
+    update(t);
     if(!t) return make_pair(numeric_limits<V>::min(),numeric_limits<K>::min());
     pair<V, K> foo = fkey <= t->key ? make_pair(t->data, t->key) : make_pair(numeric_limits<V>::min(),numeric_limits<K>::min());
     if(t->key >= fkey) return max(foo, max(getMaximumVK(t->r), getMaximumValueAfter(t->l, fkey)));
     else return getMaximumValueAfter(t->r, fkey);
   }
   pair<V, K> getMinimumValueBefore(pNode t, int fkey) {
+    update(t);
     if(!t) return make_pair(numeric_limits<V>::max(),numeric_limits<K>::max());
     pair<V, K> foo = fkey >= t->key ? make_pair(t->data, t->key) : make_pair(numeric_limits<V>::max(),numeric_limits<K>::max());
     if(t->key <= fkey) return min(foo, min(getMinimumVK(t->l), getMinimumValueBefore(t->r, fkey)));
     else return getMinimumValueBefore(t->l, fkey);
   }
   pair<V, K> getMaximumValueBefore(pNode t, int fkey) {
+    update(t);
     if(!t) return make_pair(numeric_limits<V>::min(),numeric_limits<K>::min());
     pair<V, K> foo = fkey >= t->key ? make_pair(t->data, t->key) : make_pair(numeric_limits<V>::min(),numeric_limits<K>::min());
     if(t->key <= fkey) return max(foo, max(getMaximumVK(t->l), getMaximumValueBefore(t->r, fkey)));

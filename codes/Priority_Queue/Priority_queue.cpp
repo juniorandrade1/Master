@@ -5,6 +5,8 @@ using namespace std;
 
 #define INF 0x3f3f3f3f
 
+const int N = (int)2e5 + 1;
+
 template <typename T>
 class IntervalTreeSum {
   struct Node {
@@ -31,7 +33,7 @@ public:
   vector< int > lz;
   int n;
   IntervalTreeSum(){
-    n = (int)500000;
+    n = N;
     tr.resize(n * 4);
     lz.resize(n * 4);
   };
@@ -117,28 +119,61 @@ namespace Retroactivity {
     Treap< int, T > qnow;
     Treap< int, T > nqnow;
     IntervalTreeSum< int > bridges;
+    map< int, int > type;
+    PartialPriorityQueue(){
+    };
     void insertPush(int t, T data) {
       int tl = bridges.getLastBridge(t);
       nqnow.insert(t, data);
+      type[t] = 2;
       bridges.update(t, 1);
       pair<T, int> add = nqnow.getMaximumValueAfter(tl);
       nqnow.erase(add.second);
       qnow.insert(add.second, add.first);
+      type[add.second] = 1;
       bridges.update(add.second, -1);
     }
     void insertPop(int t) {
+      type[t] = 3;
       int tl = bridges.getNextBridge(t);
       bridges.update(t, -1);
       pair<T, int> rem = qnow.getMinimumValueBefore(tl);
       qnow.erase(rem.second);
       nqnow.insert(rem.second, rem.first);
       bridges.update(rem.second, 1);
+      type[rem.second] = 2;
     }
     void removePush(int t) {
-
+      assert(type[t] == 1 || type[t] == 2);
+      if(type[t] == 1) {    
+        qnow.erase(t);
+        type.erase(t);
+      }
+      else {
+        int tl = bridges.getNextBridge(t);
+        pair<T, int> add = qnow.getMinimumValueBefore(tl);
+        qnow.erase(add.second);
+        nqnow.insert(add.second, add.first);
+        type[add.second] = 2;
+        bridges.update(add.second, 1);
+        nqnow.erase(t);
+        bridges.update(t, -1);
+        type.erase(t);
+      }
     }
     void removePop(int t) {
+      assert(type[t] == 3);
 
+      bridges.update(t, 1);
+      int tl = bridges.getLastBridge(t);
+      pair<T, int> add = nqnow.getMaximumValueAfter(tl);
+      nqnow.erase(add.second);
+      qnow.insert(add.second, add.first);
+      type[add.second] = 1;
+      bridges.update(add.second, -1);
+
+      type.erase(t);
+      return;
     }
     T getPeak() {
       return qnow.getMinimumValue().first;
@@ -230,6 +265,16 @@ namespace Brute {
     void insertPop(int t) {
       all.insert(make_pair(t, make_pair(-1, T())));
     }
+    void removePush(int t) {
+      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+      assert(f->first == t);
+      all.erase(f);
+    }
+    void removePop(int t) {
+      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+      assert(f->first == t);
+      all.erase(f);
+    }
     T getPeak() {
       multiset< T > qnow;
       for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
@@ -252,13 +297,25 @@ namespace Brute {
     void insertPop(int t) {
       all.insert(make_pair(t, make_pair(-1, T())));
     }
+    void removePush(int t) {
+      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+      assert(f->first == t);
+      all.erase(f);
+    }
+    void removePop(int t) {
+      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+      assert(f->first == t);
+      all.erase(f);
+    }
     T getPeak(int t) {
       multiset< T > qnow;
       for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
         pair<int, pair<int, T> > foo = *it;
-        if(foo.first > t) break;
+        if(foo.first > t) continue;
         if(foo.second.first == 1) qnow.insert(foo.second.second);
-        else qnow.erase(qnow.begin());
+        else {
+          qnow.erase(qnow.begin());
+        }
       }
       return *qnow.begin();
     }

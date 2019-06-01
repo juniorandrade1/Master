@@ -76,467 +76,7 @@ int genRand(int l, int r) {
   return l + g;
 }
 
-
-// //PARTIAL STACK
-
-// TEST(PartialStackValidation, Int1000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 1000;
-//   Brute::PartialStack< int > bt;
-//   Retroactivity::PartialStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-// }
-
-// TEST(PartialStackValidation, Int10000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 10000;
-//   Brute::PartialStack< int > bt;
-//   Retroactivity::PartialStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-// }
-
-// TEST(PartialStackValidation, Int50000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 50000;
-//   Brute::PartialStack< int > bt;
-//   Retroactivity::PartialStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-// }
-
-// TEST(PartialStackValidation, Int100000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 100000;
-//   Brute::PartialStack< int > bt;
-//   Retroactivity::PartialStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     ASSERT_EQ(bt.peak(), st.peak());
-//   }
-// }
-
-// TEST(StackSpeed, PartialInt100000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 100000;
-//   Retroactivity::PartialStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     st.Insert_Push(t, x);
-//     st.peak();
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     st.peak();
-//   }
-// }
-
-// TEST(StackSpeed, BruteInt100000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 100000;
-//   Brute::PartialStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     st.Insert_Push(t, x);
-//     st.peak();
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     st.peak();
-//   }
-// }
-
-
-
-
-// //FULL STACk
-
-// TEST(FullStackValidation, Int1000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 1000;
-//   Brute::FullStack< int > bt;
-//   Retroactivity::FullStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     int t;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-// }
-
-// TEST(FullStackValidation, Int10000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 10000;
-//   Brute::FullStack< int > bt;
-//   Retroactivity::FullStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     int t;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-// }
-
-// TEST(FullStackValidation, Int100000) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = 100000;
-//   Brute::FullStack< int > bt;
-//   Retroactivity::FullStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     int t;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-// }
-
 //Partial
-
 
 class StackValidation: public ::testing::TestWithParam<int>{};
 
@@ -546,7 +86,7 @@ TEST_P(StackValidation, Validation) {
   int n = GetParam();
   Retroactivity::PartialStack< int > rt;
   Brute::PartialStack< int > bt;
-  for(int i = 1; i <= n; ++i) {
+  for(int i = 1; i <= n / 2; ++i) {
     int t, x;
     while(1) {
       t = genRand(1, N);
@@ -559,7 +99,7 @@ TEST_P(StackValidation, Validation) {
     rt.Insert_Push(t, x);
     ASSERT_EQ(bt.peak(), rt.peak());
   }
-  for(int i = 1; i <= n; ++i) {
+  for(int i = 1; i <= n / 2; ++i) {
     int op = genRand(0, 1);
     if(op) {
       int t, x;
@@ -588,17 +128,14 @@ TEST_P(StackValidation, Validation) {
   }
 }
 
-INSTANTIATE_TEST_CASE_P(TestPartialStack, StackValidation, ::testing::Range(500, 5000, 500));
+class PartialStackSpeedBrute: public ::testing::TestWithParam<int>{};
 
-
-class StackSpeedBrute: public ::testing::TestWithParam<int>{};
-
-TEST_P(StackSpeedBrute, Validation) {
+TEST_P(PartialStackSpeedBrute, Brute) {
   map< int, int > used;
   Segtree tr;
   int n = GetParam();
   Brute::PartialStack< int > rt;
-  for(int i = 1; i <= n; ++i) {
+  for(int i = 1; i <= n / 2; ++i) {
     int t, x;
     while(1) {
       t = genRand(1, N);
@@ -610,7 +147,7 @@ TEST_P(StackSpeedBrute, Validation) {
     rt.Insert_Push(t, x);
     //ASSERT_EQ(bt.peak(), rt.peak());
   }
-  for(int i = 1; i <= n; ++i) {
+  for(int i = 1; i <= n / 2; ++i) {
     int op = genRand(0, 1);
     if(op) {
       int t, x;
@@ -639,18 +176,14 @@ TEST_P(StackSpeedBrute, Validation) {
   }
 }
 
-INSTANTIATE_TEST_CASE_P(TestStackSpeedBrute, StackSpeedBrute, ::testing::Range(500, 5000, 50));
+class PartialStackSpeed: public ::testing::TestWithParam<int>{};
 
-
-
-class StackSpeedRetroactive: public ::testing::TestWithParam<int>{};
-
-TEST_P(StackSpeedRetroactive, Retroactive) {
+TEST_P(PartialStackSpeed, Retroactive) {
   map< int, int > used;
   Segtree tr;
   int n = GetParam();
   Retroactivity::PartialStack< int > rt;
-  for(int i = 1; i <= n; ++i) {
+  for(int i = 1; i <= n / 2; ++i) {
     int t, x;
     while(1) {
       t = genRand(1, N);
@@ -662,7 +195,7 @@ TEST_P(StackSpeedRetroactive, Retroactive) {
     rt.Insert_Push(t, x);
     //ASSERT_EQ(bt.peak(), rt.peak());
   }
-  for(int i = 1; i <= n; ++i) {
+  for(int i = 1; i <= n / 2; ++i) {
     int op = genRand(0, 1);
     if(op) {
       int t, x;
@@ -689,192 +222,117 @@ TEST_P(StackSpeedRetroactive, Retroactive) {
   }
 }
 
-INSTANTIATE_TEST_CASE_P(Partial, StackSpeedRetroactive, ::testing::Range(500, 5000, 50));
-
 //Full
 
-// class StackFullValidation: public ::testing::TestWithParam<int>{};
+class StackFullValidation: public ::testing::TestWithParam<int>{};
 
-// TEST_P(StackFullValidation, Validation) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = GetParam();
-//   Brute::FullStack< int > bt;
-//   Retroactivity::FullStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     int t;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-// }
+TEST_P(StackFullValidation, Validation) {
+  map< int, int > used;
+  Segtree tr;
+  int n = GetParam();
+  Retroactivity::FullStack< int > rt;
+  Brute::FullStack< int > bt;
+  for(int i = 1; i <= n / 2; ++i) {
+    int t, x;
+    while(1) {
+      t = genRand(1, N);
+      if(used[t] == 0) break;
+    }
+    used[t] = 1;
+    x = genRand(1, N);
+    tr.update(t, N, 1);
+    bt.Insert_Push(t, x);
+    rt.Insert_Push(t, x);
+    ASSERT_EQ(bt.peak(t), rt.peak(t));
+  }
+  for(int i = 1; i <= n / 2; ++i) {
+    int t;
+    while(1) {
+      t = genRand(1, N);
+      if(tr.querySm(t, t) >= 1) break;
+    }
+    ASSERT_EQ(bt.peak(t), rt.peak(t));
+    ASSERT_EQ(bt.peak(t), rt.peak(t));
+  }
+}
 
+class StackFullSpeedBrute: public ::testing::TestWithParam<int>{};
 
-// class FullStackSpeed: public ::testing::TestWithParam<int>{};
-
-// TEST_P(FullStackSpeed, Speed) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = GetParam();
-//   Brute::FullStack< int > bt;
-//   Retroactivity::FullStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     st.Insert_Push(t, x);
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     int t;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-// }
+TEST_P(StackFullSpeedBrute, Validation) {
+  map< int, int > used;
+  Segtree tr;
+  int n = GetParam();
+  //Retroactivity::FullStack< int > rt;
+  Brute::FullStack< int > bt;
+  for(int i = 1; i <= n / 2; ++i) {
+    int t, x;
+    while(1) {
+      t = genRand(1, N);
+      if(used[t] == 0) break;
+    }
+    used[t] = 1;
+    x = genRand(1, N);
+    tr.update(t, N, 1);
+    bt.Insert_Push(t, x);
+    //rt.Insert_Push(t, x);
+    //ASSERT_EQ(bt.peak(t), rt.peak(t));
+    bt.peak(t);
+  }
+  for(int i = 1; i <= n / 2; ++i) {
+    int t;
+    while(1) {
+      t = genRand(1, N);
+      if(tr.querySm(t, t) >= 1) break;
+    }
+    //ASSERT_EQ(bt.peak(t), rt.peak(t));
+    bt.peak(t);
+    bt.peak(t);
+  }
+}
 
 
-// class FullStackSpeedBrute: public ::testing::TestWithParam<int>{};
 
-// TEST_P(FullStackSpeedBrute, Speed) {
-//   memset(bit, 0, sizeof bit);
-//   memset(used, 0, sizeof used);
-//   int n = GetParam();
-//   Brute::FullStack< int > bt;
-//   //Retroactivity::FullStack< int > st;
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int t, x;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(used[t] == 0) break;
-//     }
-//     used[t] = 1;
-//     x = genRand(1, (int)1e9);
-//     update(t, 1);
-//     bt.Insert_Push(t, x);
-//     //st.Insert_Push(t, x);
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     //ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-//   for(int i = 1; i <= n / 10; ++i) {
-//     int op = genRand(0, 1);
-//     if(op) {
-//       int t, x;
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0) break;
-//       }
-//       used[t] = 1;
-//       x = genRand(1, (int)1e9);
-//       bt.Insert_Push(t, x);
-//       //st.Insert_Push(t, x);
-//       update(t, 1);
-//     }
-//     else {
-//       int t; 
-//       while(1) {
-//         t = genRand(1, n);
-//         if(used[t] == 0 && gs(t) >= 2) break;
-//       }
-//       used[t] = 1;
-//       bt.Insert_Pop(t);
-//       //st.Insert_Pop(t);
-//       update(t, -1);
-//     }
-//     int t;
-//     while(1) {
-//       t = genRand(1, n);
-//       if(!bt.empty(t)) break;
-//     }
-//     //ASSERT_EQ(bt.peak(t), st.peak(t));
-//   }
-// }
+class StackFullSpeedRetroactive: public ::testing::TestWithParam<int>{};
 
-// INSTANTIATE_TEST_CASE_P(TestFullStack, StackFullValidation, ::testing::Range(50, 5000, 50));
-// INSTANTIATE_TEST_CASE_P(TestPartialFullStackSpeed, FullStackSpeed, ::testing::Range(50, 5000, 50));
-// INSTANTIATE_TEST_CASE_P(TestPartialFullStackSpeedBrute, FullStackSpeedBrute, ::testing::Range(50, 5000, 50));
+TEST_P(StackFullSpeedRetroactive, Validation) {
+  map< int, int > used;
+  Segtree tr;
+  int n = GetParam();
+  Retroactivity::FullStack< int > rt;
+  //Brute::FullStack< int > bt;
+  for(int i = 1; i <= n / 2; ++i) {
+    int t, x;
+    while(1) {
+      t = genRand(1, N);
+      if(used[t] == 0) break;
+    }
+    used[t] = 1;
+    x = genRand(1, N);
+    tr.update(t, N, 1);
+    //bt.Insert_Push(t, x);
+    rt.Insert_Push(t, x);
+    //ASSERT_EQ(bt.peak(t), rt.peak(t));
+    rt.peak(t);
+  }
+  for(int i = 1; i <= n / 2; ++i) {
+    int t;
+    while(1) {
+      t = genRand(1, N);
+      if(tr.querySm(t, t) >= 1) break;
+    }
+    //ASSERT_EQ(bt.peak(t), rt.peak(t));
+    rt.peak(t);
+    rt.peak(t);
+  }
+}
+
+INSTANTIATE_TEST_CASE_P(TestPartialStack, StackValidation, ::testing::Range(500, 5000, 500));
+INSTANTIATE_TEST_CASE_P(TestPartialStackSpeedBrute, PartialStackSpeedBrute, ::testing::Range(500, 5000, 50));
+INSTANTIATE_TEST_CASE_P(Partial, PartialStackSpeed, ::testing::Range(500, 5000, 50));
+
+INSTANTIATE_TEST_CASE_P(TestFullStack, StackFullValidation, ::testing::Range(500, 5000, 500));
+INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedBrute, ::testing::Range(500, 5000, 50));
+INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedRetroactive, ::testing::Range(500, 5000, 50));
 
 
 int main(int argc, char **argv) {

@@ -224,24 +224,141 @@ TEST_P(RetroactiveQueueSpeed, RetroactiveSpeed) {
 }
 
 
-INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(500, 5000, 500));
-INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BruteQueueSpeed, ::testing::Range(50, 5000, 50));
-INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(500, 5000, 500));
+//INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BruteQueueSpeed, ::testing::Range(50, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
 
-// TEST(a, b) {
-//   Retroactivity::PartialQueue< int > rq;
-//   Brute::PartialQueue< int > bq;
-//   for(int i = 0; i < 10; ++i) {
-//     rq.Insert_Enqueue(i * 10, i);
-//     bq.Insert_Enqueue(i * 10, i);
-//     ASSERT_EQ(rq.front(), bq.front());
-//   } 
-//   for(int i = 0; i < 1; ++i) {
-//     rq.Insert_Dequeue(i * 10 + 1);
-//     bq.Insert_Dequeue(i * 10 + 1);
-//     ASSERT_EQ(rq.front(), bq.front());
-//   }
-// }
+class FullQueueValidation: public ::testing::TestWithParam<int>{};
+
+TEST_P(FullQueueValidation, Validation) {
+  Retroactivity::FullQueue< int > rq;
+  Brute::FullQueue< int > bq;
+  int n = GetParam();
+  map< int, int > used;
+  Segtree tr;
+  for(int i = 0; i < n; ++i) {
+    int x = genRand(0, N);
+    int t;
+    while(1) {
+      t = genRand(0, N);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    rq.Insert_Enqueue(t, x);
+    bq.Insert_Enqueue(t, x);
+    tr.update(t, N, 1);
+    while(1) {
+    	t = genRand(0, N);
+    	if(tr.querySm(t, t) >= 1) break;
+    }
+    ASSERT_EQ(rq.front(t), bq.front(t));
+  }
+}
+
+
+class FullBruteQueueSpeed: public ::testing::TestWithParam<int>{};
+
+TEST_P(FullBruteQueueSpeed, BruteSpeed) {
+  Brute::FullQueue< int > bq;
+  int n = GetParam();
+  map< int, int > used;
+  Segtree tr;
+  for(int i = 0; i < n / 2; ++i) {
+    int x = genRand(0, N);
+    int t;
+    while(1) {
+      t = genRand(0, N);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    bq.Insert_Enqueue(t, x);
+    bq.front(t);
+    tr.update(t, N, 1);
+  }
+  for(int i = 0; i < n / 2; ++i) {
+    int op = genRand(0, 1);
+    if(op == 0) {
+      int x = genRand(0, N);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      bq.Insert_Enqueue(t, x);
+      tr.update(t, N, 1);
+    }
+    else {
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      }
+      used[t] = 1;
+      bq.Insert_Dequeue(t);
+      tr.update(t, N, -1);
+    }
+	int t;
+	while(1) {
+		t = genRand(0, N);
+		if(tr.querySm(t, t) >= 1) break;
+	}
+	bq.front(t);
+  }
+}
+
+class FullRetroactiveQueueSpeed: public ::testing::TestWithParam<int>{};
+
+TEST_P(FullRetroactiveQueueSpeed, RetroactiveSpeed) {
+  Retroactivity::FullQueue< int > rq;
+  int n = GetParam();
+  map< int, int > used;
+  Segtree tr;
+  for(int i = 0; i < n / 2; ++i) {
+    int x = genRand(0, N);
+    int t;
+    while(1) {
+      t = genRand(0, N);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    rq.Insert_Enqueue(t, x);
+    tr.update(t, N, 1);
+    rq.front(t);
+  }
+  for(int i = 0; i < n / 2; ++i) {
+    int op = genRand(0, 1);
+    if(op == 0) {
+      int x = genRand(0, N);
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      rq.Insert_Enqueue(t, x);
+      tr.update(t, N, 1);
+    }
+    else {
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      }
+      used[t] = 1;
+      rq.Insert_Dequeue(t);
+      tr.update(t, N, -1);
+    }
+    int t = genRand(0, N);
+    rq.front(t);
+  }
+}
+
+
+INSTANTIATE_TEST_CASE_P(FullTestQueueValidation, FullQueueValidation, ::testing::Range(500, 5000, 500));
+INSTANTIATE_TEST_CASE_P(FullBruteSpeedTest, FullBruteQueueSpeed, ::testing::Range(50, 5000, 50));
+INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
+
 
 int main(int argc, char **argv) {
   srand(time(NULL));
