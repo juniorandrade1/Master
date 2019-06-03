@@ -193,4 +193,7 @@ public:
     allTree(root, foo);
     return foo;
   }
+  bool empty() {
+    return (root == NULL);
+  }
 };

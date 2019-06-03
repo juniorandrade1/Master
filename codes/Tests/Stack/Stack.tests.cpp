@@ -5,20 +5,37 @@ const int N = (int)2e5 + 1;
 
 class Segtree {
 public:
+  int n;
+  vector< int > L, R;
   vector< int > sm, mn;
   vector< int > lz;
+  int createNode() {
+    int id = sm.size();
+    sm.emplace_back(0);
+    mn.emplace_back(0);
+    lz.emplace_back(0);
+    L.emplace_back(-1);
+    R.emplace_back(-1);
+    return id;  
+  }
   Segtree(){
-    sm.resize(4 * N);
-    mn.resize(4 * N);
-    lz.resize(4 * N);
+    n = N;
+    createNode();
   };
   void propagate(int no, int l, int r) {
+    if(l != r && L[no] == -1) {
+      int id = createNode();
+      L[no] = id;
+    }
+    if(l != r && R[no] == -1) {
+      int id = createNode();
+      R[no] = id;
+    }
     sm[no] += (r - l + 1) * lz[no];
     mn[no] += lz[no];
     if(l != r) {
-      int nxt = (no << 1);
-      lz[nxt] += lz[no];
-      lz[nxt + 1] += lz[no];
+      lz[L[no]] += lz[no];
+      lz[R[no]] += lz[no];
     }
     lz[no] = 0;
   }
@@ -34,32 +51,32 @@ public:
       propagate(no, l, r);
       return;
     }
-    int nxt = (no << 1), mid = (l + r) >> 1;
-    update(nxt, l, mid, i, j, v); update(nxt + 1, mid + 1, r, i, j, v);
-    join(no, nxt, nxt + 1);
+    int mid = (l + r) >> 1;
+    update(L[no], l, mid, i, j, v); update(R[no], mid + 1, r, i, j, v);
+    join(no, L[no], R[no]);
   }
   int querySm(int no, int l, int r, int i, int j) {
     propagate(no, l, r);
     if(r < i || l > j) return 0;
     if(l >= i && r <= j) return sm[no];
-    int nxt = (no << 1), mid = (l + r) >> 1;
-    return querySm(nxt, l, mid, i, j) + querySm(nxt + 1, mid + 1, r, i, j);
+    int mid = (l + r) >> 1;
+    return querySm(L[no], l, mid, i, j) + querySm(R[no], mid + 1, r, i, j);
   }
   int queryMn(int no, int l, int r, int i, int j) {
     propagate(no, l, r);
     if(r < i || l > j) return INT_MAX;
     if(l >= i && r <= j) return mn[no];
-    int nxt = (no << 1), mid = (l + r) >> 1;
-    return min(queryMn(nxt, l, mid, i, j), queryMn(nxt + 1, mid + 1, r, i, j));
+    int mid = (l + r) >> 1;
+    return min(queryMn(L[no], l, mid, i, j), queryMn(R[no], mid + 1, r, i, j));
   }
   void update(int l, int r, int v) {
-    update(1, 0, N, l, r, v);
+    update(0, 0, n, l, r, v);
   }
   int querySm(int l, int r) {
-    return querySm(1, 0, N, l, r);
+    return querySm(0, 0, n, l, r);
   }
   int queryMn(int l, int r) {
-    return queryMn(1, 0, N, l, r);
+    return queryMn(0, 0, n, l, r);
   }
 };
 
@@ -145,7 +162,6 @@ TEST_P(PartialStackSpeedBrute, Brute) {
     x = genRand(1, N);
     tr.update(t, N, 1);
     rt.Insert_Push(t, x);
-    //ASSERT_EQ(bt.peak(), rt.peak());
   }
   for(int i = 1; i <= n / 2; ++i) {
     int op = genRand(0, 1);
@@ -167,11 +183,9 @@ TEST_P(PartialStackSpeedBrute, Brute) {
         if(used[t] == 0 && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      //bt.Insert_Pop(t);
       rt.Insert_Pop(t);
       tr.update(t, N, -1);
     }
-    //ASSERT_EQ(bt.peak(), rt.peak());
     rt.peak();
   }
 }
@@ -252,7 +266,6 @@ TEST_P(StackFullValidation, Validation) {
       if(tr.querySm(t, t) >= 1) break;
     }
     ASSERT_EQ(bt.peak(t), rt.peak(t));
-    ASSERT_EQ(bt.peak(t), rt.peak(t));
   }
 }
 
@@ -262,7 +275,6 @@ TEST_P(StackFullSpeedBrute, Validation) {
   map< int, int > used;
   Segtree tr;
   int n = GetParam();
-  //Retroactivity::FullStack< int > rt;
   Brute::FullStack< int > bt;
   for(int i = 1; i <= n / 2; ++i) {
     int t, x;
@@ -274,8 +286,6 @@ TEST_P(StackFullSpeedBrute, Validation) {
     x = genRand(1, N);
     tr.update(t, N, 1);
     bt.Insert_Push(t, x);
-    //rt.Insert_Push(t, x);
-    //ASSERT_EQ(bt.peak(t), rt.peak(t));
     bt.peak(t);
   }
   for(int i = 1; i <= n / 2; ++i) {
@@ -284,8 +294,6 @@ TEST_P(StackFullSpeedBrute, Validation) {
       t = genRand(1, N);
       if(tr.querySm(t, t) >= 1) break;
     }
-    //ASSERT_EQ(bt.peak(t), rt.peak(t));
-    bt.peak(t);
     bt.peak(t);
   }
 }
@@ -299,7 +307,6 @@ TEST_P(StackFullSpeedRetroactive, Validation) {
   Segtree tr;
   int n = GetParam();
   Retroactivity::FullStack< int > rt;
-  //Brute::FullStack< int > bt;
   for(int i = 1; i <= n / 2; ++i) {
     int t, x;
     while(1) {
@@ -309,9 +316,7 @@ TEST_P(StackFullSpeedRetroactive, Validation) {
     used[t] = 1;
     x = genRand(1, N);
     tr.update(t, N, 1);
-    //bt.Insert_Push(t, x);
     rt.Insert_Push(t, x);
-    //ASSERT_EQ(bt.peak(t), rt.peak(t));
     rt.peak(t);
   }
   for(int i = 1; i <= n / 2; ++i) {
@@ -320,17 +325,15 @@ TEST_P(StackFullSpeedRetroactive, Validation) {
       t = genRand(1, N);
       if(tr.querySm(t, t) >= 1) break;
     }
-    //ASSERT_EQ(bt.peak(t), rt.peak(t));
-    rt.peak(t);
     rt.peak(t);
   }
 }
 
-INSTANTIATE_TEST_CASE_P(TestPartialStack, StackValidation, ::testing::Range(500, 5000, 500));
+INSTANTIATE_TEST_CASE_P(TestPartialStack, StackValidation, ::testing::Range(500, 5000, 50));
 INSTANTIATE_TEST_CASE_P(TestPartialStackSpeedBrute, PartialStackSpeedBrute, ::testing::Range(500, 5000, 50));
 INSTANTIATE_TEST_CASE_P(Partial, PartialStackSpeed, ::testing::Range(500, 5000, 50));
 
-INSTANTIATE_TEST_CASE_P(TestFullStack, StackFullValidation, ::testing::Range(500, 5000, 500));
+INSTANTIATE_TEST_CASE_P(TestFullStack, StackFullValidation, ::testing::Range(500, 5000, 50));
 INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedBrute, ::testing::Range(500, 5000, 50));
 INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedRetroactive, ::testing::Range(500, 5000, 50));
 

@@ -3,9 +3,7 @@
 
 using namespace std;
 
-#define INF 0x3f3f3f3f
-
-const int N = (int)2e5 + 1;
+const int N = (int)3e4 + 1;
 
 template <typename T>
 class IntervalTreeSum {
@@ -30,22 +28,38 @@ class IntervalTreeSum {
   };
 public:
   vector< Node > tr;
-  vector< int > lz;
+  vector< int > lz, L, R;
   int n;
+
+  int createNode() {
+    int id = tr.size();
+    tr.emplace_back(Node());
+    lz.emplace_back(0);
+    L.emplace_back(-1);
+    R.emplace_back(-1);
+    return id;  
+  }
   IntervalTreeSum(){
     n = N;
-    tr.resize(n * 4);
-    lz.resize(n * 4);
+    createNode();
   };
   void propagate(int no, int l, int r) {
+    if(l != r && L[no] == -1) {
+      int id = createNode();
+      L[no] = id;
+    }
+    if(l != r && R[no] == -1) {
+      int id = createNode();
+      R[no] = id;
+    }
     if(!lz[no]) return;
     tr[no].ps += (r - l + 1) * lz[no];
     tr[no].mn += lz[no];
     tr[no].mx += lz[no];
     if(l != r) {
-      int nxt = (no << 1), mid = (l + r) >> 1;
-      lz[nxt] += lz[no];
-      lz[nxt + 1] += lz[no];
+      int mid = (l + r) >> 1;
+      lz[L[no]] += lz[no];
+      lz[R[no]] += lz[no];
     }
     lz[no] = 0;
   }
@@ -56,22 +70,22 @@ public:
       propagate(no, l, r);
       return;
     }
-    int nxt = (no << 1), mid = (l + r) >> 1;
+    int mid = (l + r) >> 1;
     if(t <= mid) {
-      update(nxt, l, mid, t, inc); 
-      lz[nxt + 1] += inc;
+      update(L[no], l, mid, t, inc); 
+      lz[R[no]] += inc;
     }
-    else update(nxt + 1, mid + 1, r, t, inc);
-    propagate(nxt, l, mid);
-    propagate(nxt + 1, mid + 1, r);
-    tr[no] = tr[nxt] + tr[nxt + 1];
+    else update(R[no], mid + 1, r, t, inc);
+    propagate(L[no], l, mid);
+    propagate(R[no], mid + 1, r);
+    tr[no] = tr[L[no]] + tr[R[no]];
   }
   Node query(int no, int l, int r, int i, int j) {
     propagate(no, l, r);
     if(r < i || l > j) return Node(0, numeric_limits< T >::max(), numeric_limits< T >::min());
     if(l >= i && r <= j) return tr[no];
-    int nxt = (no << 1), mid = (l + r) >> 1;
-    return query(nxt, l, mid, i, j) + query(nxt + 1, mid + 1, r, i, j);
+    int mid = (l + r) >> 1;
+    return query(L[no], l, mid, i, j) + query(R[no], mid + 1, r, i, j);
   }
   void showTree(int no, int l, int r) {
     propagate(no, l, r);
@@ -79,17 +93,17 @@ public:
       printf("%d, ", tr[no].ps);
       return;
     }
-    int nxt = (no << 1), mid = (l + r) >> 1;
-    showTree(nxt, l, mid); showTree(nxt + 1, mid + 1, r);
+    int mid = (l + r) >> 1;
+    showTree(L[no], l, mid); showTree(R[no], mid + 1, r);
   }
   void update(int t, T inc) {
-    update(1, 1, n, t, inc);
+    update(0, 0, n, t, inc);
   }
   Node query(int l, int r) {
-    return query(1, 1, n, l, r);
+    return query(0, 0, n, l, r);
   }
   void showTree() {
-    showTree(1, 1, n);
+    showTree(0, 0, n);
     printf("\n");
   }
   int getLastBridge(int t) {
@@ -119,7 +133,7 @@ namespace Retroactivity {
     Treap< int, T > qnow;
     Treap< int, T > nqnow;
     IntervalTreeSum< int > bridges;
-    map< int, int > type;
+    unordered_map< int, int > type;
     PartialPriorityQueue(){
     };
     void insertPush(int t, T data) {
@@ -144,7 +158,7 @@ namespace Retroactivity {
       type[rem.second] = 2;
     }
     void removePush(int t) {
-      assert(type[t] == 1 || type[t] == 2);
+      //assert(type[t] == 1 || type[t] == 2);
       if(type[t] == 1) {    
         qnow.erase(t);
         type.erase(t);
@@ -162,8 +176,7 @@ namespace Retroactivity {
       }
     }
     void removePop(int t) {
-      assert(type[t] == 3);
-
+      //assert(type[t] == 3);
       bridges.update(t, 1);
       int tl = bridges.getLastBridge(t);
       pair<T, int> add = nqnow.getMaximumValueAfter(tl);
@@ -171,9 +184,11 @@ namespace Retroactivity {
       qnow.insert(add.second, add.first);
       type[add.second] = 1;
       bridges.update(add.second, -1);
-
       type.erase(t);
       return;
+    }
+    bool empty() {
+      return qnow.empty();
     }
     T getPeak() {
       return qnow.getMinimumValue().first;
@@ -192,7 +207,7 @@ namespace Retroactivity {
         op = _op;
         data = _data;
       }
-      bool operator < (Operation o) {
+      bool operator < (Operation o) const {
         if(t != o.t) return t < o.t;
         if(op != o.op) return op < o.op;
         return data < o.data;
@@ -202,47 +217,64 @@ namespace Retroactivity {
     int m;
     int b;
     vector< PartialPriorityQueue< T > > p;
-    multiset< Operation > all;
+    set< Operation > all;
+    FullPriorityQueue(){
+      m = N;
+      b = sqrt(m);
+      p.resize((m + b - 1) / b);
+    };
     FullPriorityQueue(int _m) {
       m = _m;
       b = sqrt(m);
       p.resize((m + b - 1) / b);
     }
     void insertPush(int t, T data) {
+      //printf("iPush\n");
       int st = t / b;
       for(int i = st + 1; i < p.size(); ++i) p[i].insertPush(t, data);
       all.insert(Operation(t, 0, data));
     }
     void insertPop(int t) {
+      //printf("iPop\n");
       int st = t / b;
       for(int i = st + 1; i < p.size(); ++i) p[i].insertPop(t);
-      all.insert(Operation(t, 0, -1));
+      all.insert(Operation(t, 1, 1));
     }
-    void removePush(int t, T data) {
+    void removePush(int t) {
+      //printf("rPush\n");
       int st = t / b;
       for(int i = st + 1; i < p.size(); ++i) p[i].removePush(t);
-      all.erase(all.find(Operation(t, data, 0)));
+      auto f = all.lower_bound(Operation(t, -1, -1));
+      //assert(f->t == t);
+      //assert(f->op == 0);
+      all.erase(f);
     }
     void removePop(int t) {
+      //printf("rPop\n");
       int st = t / b;
       for(int i = st + 1; i < p.size(); ++i) p[i].removePop(t);
-      all.erase(all.find(Operation(t, 0, -1)));
+      auto f = all.lower_bound(Operation(t, -1, -1));
+      //assert(f->t == t);
+      //assert(f->op == 1);
+      all.erase(f);
     }
     T getPeak(int t) {
       int st = t / b;
       //Get operations between last bucket and t
       vector< Operation > op;
-      typename multiset< Operation >::iterator it = lower_bound(all.begin(), all.end(), Operation(st * b, 0, 0));
+      typename multiset< Operation >::iterator it = lower_bound(all.begin(), all.end(), Operation(st * b, -1, -1));
       while(it != all.end() && it->t <= t) {
         op.emplace_back(*it);
         it++;
       }
       //Make operations between st * b and t
       for(int i = 0; i < (int)op.size(); ++i) {
-        if(op[i].op == 0) p[st].insertPush(op[i].t);
+        if(op[i].op == 0) p[st].insertPush(op[i].t, op[i].data);
         else if(op[i].op == 1) p[st].insertPop(op[i].t);
       }
-      T peak = p[st].getPeak();
+      T peak = 0;
+      if(p[st].empty()) peak = T();
+      else peak = p[st].getPeak();
       //Rollback checkpoint 
       reverse(op.begin(), op.end());
       for(int i = 0; i < (int)op.size(); ++i) {
@@ -250,6 +282,30 @@ namespace Retroactivity {
         else if(op[i].op == 1) p[st].removePop(op[i].t);
       }
       return peak;
+    }
+
+    bool empty(int t) {
+      int st = t / b;
+      //Get operations between last bucket and t
+      vector< Operation > op;
+      typename multiset< Operation >::iterator it = lower_bound(all.begin(), all.end(), Operation(st * b, -1, -1));
+      while(it != all.end() && it->t <= t) {
+        op.emplace_back(*it);
+        it++;
+      }
+      //Make operations between st * b and t
+      for(int i = 0; i < (int)op.size(); ++i) {
+        if(op[i].op == 0) p[st].insertPush(op[i].t, op[i].data);
+        else if(op[i].op == 1) p[st].insertPop(op[i].t);
+      }
+      bool emp = p[st].empty();
+      //Rollback checkpoint 
+      reverse(op.begin(), op.end());
+      for(int i = 0; i < (int)op.size(); ++i) {
+        if(op[i].op == 0) p[st].removePush(op[i].t);
+        else if(op[i].op == 1) p[st].removePop(op[i].t);
+      }
+      return emp;
     }
   };
 };
@@ -260,19 +316,23 @@ namespace Brute {
   public:
     multiset< pair<int, pair<int, T> > > all;
     void insertPush(int t, T data) {
+      //printf("insert %d %d\n", t, data);
       all.insert(make_pair(t, make_pair(1, data)));
     }
     void insertPop(int t) {
+      //printf("pop %d\n", t);
       all.insert(make_pair(t, make_pair(-1, T())));
     }
     void removePush(int t) {
+      //printf("del insert %d\n", t);
       auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      assert(f->first == t);
+      //assert(f->first == t);
       all.erase(f);
     }
     void removePop(int t) {
+      //printf("del pop %d\n", t);
       auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      assert(f->first == t);
+      //assert(f->first == t);
       all.erase(f);
     }
     T getPeak() {
@@ -284,7 +344,19 @@ namespace Brute {
           qnow.erase(qnow.begin());
         }
       }
+      //assert(qnow.size() > 0);
       return *qnow.begin();
+    }
+    bool empty() {
+      multiset< T > qnow;
+      for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
+        pair<int, pair<int, T> > foo = *it;
+        if(foo.second.first == 1) qnow.insert(foo.second.second);
+        else {
+          qnow.erase(qnow.begin());
+        }
+      }
+      return qnow.size() == 0;
     }
   };
   template < typename T >
@@ -299,12 +371,12 @@ namespace Brute {
     }
     void removePush(int t) {
       auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      assert(f->first == t);
+      //assert(f->first == t);
       all.erase(f);
     }
     void removePop(int t) {
       auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      assert(f->first == t);
+      //assert(f->first == t);
       all.erase(f);
     }
     T getPeak(int t) {
@@ -317,7 +389,20 @@ namespace Brute {
           qnow.erase(qnow.begin());
         }
       }
+      //assert(qnow.size() > 0);
       return *qnow.begin();
+    }
+    bool empty(int t) {
+      multiset< T > qnow;
+      for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
+        pair<int, pair<int, T> > foo = *it;
+        if(foo.first > t) continue;
+        if(foo.second.first == 1) qnow.insert(foo.second.second);
+        else {
+          qnow.erase(qnow.begin());
+        }
+      }
+      return qnow.size() == 0;
     }
   };
 };
