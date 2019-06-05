@@ -2,6 +2,8 @@
 
 using namespace std;
 
+const int N = (int)5e5 + 1;
+
 #define INF 0x3f3f3f3f
 
 namespace BST {
@@ -45,12 +47,13 @@ namespace BST {
       build(nxt, l, mid); build(nxt + 1, mid + 1, r);
     }
     IntervalTree(){
-      n = (int)500000;
+      n = (int)N;
       tr.resize(n * 4);
       lz.resize(n * 4);
       L.resize(n * 4);
       R.resize(n * 4);
-      build(1, 1, n);
+      build(1, 0, n);
+      updateInsert(1, 0, n, 0, T());
     };
     void propagate(int no, int l, int r) {
       if(!lz[no]) return;
@@ -103,12 +106,57 @@ namespace BST {
       propagate(nxt + 1, mid + 1, r);
       tr[no] = tr[nxt] + tr[nxt + 1];
     }
+    void erasePush(int no, int l, int r, int t) {
+      propagate(no, l, r);
+      if(l == r) {
+        lz[no]--;
+        propagate(no, l, r);
+        tr[no].maxIns = -INF;
+        tr[no].minIns = INF;
+        return;
+      }
+      int nxt = (no << 1), mid = (l + r) >> 1;
+      if(t <= mid) {
+        erasePush(nxt, l, mid, t); 
+        lz[nxt + 1]--;
+      }
+      else erasePush(nxt + 1, mid + 1, r, t);
+      propagate(nxt, l, mid);
+      propagate(nxt + 1, mid + 1, r);
+      tr[no] = tr[nxt] + tr[nxt + 1];
+    }
+    void erasePop(int no, int l, int r, int t) {
+      propagate(no, l, r);
+      if(l == r) {
+        lz[no]++;
+        propagate(no, l, r);
+        tr[no].maxIns = -INF;
+        tr[no].minIns = INF;
+        return;
+      }
+      int nxt = (no << 1), mid = (l + r) >> 1;
+      if(t <= mid) {
+        erasePop(nxt, l, mid, t);
+        lz[nxt + 1]++;
+      }
+      else erasePop(nxt + 1, mid + 1, r, t);
+      propagate(nxt, l, mid);
+      propagate(nxt + 1, mid + 1, r);
+      tr[no] = tr[nxt] + tr[nxt + 1];
+    }
+
     int getNode(int no, int l, int r, int t) {
       propagate(no, l, r);
       if(l == r) return no;
       int nxt = (no << 1), mid = (l + r) >> 1;
       if(t <= mid) return getNode(nxt, l, mid, t);
       else return getNode(nxt + 1, mid + 1, r, t);
+    }
+    Node getRangeNode(int no, int l, int r, int i, int j) {
+      if(r < i || l > j) return Node();
+      if(l >= i && r <= j) return tr[no];
+      int nxt = (no << 1), mid = (l + r) >> 1;
+      return getRangeNode(nxt, l, mid, i, j) + getRangeNode(nxt + 1, mid + 1, r, i, j);
     }
     void showTree(int no, int l, int r) {
       propagate(no, l, r);
@@ -127,14 +175,20 @@ namespace BST {
       else return getPrefixSum(nxt + 1, mid + 1, r, i);
     }
     void updateInsert(int t, T data) {
-      updateInsert(1, 1, n, t, data);
+      updateInsert(1, 0, n, t, data);
     }
     void updateDelete(int i) {
-      updateDelete(1, 1, n, i);
+      updateDelete(1, 0, n, i);
     }
-    T getPeak(int i, int t) {
+    void erasePush(int t) {
+      erasePush(1, 0, n, t);
+    }
+    void erasePop(int t) {
+      erasePop(1, 0, n, t);
+    }
+    T getPeak(int i, int t) { 
       t++;
-      int no = getNode(1, 1, n, t);
+      int no = getNode(1, 0, n, t);
       while(no != 1) {
         int d = (no & 1);
         no >>= 1;
@@ -147,17 +201,20 @@ namespace BST {
       }
       no <<= 1;
       propagate(no, L[no], R[no]);
+      if(i < tr[no].minIns || i > tr[no].maxIns) no++;
+      propagate(no, L[no], R[no]);
       while(L[no] != R[no]) {
         int nxt = (no << 1);
         propagate(nxt, L[nxt], R[nxt]);
         propagate(nxt + 1, L[nxt + 1], R[nxt + 1]);
-        if(i >= tr[nxt + 1].minIns && i <= tr[nxt + 1].maxIns) no = nxt + 1;
-        else no = nxt;
+        if(i >= tr[nxt + 1].minIns && i <= tr[nxt + 1].maxIns && L[nxt + 1] < t) no = nxt + 1;
+        else if(i >= tr[nxt].minIns && i <= tr[nxt].maxIns) no = nxt;
+        else assert(false);
       }
       return tr[no].data;
     }
     int getPrefixSum(int i) {
-      return getPrefixSum(1, 1, n, i);
+      return getPrefixSum(1, 0, n, i);
     }
     int getSize() {
       return n;

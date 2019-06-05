@@ -1,8 +1,6 @@
 #include "../../Stack/Stack.cpp"
 #include <gtest/gtest.h>
 
-const int N = (int)2e5 + 1;
-
 class Segtree {
 public:
   int n;
@@ -93,6 +91,13 @@ int genRand(int l, int r) {
   return l + g;
 }
 
+int GetSample(const std::set<int>& s) {
+  double r = rand() % s.size();
+  std::set<int>::iterator it = s.begin();
+  for (; r != 0; r--) it++;
+  return *it;
+}
+
 //Partial
 
 class StackValidation: public ::testing::TestWithParam<int>{};
@@ -103,6 +108,8 @@ TEST_P(StackValidation, Validation) {
   int n = GetParam();
   Retroactivity::PartialStack< int > rt;
   Brute::PartialStack< int > bt;
+
+  set< int > ins, del;
   for(int i = 1; i <= n / 2; ++i) {
     int t, x;
     while(1) {
@@ -114,11 +121,14 @@ TEST_P(StackValidation, Validation) {
     tr.update(t, N, 1);
     bt.Insert_Push(t, x);
     rt.Insert_Push(t, x);
+    ins.insert(t);
     ASSERT_EQ(bt.peak(), rt.peak());
   }
   for(int i = 1; i <= n / 2; ++i) {
-    int op = genRand(0, 1);
-    if(op) {
+    int op = genRand(0, 3);
+    if(op == 2 && ins.size() == 0) op = 1;
+    if(op == 3 && del.size() == 0) op = 0;
+    if(op == 0) {
       int t, x;
       while(1) {
         t = genRand(1, N);
@@ -128,9 +138,10 @@ TEST_P(StackValidation, Validation) {
       x = genRand(1, N);
       bt.Insert_Push(t, x);
       rt.Insert_Push(t, x);
+      ins.insert(t);
       tr.update(t, N, 1);
     }
-    else {
+    else if(op == 1) {
       int t; 
       while(1) {
         t = genRand(1, N);
@@ -139,7 +150,26 @@ TEST_P(StackValidation, Validation) {
       used[t] = 1;
       bt.Insert_Pop(t);
       rt.Insert_Pop(t);
+      del.insert(t);
       tr.update(t, N, -1);
+    }
+    else if(op == 2) {
+      int t;
+      while(1) {
+        t = GetSample(ins);
+        if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
+      } 
+      ins.erase(t);
+      bt.Delete_Push(t);
+      rt.Delete_Push(t);
+      tr.update(t, N, -1);
+    }
+    else if(op == 3) {
+      int t = GetSample(del);
+      bt.Delete_Pop(t);
+      rt.Delete_Pop(t);
+      del.erase(t);
+      tr.update(t, N, 1);
     }
     ASSERT_EQ(bt.peak(), rt.peak());
   }
@@ -246,6 +276,7 @@ TEST_P(StackFullValidation, Validation) {
   int n = GetParam();
   Retroactivity::FullStack< int > rt;
   Brute::FullStack< int > bt;
+  set< int > ins, del;
   for(int i = 1; i <= n / 2; ++i) {
     int t, x;
     while(1) {
@@ -257,9 +288,56 @@ TEST_P(StackFullValidation, Validation) {
     tr.update(t, N, 1);
     bt.Insert_Push(t, x);
     rt.Insert_Push(t, x);
+    ins.insert(t);
     ASSERT_EQ(bt.peak(t), rt.peak(t));
   }
-  for(int i = 1; i <= n / 2; ++i) {
+   for(int i = 1; i <= n / 2; ++i) {
+    int op = genRand(0, 2);
+    if(op == 2 && ins.size() == 0) op = 1;
+    if(op == 3 && del.size() == 0) op = 0;
+    if(op == 0) {
+      int t, x;
+      while(1) {
+        t = genRand(1, N);
+        if(used[t] == 0) break;
+      }
+      used[t] = 1;
+      x = genRand(1, N);
+      bt.Insert_Push(t, x);
+      rt.Insert_Push(t, x);
+      ins.insert(t);
+      tr.update(t, N, 1);
+    }
+    else if(op == 1) {
+      int t; 
+      while(1) {
+        t = genRand(1, N);
+        if(used[t] == 0 && tr.queryMn(t, N) >= 1) break;
+      }
+      used[t] = 1;
+      bt.Insert_Pop(t);
+      rt.Insert_Pop(t);
+      del.insert(t);
+      tr.update(t, N, -1);
+    }
+    else if(op == 2) {
+      int t;
+      while(1) {
+        t = GetSample(ins);
+        if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
+      } 
+      ins.erase(t);
+      bt.Delete_Push(t);
+      rt.Delete_Push(t);
+      tr.update(t, N, -1);
+    }
+    else if(op == 3) {
+      int t = GetSample(del);
+      bt.Delete_Pop(t);
+      rt.Delete_Pop(t);
+      del.erase(t);
+      tr.update(t, N, 1);
+    }
     int t;
     while(1) {
       t = genRand(1, N);
@@ -298,8 +376,6 @@ TEST_P(StackFullSpeedBrute, Validation) {
   }
 }
 
-
-
 class StackFullSpeedRetroactive: public ::testing::TestWithParam<int>{};
 
 TEST_P(StackFullSpeedRetroactive, Validation) {
@@ -329,11 +405,11 @@ TEST_P(StackFullSpeedRetroactive, Validation) {
   }
 }
 
-INSTANTIATE_TEST_CASE_P(TestPartialStack, StackValidation, ::testing::Range(500, 5000, 50));
+INSTANTIATE_TEST_CASE_P(TestPartialStack, StackValidation, ::testing::Range(50, 5000, 50));
 INSTANTIATE_TEST_CASE_P(TestPartialStackSpeedBrute, PartialStackSpeedBrute, ::testing::Range(500, 5000, 50));
 INSTANTIATE_TEST_CASE_P(Partial, PartialStackSpeed, ::testing::Range(500, 5000, 50));
 
-INSTANTIATE_TEST_CASE_P(TestFullStack, StackFullValidation, ::testing::Range(500, 5000, 50));
+INSTANTIATE_TEST_CASE_P(TestFullStack, StackFullValidation, ::testing::Range(50, 5000, 50));
 INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedBrute, ::testing::Range(500, 5000, 50));
 INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedRetroactive, ::testing::Range(500, 5000, 50));
 

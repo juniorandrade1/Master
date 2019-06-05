@@ -13,8 +13,10 @@ namespace Retroactivity {
       v.updateDelete(t);
     }
     void Delete_Push(int t) {
+      v.erasePush(t);
     }
     void Delete_Pop(int t) {
+      v.erasePop(t);
     }
     T peak() {
       int n = v.getSize();
@@ -37,8 +39,10 @@ namespace Retroactivity {
       v.updateDelete(t);
     }
     void Delete_Push(int t) {
+      v.erasePush(t);
     }
     void Delete_Pop(int t) {
+      v.erasePop(t);
     }
     T peak(int t) {
       return v.getPeak(v.getPrefixSum(t), t);
@@ -62,8 +66,12 @@ namespace Brute {
       v.insert(make_pair(t, -INF));
     }
     void Delete_Push(int t) {
+      auto f = v.lower_bound(make_pair(t, -INF));
+      v.erase(f);
     }
     void Delete_Pop(int t) {
+      auto f = v.lower_bound(make_pair(t, -INF));
+      v.erase(f);
     }
     T peak() {
       aux.clear();
@@ -87,8 +95,12 @@ namespace Brute {
       v.insert(make_pair(t, -INF));
     }
     void Delete_Push(int t) {
+      auto f = v.lower_bound(make_pair(t, -INF));
+      v.erase(f);
     }
     void Delete_Pop(int t) {
+      auto f = v.lower_bound(make_pair(t, -INF));
+      v.erase(f);
     }
     bool empty(int t) {
       aux.clear();
