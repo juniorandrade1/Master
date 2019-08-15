@@ -1,8 +1,8 @@
-#pragma once
-
 // Queue.h
 #ifndef QUEUE 
 #define QUEUE_H
+
+#pragma once
 
 #include "../BST/OrderedMap.cpp"
 
@@ -111,7 +111,7 @@ namespace Retroactivity {
     BST::OrderedMap<int, bool> td;
 
 
-    
+
   public:
    /** Insere uma operação Enqueue(x) no tempo t
     * => Insert(t, Enqueue(x))
