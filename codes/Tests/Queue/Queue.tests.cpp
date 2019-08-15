@@ -1,8 +1,17 @@
-#include "../../Queue/Queue.cpp"
+// #include "../../Queue/Queue.cpp"
+#include "../../Queue/Queue.hpp"
 #include <gtest/gtest.h>
 #include <vector>
 
 const int N = (int)2e5 + 1;
+//const int N = 50;
+
+int GetSample(const std::set<int>& s) {
+  double r = rand() % s.size();
+  std::set<int>::iterator it = s.begin();
+  for (; r != 0; r--) it++;
+  return *it;
+}
 
 class Segtree {
 public:
@@ -97,11 +106,17 @@ int genRand(int l, int r) {
 class QueueValidation: public ::testing::TestWithParam<int>{};
 
 TEST_P(QueueValidation, Validation) {
+
+  int DEBUG_FLAG = 0;
+
   Retroactivity::PartialQueue< int > rq;
   Brute::PartialQueue< int > bq;
   int n = GetParam();
   map< int, int > used;
   Segtree tr;
+
+  set< int > ins, del;
+
   for(int i = 0; i < n / 2; ++i) {
     int x = genRand(0, N);
     int t;
@@ -110,13 +125,19 @@ TEST_P(QueueValidation, Validation) {
       if(!used[t]) break;
     }
     used[t] = 1;
-    rq.Insert_Enqueue(t, x);
-    bq.Insert_Enqueue(t, x);
+
+    ins.insert(t);
+
+    rq.InsertEnqueue(t, x);
+    bq.InsertEnqueue(t, x);
+
     ASSERT_EQ(rq.front(), bq.front());
     tr.update(t, N, 1);
   }
   for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 1);
+    int op = genRand(0, 3);
+    if(op == 2 && ins.size() == 0) op = 0;
+    if(op == 3 && del.size() == 0) op = 1;
     if(op == 0) {
       int x = genRand(0, N);
       int t;
@@ -125,22 +146,42 @@ TEST_P(QueueValidation, Validation) {
         if(!used[t]) break;
       }
       used[t] = 1;
-      rq.Insert_Enqueue(t, x);
-      bq.Insert_Enqueue(t, x);
+
+      rq.InsertEnqueue(t, x);
+      bq.InsertEnqueue(t, x);
+
+      ins.insert(t);
+
       ASSERT_EQ(rq.front(), bq.front());
       tr.update(t, N, 1);
     }
-    else {
+    else if(op == 1) {
       int t;
       while(1) {
         t = genRand(0, N);
         if(!used[t] && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      rq.Insert_Dequeue(t);
-      bq.Insert_Dequeue(t);
+
+      rq.InsertDequeue(t);
+      bq.InsertDequeue(t);
+
+      del.insert(t);
+
       ASSERT_EQ(rq.front(), bq.front());
       tr.update(t, N, -1);
+    }
+    else if(op == 2) {
+      int x = GetSample(ins);
+      ins.erase(ins.find(x));
+      rq.DeleteEnqueue(x);
+      bq.DeleteEnqueue(x);
+    }
+    else {
+      int x = GetSample(del);
+      del.erase(del.find(x));
+      rq.DeleteDequeue(x);
+      bq.DeleteDequeue(x);
     }
   }
 }
@@ -161,7 +202,7 @@ TEST_P(BruteQueueSpeed, BruteSpeed) {
       if(!used[t]) break;
     }
     used[t] = 1;
-    bq.Insert_Enqueue(t, x);
+    bq.InsertEnqueue(t, x);
     bq.front();
     tr.update(t, N, 1);
   }
@@ -175,7 +216,7 @@ TEST_P(BruteQueueSpeed, BruteSpeed) {
         if(!used[t]) break;
       }
       used[t] = 1;
-      bq.Insert_Enqueue(t, x);
+      bq.InsertEnqueue(t, x);
       bq.front();
       tr.update(t, N, 1);
     }
@@ -186,7 +227,7 @@ TEST_P(BruteQueueSpeed, BruteSpeed) {
         if(!used[t] && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      bq.Insert_Dequeue(t);
+      bq.InsertDequeue(t);
       bq.front();
       tr.update(t, N, -1);
     }
@@ -208,7 +249,7 @@ TEST_P(RetroactiveQueueSpeed, RetroactiveSpeed) {
       if(!used[t]) break;
     }
     used[t] = 1;
-    rq.Insert_Enqueue(t, x);
+    rq.InsertEnqueue(t, x);
     rq.front();
     tr.update(t, N, 1);
   }
@@ -222,7 +263,7 @@ TEST_P(RetroactiveQueueSpeed, RetroactiveSpeed) {
         if(!used[t]) break;
       }
       used[t] = 1;
-      rq.Insert_Enqueue(t, x);
+      rq.InsertEnqueue(t, x);
       rq.front();
       tr.update(t, N, 1);
     }
@@ -233,7 +274,7 @@ TEST_P(RetroactiveQueueSpeed, RetroactiveSpeed) {
         if(!used[t] && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      rq.Insert_Dequeue(t);
+      rq.InsertDequeue(t);
       rq.front();
       tr.update(t, N, -1);
     }
@@ -241,9 +282,9 @@ TEST_P(RetroactiveQueueSpeed, RetroactiveSpeed) {
 }
 
 
-INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(500, 5000, 50));
-INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BruteQueueSpeed, ::testing::Range(50, 5000, 50));
-INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
+INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(100, 1000, 100));
+//INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BruteQueueSpeed, ::testing::Range(50, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
 
 class FullQueueValidation: public ::testing::TestWithParam<int>{};
 
@@ -261,8 +302,8 @@ TEST_P(FullQueueValidation, Validation) {
       if(!used[t]) break;
     }
     used[t] = 1;
-    rq.Insert_Enqueue(t, x);
-    bq.Insert_Enqueue(t, x);
+    rq.InsertEnqueue(t, x);
+    bq.InsertEnqueue(t, x);
     tr.update(t, N, 1);
     while(1) {
     	t = genRand(0, N);
@@ -288,7 +329,7 @@ TEST_P(FullBruteQueueSpeed, BruteSpeed) {
       if(!used[t]) break;
     }
     used[t] = 1;
-    bq.Insert_Enqueue(t, x);
+    bq.InsertEnqueue(t, x);
     bq.front(t);
     tr.update(t, N, 1);
   }
@@ -302,7 +343,7 @@ TEST_P(FullBruteQueueSpeed, BruteSpeed) {
         if(!used[t]) break;
       }
       used[t] = 1;
-      bq.Insert_Enqueue(t, x);
+      bq.InsertEnqueue(t, x);
       tr.update(t, N, 1);
     }
     else {
@@ -312,7 +353,7 @@ TEST_P(FullBruteQueueSpeed, BruteSpeed) {
         if(!used[t] && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      bq.Insert_Dequeue(t);
+      bq.InsertDequeue(t);
       tr.update(t, N, -1);
     }
 	int t;
@@ -339,7 +380,7 @@ TEST_P(FullRetroactiveQueueSpeed, RetroactiveSpeed) {
       if(!used[t]) break;
     }
     used[t] = 1;
-    rq.Insert_Enqueue(t, x);
+    rq.InsertEnqueue(t, x);
     tr.update(t, N, 1);
     rq.front(t);
   }
@@ -353,7 +394,7 @@ TEST_P(FullRetroactiveQueueSpeed, RetroactiveSpeed) {
         if(!used[t]) break;
       }
       used[t] = 1;
-      rq.Insert_Enqueue(t, x);
+      rq.InsertEnqueue(t, x);
       tr.update(t, N, 1);
     }
     else {
@@ -363,7 +404,7 @@ TEST_P(FullRetroactiveQueueSpeed, RetroactiveSpeed) {
         if(!used[t] && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      rq.Insert_Dequeue(t);
+      rq.InsertDequeue(t);
       tr.update(t, N, -1);
     }
     int t = genRand(0, N);
@@ -378,7 +419,8 @@ INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::t
 
 
 int main(int argc, char **argv) {
-  srand(time(NULL));
+  srand(1);
+  //srand(time(NULL));
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
