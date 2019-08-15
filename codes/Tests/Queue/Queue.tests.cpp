@@ -4,7 +4,6 @@
 #include <vector>
 
 const int N = (int)2e5 + 1;
-//const int N = 50;
 
 int GetSample(const std::set<int>& s) {
   double r = rand() % s.size();

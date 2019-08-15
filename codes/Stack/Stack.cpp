@@ -1,124 +1,48 @@
-#include <bits/stdc++.h>
-#include "/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/IntervalTree.cpp"
+#include "Stack.hpp"
 
 namespace Retroactivity {
-  template<typename T>
-  class PartialStack {
-  public:
-    BST::IntervalTree< T > v;
-    void Insert_Push(int t, const T &x) {
-      v.updateInsert(t, x);
-    }
-    void Insert_Pop(int t) {
-      v.updateDelete(t);
-    }
-    void Delete_Push(int t) {
-      v.erasePush(t);
-    }
-    void Delete_Pop(int t) {
-      v.erasePop(t);
-    }
-    T peak() {
-      int n = v.getSize();
-      return v.getPeak(v.getPrefixSum(n), n);
-    }
-    int getSize() {
-      int n = v.getSize();
-      return v.getPrefixSum(n);
-    }
-  };
+  /* ------------------------------ BEGIN = Partial Retroactive Stack --------------------------- */
+  template <typename T> void PartialStack<T>::InsertPush(int t, const T &x) {
+    v.updateInsert(t, x);
+  }
+  template <typename T> void PartialStack<T>::InsertPop(int t) {
+    v.updateDelete(t);
+  }
+  template <typename T> void PartialStack<T>::DeletePush(int t) {
+    v.erasePush(t);
+  }
+  template <typename T> void PartialStack<T>::DeletePop(int t) {
+    v.erasePop(t);
+  }
+  template <typename T> T PartialStack<T>::peak() {
+    int n = v.getSize();
+    return v.getPeak(v.getPrefixSum(n), n);
+  }
+  template <typename T> int PartialStack<T>::getSize() {
+    int n = v.getSize();
+    return v.getPrefixSum(n);
+  }
+  /* ------------------------------ END = Partial Retroactive Stack --------------------------- */
+ 
 
-  template<typename T>
-  class FullStack {
-  public:
-    BST::IntervalTree< T > v;
-    void Insert_Push(int t, const T &x) {
-      v.updateInsert(t, x);
-    }
-    void Insert_Pop(int t) {
-      v.updateDelete(t);
-    }
-    void Delete_Push(int t) {
-      v.erasePush(t);
-    }
-    void Delete_Pop(int t) {
-      v.erasePop(t);
-    }
-    T peak(int t) {
-      return v.getPeak(v.getPrefixSum(t), t);
-    }
-    int getSize(int t) {
-      return v.getPrefixSum(t);
-    }
-  };
-}
-
-namespace Brute {
-  template<typename T>
-  class PartialStack {
-  public:
-    set< pair< int, T > > v;
-    vector< T > aux;
-    void Insert_Push(int t, const T &x) {
-      v.insert(make_pair(t, x));
-    }
-    void Insert_Pop(int t) {
-      v.insert(make_pair(t, -INF));
-    }
-    void Delete_Push(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    void Delete_Pop(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    T peak() {
-      aux.clear();
-      for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
-        if(it->second == -INF) aux.pop_back();
-        else aux.push_back(it->second);
-      }
-      return aux[(int)aux.size() - 1];
-    }
-  };
-
-  template<typename T>
-  class FullStack {
-  public:
-    set< pair< int, T > > v;
-    vector< T > aux;
-    void Insert_Push(int t, const T &x) {
-      v.insert(make_pair(t, x));
-    }
-    void Insert_Pop(int t) {
-      v.insert(make_pair(t, -INF));
-    }
-    void Delete_Push(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    void Delete_Pop(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    bool empty(int t) {
-      aux.clear();
-      for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
-        if(it->first > t) break;
-        if(it->second == -INF) aux.pop_back();
-        else aux.push_back(it->second);
-      }
-      return aux.size() == 0;
-    }
-    T peak(int t) {
-      aux.clear();
-      for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
-        if(it->first > t) break;
-        if(it->second == -INF) aux.pop_back();
-        else aux.push_back(it->second);
-      }
-      return aux[(int)aux.size() - 1];
-    }
-  };
+  /* ------------------------------ BEGIN = Full Retroactive Stack --------------------------- */
+  template <typename T> void FullStack<T>::InsertPush(int t, const T &x) {
+    v.updateInsert(t, x);
+  }
+  template <typename T> void FullStack<T>::InsertPop(int t) {
+    v.updateDelete(t);
+  }
+  template <typename T> void FullStack<T>::DeletePush(int t) {
+    v.erasePush(t);
+  }
+  template <typename T> void FullStack<T>::DeletePop(int t) {
+    v.erasePop(t);
+  }
+  template <typename T> T FullStack<T>::peak(int t) {
+    return v.getPeak(v.getPrefixSum(t), t);
+  }
+  template <typename T> int FullStack<T>::getSize(int t) {
+    return v.getPrefixSum(t);
+  }
+    /* ------------------------------ END = Full Retroactive Stack --------------------------- */
 };

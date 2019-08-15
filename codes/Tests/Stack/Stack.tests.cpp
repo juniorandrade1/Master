@@ -1,4 +1,4 @@
-#include "../../Stack/Stack.cpp"
+#include "../../Stack/Stack.hpp"
 #include <gtest/gtest.h>
 
 class Segtree {
@@ -119,8 +119,8 @@ TEST_P(StackValidation, Validation) {
     used[t] = 1;
     x = genRand(1, N);
     tr.update(t, N, 1);
-    bt.Insert_Push(t, x);
-    rt.Insert_Push(t, x);
+    bt.InsertPush(t, x);
+    rt.InsertPush(t, x);
     ins.insert(t);
     ASSERT_EQ(bt.peak(), rt.peak());
   }
@@ -136,8 +136,8 @@ TEST_P(StackValidation, Validation) {
       }
       used[t] = 1;
       x = genRand(1, N);
-      bt.Insert_Push(t, x);
-      rt.Insert_Push(t, x);
+      bt.InsertPush(t, x);
+      rt.InsertPush(t, x);
       ins.insert(t);
       tr.update(t, N, 1);
     }
@@ -148,8 +148,8 @@ TEST_P(StackValidation, Validation) {
         if(used[t] == 0 && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      bt.Insert_Pop(t);
-      rt.Insert_Pop(t);
+      bt.InsertPop(t);
+      rt.InsertPop(t);
       del.insert(t);
       tr.update(t, N, -1);
     }
@@ -160,14 +160,14 @@ TEST_P(StackValidation, Validation) {
         if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
       } 
       ins.erase(t);
-      bt.Delete_Push(t);
-      rt.Delete_Push(t);
+      bt.DeletePush(t);
+      rt.DeletePush(t);
       tr.update(t, N, -1);
     }
     else if(op == 3) {
       int t = GetSample(del);
-      bt.Delete_Pop(t);
-      rt.Delete_Pop(t);
+      bt.DeletePop(t);
+      rt.DeletePop(t);
       del.erase(t);
       tr.update(t, N, 1);
     }
@@ -191,7 +191,7 @@ TEST_P(PartialStackSpeedBrute, Brute) {
     used[t] = 1;
     x = genRand(1, N);
     tr.update(t, N, 1);
-    rt.Insert_Push(t, x);
+    rt.InsertPush(t, x);
   }
   for(int i = 1; i <= n / 2; ++i) {
     int op = genRand(0, 1);
@@ -203,7 +203,7 @@ TEST_P(PartialStackSpeedBrute, Brute) {
       }
       used[t] = 1;
       x = genRand(1, N);
-      rt.Insert_Push(t, x);
+      rt.InsertPush(t, x);
       tr.update(t, N, 1);
     }
     else {
@@ -213,7 +213,7 @@ TEST_P(PartialStackSpeedBrute, Brute) {
         if(used[t] == 0 && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      rt.Insert_Pop(t);
+      rt.InsertPop(t);
       tr.update(t, N, -1);
     }
     rt.peak();
@@ -236,7 +236,7 @@ TEST_P(PartialStackSpeed, Retroactive) {
     used[t] = 1;
     x = genRand(1, N);
     tr.update(t, N, 1);
-    rt.Insert_Push(t, x);
+    rt.InsertPush(t, x);
     //ASSERT_EQ(bt.peak(), rt.peak());
   }
   for(int i = 1; i <= n / 2; ++i) {
@@ -249,7 +249,7 @@ TEST_P(PartialStackSpeed, Retroactive) {
       }
       used[t] = 1;
       x = genRand(1, N);
-      rt.Insert_Push(t, x);
+      rt.InsertPush(t, x);
       tr.update(t, N, 1);
     }
     else {
@@ -259,7 +259,7 @@ TEST_P(PartialStackSpeed, Retroactive) {
         if(used[t] == 0 && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      rt.Insert_Pop(t);
+      rt.InsertPop(t);
       tr.update(t, N, -1);
     }
     rt.peak();
@@ -286,8 +286,8 @@ TEST_P(StackFullValidation, Validation) {
     used[t] = 1;
     x = genRand(1, N);
     tr.update(t, N, 1);
-    bt.Insert_Push(t, x);
-    rt.Insert_Push(t, x);
+    bt.InsertPush(t, x);
+    rt.InsertPush(t, x);
     ins.insert(t);
     ASSERT_EQ(bt.peak(t), rt.peak(t));
   }
@@ -303,8 +303,8 @@ TEST_P(StackFullValidation, Validation) {
       }
       used[t] = 1;
       x = genRand(1, N);
-      bt.Insert_Push(t, x);
-      rt.Insert_Push(t, x);
+      bt.InsertPush(t, x);
+      rt.InsertPush(t, x);
       ins.insert(t);
       tr.update(t, N, 1);
     }
@@ -315,8 +315,8 @@ TEST_P(StackFullValidation, Validation) {
         if(used[t] == 0 && tr.queryMn(t, N) >= 1) break;
       }
       used[t] = 1;
-      bt.Insert_Pop(t);
-      rt.Insert_Pop(t);
+      bt.InsertPop(t);
+      rt.InsertPop(t);
       del.insert(t);
       tr.update(t, N, -1);
     }
@@ -327,14 +327,14 @@ TEST_P(StackFullValidation, Validation) {
         if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
       } 
       ins.erase(t);
-      bt.Delete_Push(t);
-      rt.Delete_Push(t);
+      bt.DeletePush(t);
+      rt.DeletePush(t);
       tr.update(t, N, -1);
     }
     else if(op == 3) {
       int t = GetSample(del);
-      bt.Delete_Pop(t);
-      rt.Delete_Pop(t);
+      bt.DeletePop(t);
+      rt.DeletePop(t);
       del.erase(t);
       tr.update(t, N, 1);
     }
@@ -363,7 +363,7 @@ TEST_P(StackFullSpeedBrute, Validation) {
     used[t] = 1;
     x = genRand(1, N);
     tr.update(t, N, 1);
-    bt.Insert_Push(t, x);
+    bt.InsertPush(t, x);
     bt.peak(t);
   }
   for(int i = 1; i <= n / 2; ++i) {
@@ -392,7 +392,7 @@ TEST_P(StackFullSpeedRetroactive, Validation) {
     used[t] = 1;
     x = genRand(1, N);
     tr.update(t, N, 1);
-    rt.Insert_Push(t, x);
+    rt.InsertPush(t, x);
     rt.peak(t);
   }
   for(int i = 1; i <= n / 2; ++i) {
@@ -406,12 +406,12 @@ TEST_P(StackFullSpeedRetroactive, Validation) {
 }
 
 INSTANTIATE_TEST_CASE_P(TestPartialStack, StackValidation, ::testing::Range(50, 5000, 50));
-INSTANTIATE_TEST_CASE_P(TestPartialStackSpeedBrute, PartialStackSpeedBrute, ::testing::Range(500, 5000, 50));
-INSTANTIATE_TEST_CASE_P(Partial, PartialStackSpeed, ::testing::Range(500, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(TestPartialStackSpeedBrute, PartialStackSpeedBrute, ::testing::Range(500, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(Partial, PartialStackSpeed, ::testing::Range(500, 5000, 50));
 
 INSTANTIATE_TEST_CASE_P(TestFullStack, StackFullValidation, ::testing::Range(50, 5000, 50));
-INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedBrute, ::testing::Range(500, 5000, 50));
-INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedRetroactive, ::testing::Range(500, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedBrute, ::testing::Range(500, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(FullStackSpeedBrute, StackFullSpeedRetroactive, ::testing::Range(500, 5000, 50));
 
 
 int main(int argc, char **argv) {
