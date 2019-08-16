@@ -43,16 +43,16 @@ namespace Retroactivity {
   }
 
   template <typename T> void FullQueue<T>::DeleteEnqueue(int t) {
-    te.remove(t);
+    te.erase(t);
   }
 
   template <typename T> void FullQueue<T>::DeleteDequeue(int t) {
-    td.remove(t);
+    td.erase(t);
   }
 
   template <typename T> T FullQueue<T>::getKth(int t, int k) {
-    int f = td.count(t);
-    return te.kth(k + f);
+    int f = td.order_of_key(k) + td.find(k);
+    return te.find_by_order(k);
   }
 
   template <typename T> T FullQueue<T>::front(int t) {

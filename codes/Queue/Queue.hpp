@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "../BST/OrderedMap.cpp"
+#include "../BST/Treap.cpp"
 
 using namespace std;
 
@@ -99,7 +99,7 @@ namespace Retroactivity {
     * 
     * Contém uma chave (inteiro) representando o tempo de inserção e um valor (T) corresepondente ao objeto inserido
     */
-    BST::OrderedMap<int, T> te;
+    BST::Treap<int, T> te;
 
 
 
@@ -108,7 +108,7 @@ namespace Retroactivity {
     * Contém uma chave (inteiro) representando o tempo de inserção e um valor (booleano), pois não é 
     * preciso armazenar informação referente a chave nessa árvore
     */
-    BST::OrderedMap<int, bool> td;
+    BST::Treap<int, bool> td;
 
 
 
