@@ -1,4 +1,5 @@
-#include "../../Priority_Queue/Priority_queue.cpp"
+#include "../../Priority_Queue/Priority_queue.hpp"
+#include "../../Priority_Queue/Polylogarithm_Priority_Queue.cpp"
 #include <gtest/gtest.h>
 
 class Segtree {
@@ -315,9 +316,9 @@ TEST_P(PartialRetroactivePriorityQueueSpeed, RetroactiveSpeed) {
   }
 }
 
-INSTANTIATE_TEST_CASE_P(TestPartialPriorityQueueValidation, PartialPriorityQueueValidation, ::testing::Range(1000, 5000, 1000));
-INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, PartialRetroactivePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
-INSTANTIATE_TEST_CASE_P(BruteSpeedTest, PartialBrutePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
+// INSTANTIATE_TEST_CASE_P(TestPartialPriorityQueueValidation, PartialPriorityQueueValidation, ::testing::Range(1000, 5000, 1000));
+// INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, PartialRetroactivePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
+// INSTANTIATE_TEST_CASE_P(BruteSpeedTest, PartialBrutePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
 
 
 
@@ -332,10 +333,10 @@ TEST_P(FullPriorityQueueValidation, Validation) {
   set< int > ins;
   set< int > del;
   for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = genRand(0, N);
+    int x = genRand(1, N);
     int t;
     while(1) {
-      t = genRand(0, N);
+      t = genRand(1, N);
       if(!used[t]) break;
     }
     used[t] = 1;
@@ -344,12 +345,13 @@ TEST_P(FullPriorityQueueValidation, Validation) {
     tr.update(t, N, 1);
     ins.insert(t);
 
-    t = genRand(0, N);
+    t = genRand(1, N);
     ASSERT_EQ(rq.empty(t), bq.empty(t));
     if(!rq.empty(t)) ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
   }
+
   for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 3);
+    int op = genRand(0, 1);
     if(op == 2 && ins.size() == 0) op = 1;
     if(op == 3 && del.size() == 0) op = 0;
     //printf("== %d\n", op);
@@ -406,92 +408,21 @@ TEST_P(FullPriorityQueueValidation, Validation) {
 class FullBrutePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 
 TEST_P(FullBrutePriorityQueueSpeed, BruteSpeed) {
-  Brute::FullPriorityQueue< int > bq;
+  Brute::FullPriorityQueue< int > rq;
   int n = GetParam();
   map< int, int > used;
   Segtree tr;
   set< int > ins;
   set< int > del;
+
+  vector< int > p(n + 1);
+  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
+  
+  random_shuffle(p.begin(), p.end());
+
+
   for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    bq.insertPush(t, x);
-    tr.update(t, N, 1);
-    ins.insert(t);
-
-    t = genRand(0, N);
-    if(!bq.empty(t)) bq.getPeak(t);
-  }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 3);
-    if(op == 2 && ins.size() == 0) op = 1;
-    if(op == 3 && del.size() == 0) op = 0;
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-      bq.insertPush(t, x);
-      tr.update(t, N, 1);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) > 1) break;
-      }
-      used[t] = 1;
-      bq.insertPop(t);
-      del.insert(t);
-      tr.update(t, N, -1);
-    }
-    else if(op == 2) {
-      int t;
-      while(1) {
-        t = GetSample(ins);
-        if(tr.queryMn(t, N) > 1) break;
-      } 
-      ins.erase(t);
-      //rq.removePush(t);
-      bq.removePush(t);
-      used[t] = 0;
-      tr.update(t, N, -1);
-    }
-    else if(op == 3) {
-      int t = GetSample(del);
-      //rq.removePop(t);
-      bq.removePop(t);
-      del.erase(t);
-      used[t] = 0;
-      tr.update(t, N, 1);
-    }
-
-    int t = genRand(0, N);
-    if(!bq.empty(t)) bq.getPeak(t);
-  }
-}
-
-
-
-class FullRetroactivePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
-
-TEST_P(FullRetroactivePriorityQueueSpeed, RetroactiveSpeed) {
-  Retroactivity::FullPriorityQueue< int > rq;
-  int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-  for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = genRand(0, N);
+    int x = p[i];
     int t;
     while(1) {
       t = genRand(0, N);
@@ -505,12 +436,12 @@ TEST_P(FullRetroactivePriorityQueueSpeed, RetroactiveSpeed) {
     t = genRand(0, N);
     rq.getPeak(t);
   }
-  for(int i = 0; i < n / 2; ++i) {
+  for(int i = (n + 1) / 2; i < n; ++i) {
     int op = genRand(0, 3);
     if(op == 2 && ins.size() == 0) op = 1;
     if(op == 3 && del.size() == 0) op = 0;
     if(op == 0) {
-      int x = genRand(0, N);
+      int x = p[i];
       int t;
       while(1) {
         t = genRand(0, N);
@@ -555,14 +486,279 @@ TEST_P(FullRetroactivePriorityQueueSpeed, RetroactiveSpeed) {
   }
 }
 
-INSTANTIATE_TEST_CASE_P(TestFullPriorityQueueValidation, FullPriorityQueueValidation, ::testing::Range(1000, 2000, 100));
-INSTANTIATE_TEST_CASE_P(BruteSpeedTest, FullBrutePriorityQueueSpeed, ::testing::Range(20000, 30001, 3000));
-INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, FullRetroactivePriorityQueueSpeed, ::testing::Range(20000, 30001, 3000));
 
+
+class FullRetroactivePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
+
+TEST_P(FullRetroactivePriorityQueueSpeed, RetroactiveSpeed) {
+  Retroactivity::FullPriorityQueue< int > rq;
+  int n = GetParam();
+  map< int, int > used;
+  Segtree tr;
+  set< int > ins;
+  set< int > del;
+
+  vector< int > p(n + 1);
+  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
+  
+  random_shuffle(p.begin(), p.end());
+
+
+  for(int i = 0; i < (n + 1) / 2; ++i) {
+    int x = p[i];
+    int t;
+    while(1) {
+      t = genRand(0, N);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    rq.insertPush(t, x);
+    tr.update(t, N, 1);
+    ins.insert(t);
+
+    t = genRand(0, N);
+    rq.getPeak(t);
+  }
+  for(int i = (n + 1) / 2; i < n; ++i) {
+    int op = genRand(0, 3);
+    if(op == 2 && ins.size() == 0) op = 1;
+    if(op == 3 && del.size() == 0) op = 0;
+    if(op == 0) {
+      int x = p[i];
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      rq.insertPush(t, x);
+      tr.update(t, N, 1);
+    }
+    else if(op == 1) {
+      int t;
+      while(1) {
+        t = genRand(0, N);
+        if(!used[t] && tr.queryMn(t, N) > 1) break;
+      }
+      used[t] = 1;
+      rq.insertPop(t);
+      del.insert(t);
+      tr.update(t, N, -1);
+    }
+    else if(op == 2) {
+      int t;
+      while(1) {
+        t = GetSample(ins);
+        if(tr.queryMn(t, N) > 1) break;
+      } 
+      ins.erase(t);
+      used[t] = 0;
+      rq.removePush(t);
+      tr.update(t, N, -1);
+    }
+    else if(op == 3) {
+      int t = GetSample(del);
+      rq.removePop(t);
+      del.erase(t);
+      used[t] = 0;
+      tr.update(t, N, 1);
+    }
+
+    int t = genRand(0, N);
+    rq.getPeak(t);
+  }
+}
+
+//INSTANTIATE_TEST_CASE_P(TestFullPriorityQueueValidation, FullPriorityQueueValidation, ::testing::Range(100, 200, 10));
+INSTANTIATE_TEST_CASE_P(BruteSpeedTest, FullBrutePriorityQueueSpeed, ::testing::Range(3000, 30001, 3000));
+INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, FullRetroactivePriorityQueueSpeed, ::testing::Range(3000, 30001, 3000));
+
+
+class FullPolylogarithmPriorityQueueValidation: public ::testing::TestWithParam<int>{};
+
+TEST_P(FullPolylogarithmPriorityQueueValidation, Validation) {
+  int n = GetParam();
+  int m = n * 2;
+  Retroactivity::PolylogarithmPriorityQueue< int > rq(m + 1);
+  Brute::FullPriorityQueue< int > bq;
+  map< int, int > used;
+  Segtree tr;
+  set< int > ins;
+  set< int > del;
+
+  vector< int > p(n + 1);
+  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
+  
+  random_shuffle(p.begin(), p.end());
+
+  for(int i = 0; i < (n + 1) / 2; ++i) {
+    int x = p[i];
+    int t;
+    while(1) {
+      t = genRand(1, m);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    rq.insertPush(t, x);
+    bq.insertPush(t, x);
+    tr.update(t, m, 1);
+    ins.insert(t);
+
+    t = genRand(1, m);
+    rq.getPeak(t);
+    if(!bq.empty(t)) ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+  }
+  for(int i = (n + 1) / 2; i < n; ++i) {
+    int op = genRand(0, 1);
+    if(op == 0) {
+      int x = p[i];
+      int t;
+      while(1) {
+        t = genRand(1, m);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      rq.insertPush(t, x);
+      bq.insertPush(t, x);
+      tr.update(t, m, 1);
+      ins.insert(t);
+    }
+    else if(op == 1) {
+      int t;
+      while(1) {
+        t = genRand(1, m);
+        if(!used[t] && tr.queryMn(t, m) > 2) break;
+      }
+      used[t] = 1;
+      bq.insertPop(t);
+      rq.insertPop(t);
+      del.insert(t);
+      tr.update(t, m, -1);
+    }
+    // else if(op == 2) {
+    //   int t;
+    //   while(1) {
+    //     t = GetSample(ins);
+    //     if(tr.queryMn(t, m) > 1) break;
+    //   } 
+    //   ins.erase(t);
+    //   rq.removePush(t);
+    //   bq.removePush(t);
+    //   tr.update(t, m, -1);
+    // }
+    // else if(op == 3) {
+    //   int t = GetSample(del);
+    //   rq.removePop(t);
+    //   bq.removePop(t);
+    //   del.erase(t);
+    //   tr.update(t, m, 1);
+    // }
+
+    int t = genRand(1, m);
+    if(!bq.empty(t)) {
+      ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+    }
+  }
+}
+
+//INSTANTIATE_TEST_CASE_P(PolylogarithmPriorityQueueTest, FullPolylogarithmPriorityQueueValidation, ::testing::Range(500, 1000, 100));
+
+
+
+
+class PolylogarithmPriorityQueueSpeed: public ::testing::TestWithParam<int>{};
+
+TEST_P(PolylogarithmPriorityQueueSpeed, PolylogarithmSpeed) {
+  int n = GetParam();
+  int m = n * 2;
+  Retroactivity::PolylogarithmPriorityQueue< int > rq(m + 1);
+  //Brute::FullPriorityQueue< int > bq;
+  map< int, int > used;
+  Segtree tr;
+  set< int > ins;
+  set< int > del;
+
+  vector< int > p(n + 1);
+  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
+  
+  random_shuffle(p.begin(), p.end());
+
+  for(int i = 0; i < (n + 1) / 2; ++i) {
+    int x = p[i];
+    int t;
+    while(1) {
+      t = genRand(1, m);
+      if(!used[t]) break;
+    }
+    used[t] = 1;
+    rq.insertPush(t, x);
+    //bq.insertPush(t, x);
+    tr.update(t, m, 1);
+    ins.insert(t);
+
+    t = genRand(1, m);
+    rq.getPeak(t);
+    //if(!bq.empty(t)) ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+  }
+  for(int i = (n + 1) / 2; i < n; ++i) {
+    int op = genRand(0, 1);
+    if(op == 0) {
+      int x = p[i];
+      int t;
+      while(1) {
+        t = genRand(1, m);
+        if(!used[t]) break;
+      }
+      used[t] = 1;
+      rq.insertPush(t, x);
+     // bq.insertPush(t, x);
+      tr.update(t, m, 1);
+      ins.insert(t);
+    }
+    else if(op == 1) {
+      int t;
+      while(1) {
+        t = genRand(1, m);
+        if(!used[t] && tr.queryMn(t, m) > 2) break;
+      }
+      used[t] = 1;
+      //bq.insertPop(t);
+      rq.insertPop(t);
+      del.insert(t);
+      tr.update(t, m, -1);
+    }
+    // else if(op == 2) {
+    //   int t;
+    //   while(1) {
+    //     t = GetSample(ins);
+    //     if(tr.queryMn(t, m) > 1) break;
+    //   } 
+    //   ins.erase(t);
+    //   rq.removePush(t);
+    //   bq.removePush(t);
+    //   tr.update(t, m, -1);
+    // }
+    // else if(op == 3) {
+    //   int t = GetSample(del);
+    //   rq.removePop(t);
+    //   bq.removePop(t);
+    //   del.erase(t);
+    //   tr.update(t, m, 1);
+    // }
+
+    int t = genRand(1, m);
+    rq.getPeak(t);
+    //if(!bq.empty(t)) {
+      //ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+    //}
+  }
+}
+
+INSTANTIATE_TEST_CASE_P(PolylogarithmRetroactiveSpeedTest, PolylogarithmPriorityQueueSpeed, ::testing::Range(3000, 30001, 3000));
 
 int main(int argc, char **argv) {
-  //srand(1);
-  srand(time(NULL));
+  srand(42);
+  //srand(time(NULL));
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
