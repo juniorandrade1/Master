@@ -213,6 +213,36 @@ namespace BST {
       }
       return tr[no].data;
     }
+
+
+    std::pair<int, T> getPeakPair(int i, int t) { 
+      t++;
+      int no = getNode(1, 0, n, t);
+      while(no != 1) {
+        int d = (no & 1);
+        no >>= 1;
+        int nxt = (no << 1);
+        propagate(nxt, L[nxt], R[nxt]);
+        propagate(nxt + 1, L[nxt + 1], R[nxt + 1]);
+        if(i >= tr[nxt].minIns && i <= tr[nxt].maxIns && d) {
+          break;
+        }
+      }
+      no <<= 1;
+      propagate(no, L[no], R[no]);
+      if(i < tr[no].minIns || i > tr[no].maxIns) no++;
+      propagate(no, L[no], R[no]);
+      while(L[no] != R[no]) {
+        int nxt = (no << 1);
+        propagate(nxt, L[nxt], R[nxt]);
+        propagate(nxt + 1, L[nxt + 1], R[nxt + 1]);
+        if(i >= tr[nxt + 1].minIns && i <= tr[nxt + 1].maxIns && L[nxt + 1] < t) no = nxt + 1;
+        else if(i >= tr[nxt].minIns && i <= tr[nxt].maxIns) no = nxt;
+        else assert(false);
+      }
+      return std::make_pair(L[no], tr[no].data);
+    }
+
     int getPrefixSum(int i) {
       return getPrefixSum(1, 0, n, i);
     }

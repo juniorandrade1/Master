@@ -9,10 +9,12 @@ namespace BST {
     class TreapNode;
     class iterator;
   private:
+    
     typedef TreapNode * pTreapNode;
     int getSize(pTreapNode p) {
       return p ? p->sz : 0;
     }
+
     pair<V, K> nmin(pair<V, K> a, pair<V, K> b) {
       if(a.first != b.first) return (a < b) ? a : b;
       return (a.second < b.second) ? b : a;
@@ -100,15 +102,6 @@ namespace BST {
       }
       update(t);
     }
-    // pTreapNode unite (pTreapNode l, pTreapNode r) {
-    //   if (!l || !r)  return l ? l : r;
-    //   if (l->prior < r->prior)  swap (l, r);
-    //   pTreapNode lt, rt;
-    //   split (r, l->key, lt, rt);
-    //   l->l = unite (l->l, lt);
-    //   l->r = unite (l->r, rt);
-    //   return l;
-    // }
     pTreapNode find_by_order(pTreapNode t, int k) {
       if(t == NULL) return NULL;
       if(getSize(t->l) + 1 < k) return find_by_order(t->r, k - (getSize(t->l) + 1));
@@ -117,7 +110,7 @@ namespace BST {
     }
     int order_of_key(pTreapNode t, K k) {
       if(t == NULL) return 0;
-      if(k >= t->key) return order_of_key(t->r, k) + getSize(t->l) + 1;
+      if(k > t->key) return order_of_key(t->r, k) + getSize(t->l) + 1;
       else return order_of_key(t->l, k);
     }
     bool find(pTreapNode t, K k) {
@@ -167,20 +160,42 @@ namespace BST {
       if(!t) return;
       showTree(t->l);
       printf("NODE\n");
-      printf("%d %d\n", t->key, t->data);
-      printf("LEFT = ");
-      if(t->l == NULL) printf("NULL\n");
-      else printf("%d %d\n", t->l->key, t->l->data);
+      printf("%d (%d, %d)\n", t->key, t->data.first, t->data.second);
 
-      printf("RIGHT = ");
-      if(t->r == NULL) printf("NULL\n");
-      else printf("%d %d\n", t->r->key, t->r->data);
+      // printf("LEFT = ");
+      // if(t->l == NULL) printf("NULL\n");
+      // else printf("%d %d\n", t->l->key, t->l->data);
 
-      printf("parent = ");
-      if(t->parent == NULL) printf("NULL\n");
-      else printf("%d %d\n", t->parent->key, t->parent->data);
+      // printf("RIGHT = ");
+      // if(t->r == NULL) printf("NULL\n");
+      // else printf("%d %d\n", t->r->key, t->r->data);
+
+      // printf("parent = ");
+      // if(t->parent == NULL) printf("NULL\n");
+      // else printf("%d %d\n", t->parent->key, t->parent->data);
 
       showTree(t->r);
+      update(t);
+    }
+    void showTree2(pTreapNode t) {
+      if(!t) return;
+      showTree2(t->l);
+      printf("NODE\n");
+      printf("%d (%d)\n", t->key, t->data);
+
+      // printf("LEFT = ");
+      // if(t->l == NULL) printf("NULL\n");
+      // else printf("%d %d\n", t->l->key, t->l->data);
+
+      // printf("RIGHT = ");
+      // if(t->r == NULL) printf("NULL\n");
+      // else printf("%d %d\n", t->r->key, t->r->data);
+
+      // printf("parent = ");
+      // if(t->parent == NULL) printf("NULL\n");
+      // else printf("%d %d\n", t->parent->key, t->parent->data);
+
+      showTree2(t->r);
       update(t);
     }
     void allTree(pTreapNode t, vector< V >&foo) {
@@ -192,6 +207,14 @@ namespace BST {
     pTreapNode getBegin(pTreapNode t) {
       while(t->l != NULL) t = t->l;
       return t;
+    }
+    pTreapNode lower_bound(pTreapNode t, K k) {
+      if(t == NULL) return NULL;
+      if(t->key == k) return t;
+      if(t->key < k) return lower_bound(t->r, k);
+      pTreapNode q = lower_bound(t->l, k);
+      if(q == NULL) return t;
+      else return q;
     }
   public:
     pTreapNode root;
@@ -210,10 +233,18 @@ namespace BST {
         erase(root, key);
       }
     }
-    V find_by_order(int k) {
-      pTreapNode p = find_by_order(root, k);
-      if(p == NULL) return V();
-      return p->data;
+    // V find_by_order(int k) {
+    //   pTreapNode p = find_by_order(root, k);
+    //   if(p == NULL) return V();
+    //   return p->data;
+    // }
+    // std::pair<K, V> find_by_order(int k) {
+    //   pTreapNode p = find_by_order(root, k);
+    //   if(p == NULL) return std::make_pair(K(), V());
+    //   return std::make_pair(p->key, p->data);
+    // }
+    iterator find_by_order(int k) {
+      return iterator(find_by_order(root, k));
     }
     int order_of_key(K k) {
       return order_of_key(root, k);
@@ -248,6 +279,9 @@ namespace BST {
     void showTree() {
       showTree(root);
     }
+    void showTree2() {
+      showTree2(root);
+    }
     vector< V > getTree() {
       vector< V > foo;
       allTree(root, foo);
@@ -269,6 +303,9 @@ namespace BST {
     }
     iterator end() {
       return iterator(NULL);
+    }
+    iterator lower_bound(K k) {
+      return iterator(lower_bound(root, k));
     }
   };
 
@@ -305,6 +342,9 @@ namespace BST {
     }
     iterator(TreapNode *foo) {
       cur = foo;
+    }
+    bool operator == (const iterator &foo) const {
+      return cur == foo.cur;
     }
     iterator& operator++() {
       K x = cur->key;
@@ -343,27 +383,52 @@ namespace BST {
       pair< K, V > *foo = new pair<K, V>(cur->key, cur->data);
       return *foo;
     }
+    void modify(K key, V data) {
+      cur->key = key;
+      cur->data = data;
+    }
   };
-
 };
 
 // int main() {
-//   srand(1);
-//   BST::Treap< int, int > t;
-//   t.insert(31, 23);
-//   BST::Treap< int, int > :: iterator it = t.begin();
-//   printf("%d %d\n", (*it).first, (*it).second);
-//   t.insert(50, 12);
-//   printf("%d %d\n", (*it).first, (*it).second);
-//   t.insert(34, 44);
-//   printf("%d %d\n", (*it).first, (*it).second);
-//   t.insert(28, 24);
-//   --it;
-//   printf("%d %d\n", (*it).first, (*it).second);
-//   t.insert(12, 19);
-//   --it;
+//   srand(time(NULL));
+//   BST::Treap< int, int > td;
+//   td.insert(4, -1);
+//   BST::Treap< int, int > :: iterator it = td.lower_bound(4);
+//   printf("%d\n", (*it).first);
 
-//   t.showTree();
-//   printf("%d %d\n", (*it).first, (*it).second);
+//   // BST::Treap< int, int > td;
+//   // BST::Treap< int, pair<int, BST::Treap< int, int > :: iterator> > te;
+
+
+//   // BST::Treap< int, int > t;
+//   // BST::Treap< int, int > :: iterator it;
+//   // t.insert(1, 5);
+//   // it = t.lower_bound(1);
+//   // cout << (*it).first << endl; 
+//   // t.insert(10, 2);
+//   // it = t.lower_bound(1);
+//   // cout << (*it).first << endl; 
+//   // t.insert(15, 1);
+//   // it = t.lower_bound(5);
+//   // cout << (*it).first << endl; 
+//   //t.insert(13, 2);
+//   //t.insert(23, 231);
+  
+//   // t.insert(31, 23);
+//   // BST::Treap< int, int > :: iterator it = t.begin();
+//   // printf("%d %d\n", (*it).first, (*it).second);
+//   // t.insert(50, 12);
+//   // printf("%d %d\n", (*it).first, (*it).second);
+//   // t.insert(34, 44);
+//   // printf("%d %d\n", (*it).first, (*it).second);
+//   // t.insert(28, 24);
+//   // --it;
+//   // printf("%d %d\n", (*it).first, (*it).second);
+//   // t.insert(12, 19);
+//   // --it;
+
+//   // t.showTree();
+//   // printf("%d %d\n", (*it).first, (*it).second);
 //   return 0;
 // }

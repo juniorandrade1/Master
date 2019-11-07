@@ -51,8 +51,8 @@ namespace Retroactivity {
   }
 
   template <typename T> T FullQueue<T>::getKth(int t, int k) {
-    int f = td.order_of_key(k) + td.find(k);
-    return te.find_by_order(k);
+    int f = td.order_of_key(t) + td.find(t);
+    return (*te.find_by_order(k + f)).second;
   }
 
   template <typename T> T FullQueue<T>::front(int t) {
