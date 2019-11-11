@@ -180,8 +180,24 @@ namespace Retroactivity {
   template<typename T>
   class NonOblivious {
   private:
+    /** Árvore binária de busca que mantém as operações de Enqueue(x) ordenadas por tempo
+    * 
+    * Contém uma chave (inteiro) representando o tempo de inserção da operação Enqueue e um 
+    * par (T, int) representando o objeto inserido, e, se existir, o tempo de remoção desse objeto.
+    */
     BST::Treap<int, std::pair<T, int> > te;
+
+
+
+    /** Árvore binária de busca que mantém as operações de Dequeue(x) ordenadas por tempo
+    * 
+    * Contém uma chave (inteiro) representando o tempo de inserção da operação Dequeue e um valor (inteiro) representando o 
+    * o objeto removido por essa operação
+    */
     BST::Treap<int, int> td;
+
+    /** Inteiro representando o valor nulo
+    */
     const int NULLVALUE = -1;
   public:
 
@@ -244,17 +260,22 @@ namespace Retroactivity {
     typename BST::Treap<int, std::pair<T, int> > :: iterator Front(int t);
 
 
+
     /** Corrige a estrutura após uma inconsistencia no tempo t
     *
     * @param t -> tempo em que ocorreu uma inconsistencia na estrutura
     */
     void fixDequeueOperation(int t);
 
+
+
     /** Função auxiliar para mostrar os elementos do conjuto das inserções
     *
     * @return -> os elementos do conjunto Te no formato "tempoInsercao, (elemento, tempoRemocao)""
     */
     void showTe();
+
+
 
     /** Função auxiliar para mostrar os elementos do conjuto das remocoes
     *
