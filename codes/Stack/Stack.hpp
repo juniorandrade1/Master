@@ -6,6 +6,7 @@
 
 #include <bits/stdc++.h>
 #include "../BST/IntervalTree.cpp"
+#include "../BST/Treap.cpp"
 
 namespace Retroactivity {
   template<typename T>
@@ -144,6 +145,102 @@ namespace Retroactivity {
     * @returns -> retorna o número de elementos na pilha no tempo t
     */
     int getSize(int t);
+  };
+
+  template <typename T>
+  class NonObliviousStack {
+  private:
+    /** Árvore de segmentos para manutenção da árvore de prefixos
+    * 
+    */
+    BST::IntervalTree< T > prefixTree;
+
+
+    /** Árvore binária de busca que mantém as operações de Push(x) ordenadas por tempo
+    * 
+    * Contém uma chave (inteiro) representando o tempo de inserção da operação Push(x) e um 
+    * par (T, int) representando o objeto inserido, e, se existir, o tempo de remoção desse objeto.
+    */
+    BST::Treap< int, std::pair<T, int> > tpush;
+
+
+    /** Árvore binária de busca que mantém as operações de Pop() ordenadas por tempo
+    * 
+    * Contém uma chave (inteiro) representando o tempo de inserção da operação Pop e um valor (inteiro) representando o 
+    * o objeto removido por essa operação
+    */
+    BST::Treap< int, T > tpop;
+
+
+    /** Inteiro representando o valor nulo
+    */
+    const int NULLVALUE = -1;
+  public:
+
+
+    /** Insere o objeto x no tempo t na pilha
+    * => Insert(t, Push(x))
+    * 
+    *
+    * @param t -> tempo de inserção do objeto
+    * @param x -> objeto a ser inserido no topo da pilha no tempo t
+    * @returns -> a próxima operação Pop inconsistente
+    */
+    int InsertPush(int t, T x);
+
+
+    /** Adiciona a realização da operação Pop no tempo t
+    * => Insert(t, Pop())
+    * 
+    * 
+    * @param t -> tempo de realização da operação Pop()
+    * @returns -> a próxima operação Pop inconsistente
+    */
+    int InsertPop(int t);
+
+
+    /** Remove a operação Push realizada no tempo t
+    * => Delete(t, Push(x))
+    * 
+    * 
+    * @param t -> tempo em que uma operação Push foi realizada
+    * @pre -> deve existir uma operação Push no tempo t
+    * @returns -> a próxima operação Pop inconsistente
+    */
+    int DeletePush(int t);
+
+
+    /** Remove a operação Pop realizada no tempo t
+    * => Delete(t, Pop())
+    * 
+    * 
+    * @param t -> tempo em que uma operação Pop foi realizada
+    * @pre -> deve existir uma operação Pop no tempo t
+    * @returns -> a próxima operação Pop inconsistente
+    */
+    int DeletePop(int t);
+
+
+    /** Corrige a estrutura após uma inconsistencia no tempo t
+    *
+    * @param t -> tempo em que ocorreu uma inconsistencia na estrutura
+    */
+    void fixPopOperation(int t);
+
+
+    /** Função auxiliar para mostrar os elementos do conjuto tpush
+    *
+    * @return -> os elementos do conjunto tpush no formato "tempoInsercao, (elemento, tempoRemocao)"
+    */
+    void showtpush();
+
+
+    /** Função auxiliar para mostrar os elementos do conjuto tpop
+    *
+    * @return -> os elementos do conjunto tpop no formato "tempoDelecao, (elementoDeletado)"
+    */
+    void showtpop();
+
   };
 }
 
