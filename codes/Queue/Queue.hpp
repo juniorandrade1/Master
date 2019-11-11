@@ -175,6 +175,93 @@ namespace Retroactivity {
     */
     T front(int t);
   };  
+
+
+  template<typename T>
+  class NonOblivious {
+  private:
+    BST::Treap<int, std::pair<T, int> > te;
+    BST::Treap<int, int> td;
+    const int NULLVALUE = -1;
+  public:
+
+
+    /** Insere uma operação Enqueue(x) no tempo t
+    * => Insert(t, Enqueue(x))
+    * 
+    * Recebe um inteiro t (tempo de inserção da operação) em que a operação Enqueue(x)
+    * será inserida
+    *
+    * @param t -> tempo de inserção da operação Enqueue(x)
+    * @param x -> objeto a ser inserido na operação
+    * @return -> um inteiro com o tempo da primeira operação Dequeue inconsistente
+    */
+    int InsertEnqueue(int t, T x);
+
+
+
+    /** Insere uma operação Dequeue() no tempo t
+    * => Insert(t, Dequeue())
+    * 
+    * Recebe um inteiro t (tempo de inserção da operação) em que a operação Dequeue 
+    * será inserida
+    *
+    * @param t -> tempo de inserção da operação Dequeue
+    * @return -> um inteiro com o tempo da primeira operação Dequeue inconsistente
+    */
+    int InsertDequeue(int t);
+
+
+
+    /** Remove a operação de Enqueue realizada no tempo t
+    * => Delete(t, Enqueue(x))
+    *
+    * @param t -> tempo em que uma operação Enqueue foi realizada
+    * @pre -> precisa que uma operação Enqueue no tempo t tenha sido realizada
+    * @return -> um inteiro com o tempo da primeira operação Dequeue inconsistente
+    */
+    int DeleteEnqueue(int t);
+
+
+
+    /** Remove a operação de Dequeue realizada no tempo t
+    * => Delete(t, Dequeue())
+    *
+    * @param t -> tempo em que uma operação Dequeue foi realizada
+    * @pre -> precisa que uma operação Dequeue no tempo t tenha sido realizada
+    * @return -> um inteiro com o tempo da primeira operação Dequeue inconsistente
+    */
+    int DeleteDequeue(int t);
+
+
+    /** Remove a operação de Dequeue realizada no tempo t
+    * => Front(t)
+    *
+    * @param t -> tempo em que deseja-se saber o elemento na frente da fila
+    * @pre -> precisa que exista um elemento na fila
+    * @return -> o iterator do elemento na posição frontal da fila
+    */
+    typename BST::Treap<int, std::pair<T, int> > :: iterator Front(int t);
+
+
+    /** Corrige a estrutura após uma inconsistencia no tempo t
+    *
+    * @param t -> tempo em que ocorreu uma inconsistencia na estrutura
+    */
+    void fixDequeueOperation(int t);
+
+    /** Função auxiliar para mostrar os elementos do conjuto das inserções
+    *
+    * @return -> os elementos do conjunto Te no formato "tempoInsercao, (elemento, tempoRemocao)""
+    */
+    void showTe();
+
+    /** Função auxiliar para mostrar os elementos do conjuto das remocoes
+    *
+    * @return -> os elementos do conjunto Td no formato "tempoDelecao, (elementoDeletado)"
+    */
+    void showTd();
+  };
 }
 
 
