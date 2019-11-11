@@ -2,7 +2,8 @@
 
 namespace Retroactivity {
   /* ------------------------------ BEGIN = Partial Retroactive Priority Queue --------------------------- */
-  template <typename T> vector< pair<int, T> > PartialPriorityQueue<T>::insertPush(int t, T data) {
+  template <typename T> 
+  vector< pair<int, T> > PartialPriorityQueue<T>::insertPush(int t, T data) {
     vector< pair<int, T> > ret;
 
       int tl = bridges.getLastBridge(t);
@@ -22,7 +23,8 @@ namespace Retroactivity {
 
       return ret;
   }
-  template <typename T> vector< pair<int, T> > PartialPriorityQueue<T>::insertPop(int t) {
+  template <typename T> 
+  vector< pair<int, T> > PartialPriorityQueue<T>::insertPop(int t) {
     vector< pair<int, T> > ret;
       
     type[t] = 3;
@@ -50,7 +52,8 @@ namespace Retroactivity {
 
     return ret;
   }
-  template <typename T> void PartialPriorityQueue<T>::removePush(int t) {
+  template <typename T> 
+  void PartialPriorityQueue<T>::removePush(int t) {
     if(type[t] == 1) {    
       qnow.erase(t);
       type.erase(t);
@@ -67,7 +70,8 @@ namespace Retroactivity {
       type.erase(t);
     }
   }
-  template <typename T> void PartialPriorityQueue<T>::removePop(int t) {
+  template <typename T> 
+  void PartialPriorityQueue<T>::removePop(int t) {
     bridges.update(t, 1);
     int tl = bridges.getLastBridge(t);
     pair<T, int> add = nqnow.getMaximumValueAfter(tl);
@@ -78,17 +82,18 @@ namespace Retroactivity {
     type.erase(t);
     return;
   }
-  template <typename T> bool PartialPriorityQueue<T>::empty() {
+  template <typename T> 
+  bool PartialPriorityQueue<T>::empty() {
     return qnow.empty();
   }
-  template <typename T> T PartialPriorityQueue<T>::getPeak() {
+  template <typename T> 
+  T PartialPriorityQueue<T>::getPeak() {
     return qnow.getMinimumValue().first;
   }
   /* ------------------------------ END = Partial Retroactive Priority Queue -------------------------- */
 
   /* ------------------------------ BEGIN = Full Retroactive Priority Queue --------------------------- */
-
-   template <typename T> 
+  template <typename T> 
   class FullPriorityQueue<T>::Operation {
   public:
     int t;
@@ -106,29 +111,34 @@ namespace Retroactivity {
       return data < o.data;
     }
   };
-  template <typename T> void FullPriorityQueue<T>::insertPush(int t, T data) {
+  template <typename T>
+  void FullPriorityQueue<T>::insertPush(int t, T data) {
     int st = t / b;
     for(int i = st + 1; i < p.size(); ++i) p[i].insertPush(t, data);
     all.insert(Operation(t, 0, data));
   }
-  template <typename T> void FullPriorityQueue<T>::insertPop(int t) {
+  template <typename T>
+  void FullPriorityQueue<T>::insertPop(int t) {
     int st = t / b;
     for(int i = st + 1; i < p.size(); ++i) p[i].insertPop(t);
     all.insert(Operation(t, 1, 1));
   }
-  template <typename T> void FullPriorityQueue<T>::removePush(int t) {
+  template <typename T>
+  void FullPriorityQueue<T>::removePush(int t) {
     int st = t / b;
     for(int i = st + 1; i < p.size(); ++i) p[i].removePush(t);
     auto f = all.lower_bound(Operation(t, -1, -1));
     all.erase(f);
   }
-  template <typename T> void FullPriorityQueue<T>::removePop(int t) {
+  template <typename T>
+  void FullPriorityQueue<T>::removePop(int t) {
     int st = t / b;
     for(int i = st + 1; i < p.size(); ++i) p[i].removePop(t);
     auto f = all.lower_bound(Operation(t, -1, -1));
     all.erase(f);
   }
-  template <typename T> T FullPriorityQueue<T>::getPeak(int t) {
+  template <typename T>
+  T FullPriorityQueue<T>::getPeak(int t) {
     int st = t / b;
     //Get operations between last bucket and t
     vector< Operation > op;
@@ -154,7 +164,8 @@ namespace Retroactivity {
     return peak;
   }
 
-  template <typename T> bool FullPriorityQueue<T>::empty(int t) {
+  template <typename T>
+  bool FullPriorityQueue<T>::empty(int t) {
     int st = t / b;
     //Get operations between last bucket and t
     vector< Operation > op;
@@ -179,233 +190,345 @@ namespace Retroactivity {
   }
   /* ------------------------------ END = Full Retroactive Priority Queue --------------------------- */
 
+  /* ------------------------------ BEGIN = Non-Oblivious Retroactive Priority Queue --------------------------- */
+  template <typename T>
+  int NonObliviousPriorityQueue<T>::InsertPush(int t, T x) {
+    H.insertSegment(t, MAX, x);
+    return V.getMinXGreaterThanOrEqualY(t, MAX, x);
+  }
+  template <typename T> int NonObliviousPriorityQueue<T>::InsertPop(int t) {
+    int x = H.getMinY(t);
+    int tins = H.getStartTimeFromKey(x);
+    int tdel = H.getFinishTimeFromKey(x);
+    H.eraseSegment(tins, tdel, x);
+    int newtdel = t;
+    H.insertSegment(tins, newtdel, x);
+    V.insertPoint(t, x);
+    if(tdel < MAX) {
+      V.erasePoint(tdel, x);
+    }
+    return tdel;
+  }
+  template <typename T>
+  int NonObliviousPriorityQueue<T>::DeletePush(int t) {
+    int tins = t;
+    int tdel = H.getFinishTimeFromStartTime(tins);
+    int x = H.getKeyFromStartTime(tins);
+    H.eraseSegment(tins, tdel, x);
+    if(tdel < MAX) {
+      V.erasePoint(tdel, x);
+    }
+    return tdel;
+  }
+  template <typename T>
+  int NonObliviousPriorityQueue<T>::DeletePop(int t)  {
+    int x = V.getYFromX(t);
+    int tins = H.getStartTimeFromKey(x);
+    int tdel = H.getFinishTimeFromStartTime(tins);
+    H.eraseSegment(tins, tdel, x);
+    H.insertSegment(t, MAX, x);
+    V.erasePoint(t, x);
+    return V.getMinXGreaterThanOrEqualY(t, MAX, x);
+  }
+  template <typename T>
+  T NonObliviousPriorityQueue<T>::Peak(int t) {
+    return H.getMinY(t);
+  }
+  template <typename T>
+  void NonObliviousPriorityQueue<T>::fixOperation(int t, Operation type) {
+    if(t >= MAX) return;
+    if(type == insertpush || type == deletepop) { 
+       printf("FIX OPERATION RUNNING A\n");
+       int px = V.Vseg[t];
+
+      //remove from vertical set
+      V.erasePoint(t, px);
+
+      //remove from horizontal set
+      int tinsPX = H.Hins[px];
+      int tdelPX = H.Hseg[tinsPX].first;
+      H.eraseSegment(tinsPX, tdelPX, px);
+      H.insertSegment(tinsPX, MAX, px);
+
+
+      //find new horizontal hit
+      int x = H.getMinY(t);
+      int tins = H.Hins[x];
+      int tdel = H.Hseg[tins].first;
+      H.eraseSegment(tins, tdel, x);
+
+
+      int newtdel = t;
+      H.insertSegment(tins, newtdel, x);
+      V.insertPoint(t, x);
+
+      fixOperation(tdel, type);
+    }
+    else {
+      printf("FIX OPERATION RUNNING B\n");
+
+      int x = H.getMinY(t);
+      printf("-- %d\n", x);
+      int tins = H.Hins[x];
+      int tdel = H.Hseg[tins].first;
+
+      H.eraseSegment(tins, tdel, x);
+      int newtdel = t;
+
+      H.insertSegment(tins, newtdel, x);
+      V.insertPoint(t, x);
+
+      if(tdel < MAX) {
+        V.erasePoint(tdel, x);
+      }
+      fixOperation(tdel, type);
+    }
+
+    printf("END OPERATION RUNNING\n\n");
+  }
+  /* ------------------------------ END = Non-Oblivious Retroactive Priority Queue --------------------------- */
+
+  /* ------------------------------ BEGIN = Polylogarithmic Retroactive Priority Queue --------------------------- */
+  
+  template <typename T>
+  PolylogarithmPriorityQueue<T>::PolylogarithmPriorityQueue(int _m) {
+    m = _m;
+    tr.resize(4 * m);
+  }
+    
+  template <typename T>
+  class PolylogarithmPriorityQueue<T>::Node {
+    public:
+    Retroactivity::PartialPriorityQueue< T > pq;
+    PersistentTreap< T, int > qnow;
+    PersistentTreap< T, int > qdel;
+    int qnowV, qdelV;
+    Node(){
+      qnowV = qdelV = 0;
+    };
+  };
+
+  template <typename T>
+  class PolylogarithmPriorityQueue<T>::QueryNode {
+  public:
+    vector< ii > t;
+    QueryNode(){
+    };
+    void add(ii f) {
+      t.emplace_back(f);
+    }
+    void add(QueryNode f) {
+      for(auto p : f.t) add(p);
+    }
+  };
+
+
+  template <typename T>
+  int PolylogarithmPriorityQueue<T>::getQueryNodeSize(QueryNode q) {
+    int sz = 0;
+    for(auto p : q.t) {
+      int no = p.first;
+      if(no % 2 == 0) sz += tr[no / 2].qnow.getSize(p.second);
+      else sz += tr[no / 2].qdel.getSize(p.second);
+    }
+    return sz;
+  }
+
+  template <typename T>
+  int PolylogarithmPriorityQueue<T>::getQtdGE(QueryNode q, T key) {
+    int sz = 0;
+    for(auto p : q.t) {
+      int no = p.first;
+      if(no % 2 == 0) sz += tr[no / 2].qnow.getQtdEG(p.second, key);
+      else sz += tr[no / 2].qdel.getQtdEG(p.second, key);
+    }
+    return sz;
+  }
+  template <typename T>
+  T PolylogarithmPriorityQueue<T>::getMinimumKey(QueryNode f) {
+    T s = numeric_limits< T > ::max();
+    for(auto p : f.t) {
+      s = min(s, tr[p.first].qnow.getMinimumKey(p.second));
+    }
+    return s;
+  }
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::addPush(int no, int l, int r, int i, T data) {
+    vector< pair<int, T > > operations = tr[no].pq.insertPush(i, data);
+    for(auto p : operations) {
+      if(p.first == 0) tr[no].qnowV = tr[no].qnow.insert(tr[no].qnowV, p.second, 1);
+      if(p.first == 1) tr[no].qnowV = tr[no].qnow.erase(tr[no].qnowV, p.second);
+      if(p.first == 2) tr[no].qdelV = tr[no].qdel.insert(tr[no].qdelV, p.second, 1);
+      if(p.first == 3) tr[no].qdelV = tr[no].qdel.erase(tr[no].qdelV, p.second);
+    }
+    if(l == r) return;
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    if(i <= mid) addPush(nxt, l, mid, i, data);
+    else addPush(nxt + 1, mid + 1, r, i, data);
+  }
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::addPop(int no, int l, int r, int i) {
+    vector< pair< int, T > > operations = tr[no].pq.insertPop(i);
+    
+    for(auto p : operations) {
+      if(p.first == 0) tr[no].qnowV = tr[no].qnow.insert(tr[no].qnowV, p.second, 1);
+      if(p.first == 1) tr[no].qnowV = tr[no].qnow.erase(tr[no].qnowV, p.second);
+      if(p.first == 2) tr[no].qdelV = tr[no].qdel.insert(tr[no].qdelV, p.second, 1);
+      if(p.first == 3) tr[no].qdelV = tr[no].qdel.erase(tr[no].qdelV, p.second);
+    }
+    if(l == r) return;
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    if(i <= mid) addPop(nxt, l, mid, i);
+    else addPop(nxt + 1, mid + 1, r, i);
+  }
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::insertPush(int t, T data) {
+    addPush(1, 1, m, t, data);
+  }
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::insertPop(int t) {
+    addPop(1, 1, m, t);
+  }
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::removePush(int t) {
+  }
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::removePop(int t) {
+  }
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::getNodes(int no, int l, int r, int i, int j, vector< int > &s) {
+    if(r < i || l > j) return;
+    if(l >= i && r <= j) {
+      s.push_back(no);
+      return;
+    }
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    getNodes(nxt, l, mid, i, j, s);
+    getNodes(nxt + 1, mid + 1, r, i, j, s);
+  }
+
+  template <typename T>
+  T PolylogarithmPriorityQueue<T>::getSplitKey(T A, vector< ii > all) {
+    int lo = 0, hi = numeric_limits< T >::max() / 2;
+    while(lo < hi) {
+      int md = (lo + hi) >> 1;
+      int q = 0;
+      for(auto p : all) {
+        int no = p.first;
+        if(no % 2 == 0) q += tr[p.first / 2].qnow.order_of_key(p.second, md);
+        else q += tr[p.first / 2].qdel.order_of_key(p.second, md);
+      }
+      if(q < A) lo = md + 1;
+      else hi = md;
+    }
+    return lo;
+  }
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::showQueryNode(pair< QueryNode, QueryNode > q3) {
+    printf("Q_NOW\n");
+    for(auto p : q3.first.t) {
+      if(p.first % 2 == 0) tr[p.first / 2].qnow.preOrder(p.second);
+      else tr[p.first / 2].qdel.preOrder(p.second);
+    }
+    cout << endl;
+    printf("Q_DEL\n");
+    for(auto p : q3.second.t) {
+      if(p.first % 2 == 0) tr[p.first / 2].qnow.preOrder(p.second);
+      else tr[p.first / 2].qdel.preOrder(p.second);
+    }
+    cout << endl;
+  }
+
+
+  template <typename T>
+  T PolylogarithmPriorityQueue<T>::getPeak(int t) {
+    pair< QueryNode, QueryNode > view = getView(t);
+    T mn = numeric_limits< T >:: max();
+    for(auto p : view.first.t) {
+      if(p.first % 2 == 0) mn = min(mn, tr[p.first / 2].qnow.getMinimumKey(p.second));
+      else mn = min(mn, tr[p.first / 2].qdel.getMinimumKey(p.second));
+    }
+    return mn;
+  }
+
+  template <typename T>
+  pair< typename PolylogarithmPriorityQueue<T>::QueryNode, typename PolylogarithmPriorityQueue<T>::QueryNode > PolylogarithmPriorityQueue<T>::getSplitedTrees(int x, vector< ii > all) {
+    pair< QueryNode, QueryNode > ret;
+    for(auto p : all) {
+      int no = p.first;
+      ii splited;
+      if(no % 2 == 0) splited = tr[no / 2].qnow.split(p.second, x);
+      else splited = tr[no / 2].qdel.split(p.second, x);
+      ret.first.add(ii(no, splited.first));
+      ret.second.add(ii(no, splited.second));
+    }
+    return ret;
+  }
+
+  template <typename T>
+  pair< typename PolylogarithmPriorityQueue<T>::QueryNode, typename PolylogarithmPriorityQueue<T>::QueryNode > PolylogarithmPriorityQueue<T>::Fuse(pair< QueryNode, QueryNode > q1, pair< QueryNode, QueryNode > q2) {
+    vector< ii > all;
+    for(auto p : q1.first.t) { 
+      all.emplace_back(p);
+    }
+    for(auto p : q2.second.t) {
+      all.emplace_back(p);
+    }
+    int D = getQueryNodeSize(q2.second);
+    T x = getSplitKey(D, all);
+    pair< QueryNode, QueryNode > q3 = getSplitedTrees(x, all);
+    swap(q3.first, q3.second);
+    q3.first.add(q2.first);
+    q3.second.add(q1.second);
+
+    // printf("------------------Q1-------------------\n");
+    // showQueryNode(q1);
+    // printf("\n\n");
+    // printf("------------------Q2-------------------\n");
+    // showQueryNode(q2);
+    // printf("\n\n");
+    // printf("------------------Q3-------------------\n");
+    // showQueryNode(q3);
+    // printf("\n\n");
+
+    return q3;
+  }
+
+  template <typename T>
+  pair< typename PolylogarithmPriorityQueue<T>::QueryNode, typename PolylogarithmPriorityQueue<T>::QueryNode > PolylogarithmPriorityQueue<T>::query(int no, int l, int r, int  i, int j) {
+    if(r < i || l > j) return pair< QueryNode, QueryNode > ();
+    if(l >= i && r <= j) {
+      pair< QueryNode, QueryNode > ret;
+      ret.first.add(ii(no * 2, tr[no].qnowV));
+      ret.second.add(ii(no * 2 + 1, tr[no].qdelV));
+      return ret;
+    }
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    return Fuse(query(nxt, l, mid, i, j), query(nxt + 1, mid + 1, r, i, j));
+  }
+
+  template <typename T>
+  pair< typename PolylogarithmPriorityQueue<T>::QueryNode, typename PolylogarithmPriorityQueue<T>::QueryNode > PolylogarithmPriorityQueue<T>::getView(int t) {
+    vector < int > nodes;
+    getNodes(1, 1, m, 1, t, nodes);
+    sort(nodes.begin(), nodes.end());
+    pair< QueryNode, QueryNode > foo;
+    for(auto p : nodes) {
+      pair< QueryNode, QueryNode > ret;
+      ret.first.add(ii(p * 2, tr[p].qnowV));
+      ret.second.add(ii(p * 2 + 1, tr[p].qdelV));
+      foo = Fuse(foo, ret);
+    } 
+    return foo;
+  }
+
+
+  /* ------------------------------ END = Polylogarithmic Retroactive Priority Queue --------------------------- */
 };
-
-// namespace NonOnblivious {
-//   int INF = 0x3f3f3f3f;
-//   struct BSTNode {
-//     int key, data;
-//     BSTNode *l, *r;
-//     int y, sz;
-//     BSTNode *link;
-//     bool valid;
-//     int mn, mx;
-//     BSTNode(){
-//       l = r = link = NULL;
-//       y = (rand() << 16) ^ (rand());
-//       sz = 0;
-//       valid = false;
-//       mn = INF;
-//       mx = -INF;
-//     }
-//     BSTNode(int _key, int _data) {
-//       key = _key;
-//       data = _data;
-//       l = r = link = NULL;
-//       y = (rand() << 16) ^ (rand());
-//       sz = 1;
-//       valid = true;
-//       mn = mx = data;
-//     }
-//   };
-//   typedef BSTNode * pBSTNode;
-//   class CartesianTree {
-//   private:
-//     int getSize(pBSTNode p) {
-//       return !p ? 0 : p->sz;
-//     }
-//     int getMin(pBSTNode p) {
-//       return !p ? INF : (p->valid) ? p->mn : INF;
-//     }
-//     int getMax(pBSTNode p) {
-//       return !p ? -INF : (p->valid) ? p->mx : -INF; 
-//     }
-//     pBSTNode update(pBSTNode p) {
-//       if(p) {
-//         p->sz = 1 + getSize(p->l) + getSize(p->r);
-//         p->mn = min((p == NULL || p->valid == false) ? INF : p->data, 
-//           min(getMin(p->l), getMin(p->r)));
-//         p->mx = max((p == NULL || p->valid == false) ? -INF : p->data, 
-//           max(getMax(p->l), getMax(p->r)));
-//       }
-//       return p;
-//     }
-//     pBSTNode merge(pBSTNode a, pBSTNode b) {
-//       if(!a || !b) return a ? a : b;
-//       if(a->y > b->y) {
-//         a->r = merge(a->r, b);
-//         return update(a);
-//       }
-//       else {
-//         b->l = merge(a, b->l);
-//         return update(b);
-//       }
-//     }
-//     void split(pBSTNode t, int key, pBSTNode &a, pBSTNode &b) {
-//       if (!t) {
-//         a = b = NULL;
-//         return;
-//       }
-//       pBSTNode aux;
-//       if (key < t->key) {
-//         split(t->l, key, a, aux);
-//         t->l = aux;
-//         b = update(t);
-//       }
-//       else {
-//         split(t->r, key, aux, b);
-//         t->r = aux;
-//         a = update(t);
-//       }
-//     }
-//     pBSTNode erase(pBSTNode t, int key) {
-//       if(t == NULL) return NULL;
-//       if(t->key == key) {
-//         return merge(t->l, t->r);
-//       }
-//       else {
-//         if(key < t->key) {
-//           t->l = erase(t->l, key);
-//         }
-//         else {
-//           t->r = erase(t->r, key);
-//         }
-//         return update(t);
-//       }
-//     }
-
-//     pBSTNode insert(pBSTNode t, pBSTNode it) {
-//       if(!t) {
-//         t = it;
-//       }
-//       else if(it->y < t->y) {
-//         split(t, it->key, it->l, it->r);
-//         t = it;
-//       }
-//       else {
-//         if(it->key < t->key) t->l = insert(t->l, it);
-//         else t->r = insert(t->r, it);
-//       }
-//       return update(t);
-//     }
-
-//     pBSTNode searchMinAfter(pBSTNode t, int key) {
-//       if(!t) 
-//     }
-
-
-//   public:
-//     pBSTNode root;
-//     CartesianTree() {
-//       root = NULL;
-//     }
-//     pBSTNode insert(int key, int data) {
-//       return insert(root, new BSTNode(key, data));
-//     }
-//     pBSTNode erase(int key) {
-//       return erase(root, key);
-//     }
-//     pBSTNode findPredecessor(int key) {
-//       return NULL;
-//     }
-//     pBSTNode searchMinAfter(int key) {
-//       return NULL;
-//     }
-//     pBSTNode searchMinBefore(int key) {
-//       return NULL;
-//     } 
-//     pBSTNode findMin() {
-
-//     }
-//   };
-
-//   class PriorityQueue {
-//   public:
-//     CartesianTree qins, qdel;
-//     pBSTNode insertPush(int x, int t) {
-//       qins.insert(x, t);
-//       pBSTNode p = qdel.searchMinAfter(t);
-//       return p;
-//     }
-//     pBSTNode insertPop(int t) {
-      
-//       pBSTNode iDel = qdel.insert(t, 0);
-//       pBSTNode p = qdel.findPredecessor(t);
-
-//       if(p == NULL) {
-        
-//         pBSTNode foo = qins.findMin();
-        
-//         iDel->link = foo;
-//         foo->link = iDel;
-        
-//         return foo;
-//       }
-//       else {
-
-//         int k = p->data;
-//         pBSTNode t = qins.searchMinBefore(k);
-//         t->valid = false;
-
-//         t->link = iDel;
-//         iDel->link = t;
-
-//       }
-
-//       return NULL;
-//     }
-//     // pBSTNode deletePush(int t) {
-//     //   pBSTNode p = qdel.searchMinAfter(t);
-//     //   if(p != NULL) {
-//     //     return p;
-//     //   }
-//     //   else {
-//     //     p = qins.search(t);
-//     //     p->valid = false;
-//     //   }
-//     // }
-//     // pBSTNode deletePop(int t) {
-//     //   pBSTNode p = qdel.searchMinAfter(t);
-//     //   if(p != NULL) {
-//     //     return p;
-//     //   }
-//     //   else {
-
-//     //   }
-//     // }
-//     int getPeak(int t) {
-
-//     }
-//   };
-// };
-
-// int main() {
-//   NonOnblivious::PriorityQueue q;
-
-//   return 0;
-// }
-
-// int main() {
-//   Retroactivity::PartialPriorityQueue< int > q;
-//   vector< pair<int, int> > f;
-//   f = q.insertPop(10);
-//   for(auto p : f) {
-//     cout << p.first << " " << p.second << endl;
-//   }
-//   cout << endl;
-
-//   f = q.insertPop(20);
-//   for(auto p : f) {
-//     cout << p.first << " " << p.second << endl;
-//   }
-//   cout << endl;
-
-//   f = q.insertPush(5, 5);
-//   for(auto p : f) {
-//     cout << p.first << " " << p.second << endl;
-//   }
-//   cout << endl;
-  
-  
-//   return 0;
-// }

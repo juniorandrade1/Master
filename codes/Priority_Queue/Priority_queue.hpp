@@ -6,6 +6,13 @@
 
 #include "IntervalTree.cpp"
 #include "../BST/Treap.cpp"
+#include "../BST/SegmentTree.cpp"
+#include "../BST/PrioritySearchTree.cpp"
+#include "../BST/PersistentTreap.cpp"
+
+enum Operation {
+  insertpush, insertpop, deletepush, deletepop
+};
 
 namespace Retroactivity {
   /** 
@@ -218,6 +225,71 @@ namespace Retroactivity {
     */
     T getPeak(int t);
   };
+
+  template <typename T>
+  class NonObliviousPriorityQueue {
+  private:
+    BST::SegmentTree H;
+    BST::DynamicPST<int, int> V;
+    int MAX = (int)1e5;
+  public:
+    int InsertPush(int t, T x);
+    int InsertPop(int t);
+    int DeletePush(int t);
+    int DeletePop(int t);
+    T Peak(int t);
+    void fixOperation(int t, Operation type);
+  };
+
+  typedef pair<int, int> ii;
+
+  template <typename T>
+  class PolylogarithmPriorityQueue {
+  private:
+    class Node;
+    class QueryNode;
+
+    int m; 
+    vector< Node > tr;
+  public:
+    
+    PolylogarithmPriorityQueue(int _m);
+
+    int getQueryNodeSize(QueryNode q);
+
+    int getQtdGE(QueryNode q, T key);
+
+    T getMinimumKey(QueryNode f);
+
+    void addPush(int no, int l, int r, int i, T data);
+
+    void addPop(int no, int l, int r, int i);
+
+    void getNodes(int no, int l, int r, int i, int j, vector< int > &s);
+
+    T getSplitKey(T A, vector< ii > all);
+
+    pair< QueryNode, QueryNode > getSplitedTrees(int x, vector< ii > all);
+
+    void showQueryNode(pair< QueryNode, QueryNode > q3);
+
+    pair< QueryNode, QueryNode > Fuse(pair< QueryNode, QueryNode > q1, pair< QueryNode, QueryNode > q2);
+    
+    pair< QueryNode, QueryNode > query(int no, int l, int r, int  i, int j);
+
+    void insertPush(int t, T data);
+
+    void insertPop(int t);
+
+    void removePush(int t);
+    
+    void removePop(int t);
+
+    pair< QueryNode, QueryNode > getView(int t);
+
+    T getPeak(int t);
+  };
+
 };
 
 /**
