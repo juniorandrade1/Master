@@ -2,7 +2,7 @@
 #include "Queue.hpp"
 
 int main() {
-  Retroactivity::NonOblivious< int > q;
+  Retroactivity::NonObliviousQueue< int > q;
   int time;
 
   time = q.InsertEnqueue(1, 10);

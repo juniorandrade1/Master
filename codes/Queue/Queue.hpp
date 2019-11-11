@@ -178,7 +178,7 @@ namespace Retroactivity {
 
 
   template<typename T>
-  class NonOblivious {
+  class NonObliviousQueue {
   private:
     /** Árvore binária de busca que mantém as operações de Enqueue(x) ordenadas por tempo
     * 

@@ -61,14 +61,14 @@ namespace Retroactivity {
   /* ------------------------------ END = Full Retroactive Queue --------------------------- */
 
   /* ------------------------------ BEGIN = Non-Oblivious Retroactive Queue --------------------------- */
-  template <typename T> int NonOblivious<T>::InsertEnqueue(int t, T x) {
+  template <typename T> int NonObliviousQueue<T>::InsertEnqueue(int t, T x) {
     te.insert(t, std::make_pair(x, NULLVALUE));
     BST::Treap<int, int> :: iterator nextGEQThanT = td.lower_bound(t);
     if(nextGEQThanT == NULL) return NULLVALUE;
     else return (*nextGEQThanT).second;
   }
 
-  template <typename T> int NonOblivious<T>::InsertDequeue(int t) {
+  template <typename T> int NonObliviousQueue<T>::InsertDequeue(int t) {
     // Find front element at time t
     typename BST::Treap<int, std::pair<T, int> > :: iterator frontIt = Front(t);
     std::pair<int, std::pair<T, int> > front = *frontIt;
@@ -94,14 +94,14 @@ namespace Retroactivity {
     return (*nextInconsistenceIt).first;
   }
 
-  template <typename T> int NonOblivious<T>::DeleteEnqueue(int t) {
+  template <typename T> int NonObliviousQueue<T>::DeleteEnqueue(int t) {
     typename BST::Treap<int, std::pair<T, int> > :: iterator enqueueTIt = te.lower_bound(t);
     std::pair<int, std::pair<T, int> > enqueue = *enqueueTIt;
     te.erase(enqueue.first);
     return enqueue.second.second;
   }
 
-  template <typename T> int NonOblivious<T>::DeleteDequeue(int t) {
+  template <typename T> int NonObliviousQueue<T>::DeleteDequeue(int t) {
     //Find and delete operation at time t    
     BST::Treap<int, int> :: iterator deleteTIt = td.lower_bound(t);
     std::pair<int, int> deleteT = *deleteTIt;
@@ -120,7 +120,7 @@ namespace Retroactivity {
     else return (*nextInconsistenceIt).first;
   }
 
-  template <typename T> void NonOblivious<T>::fixDequeueOperation(int t) {
+  template <typename T> void NonObliviousQueue<T>::fixDequeueOperation(int t) {
     if(t == -1) return; 
 
     {
@@ -156,19 +156,19 @@ namespace Retroactivity {
     }
   }
 
-  template <typename T> void NonOblivious<T>::showTe() {
+  template <typename T> void NonObliviousQueue<T>::showTe() {
     printf("\n------------TE---------------\n");
     te.showTree();
     printf("\n\n");
   }
 
-  template <typename T> void NonOblivious<T>::showTd() {
+  template <typename T> void NonObliviousQueue<T>::showTd() {
     printf("\n------------TD---------------\n");
     td.showTree2();
     printf("\n\n");
   }
 
-  template <typename T> typename BST::Treap<int, std::pair<T, int> > :: iterator NonOblivious<T>::Front(int t) {
+  template <typename T> typename BST::Treap<int, std::pair<T, int> > :: iterator NonObliviousQueue<T>::Front(int t) {
     int f = td.order_of_key(t);
     return te.find_by_order(f + 1);
   }
