@@ -1,0 +1,56 @@
+[==========] Running 30 tests from 3 test cases.
+[----------] Global test environment set-up.
+[----------] 10 tests from BruteSpeedTest/FullBrutePriorityQueueSpeed
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/0
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/0 (2207 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/1
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/1 (9243 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/2
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/2 (24423 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/3
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/3 (39946 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/4
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/4 (83065 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/5
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/5 (112307 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/6
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/6 (142688 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/7
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/7 (157187 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/8
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/8 (232521 ms)
+[ RUN      ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/9
+[       OK ] BruteSpeedTest/FullBrutePriorityQueueSpeed.BruteSpeed/9 (314021 ms)
+[----------] 10 tests from BruteSpeedTest/FullBrutePriorityQueueSpeed (1117609 ms total)
+
+[----------] 10 tests from RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/0
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/0 (20946 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/1
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/1 (43462 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/2
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/2 (77555 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/3
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/3 (108231 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/4
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/4 (135306 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/5
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/5 (171698 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/6
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/6 (210080 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/7
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/7 (260363 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/8
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/8 (311909 ms)
+[ RUN      ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/9
+[       OK ] RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed.RetroactiveSpeed/9 (409802 ms)
+[----------] 10 tests from RetroactiveSpeedTest/FullRetroactivePriorityQueueSpeed (1749352 ms total)
+
+[----------] 10 tests from PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed
+[ RUN      ] PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed.PolylogarithmSpeed/0
+[       OK ] PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed.PolylogarithmSpeed/0 (5602 ms)
+[ RUN      ] PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed.PolylogarithmSpeed/1
+[       OK ] PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed.PolylogarithmSpeed/1 (11462 ms)
+[ RUN      ] PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed.PolylogarithmSpeed/2
+[       OK ] PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed.PolylogarithmSpeed/2 (18901 ms)
+[ RUN      ] PolylogarithmRetroactiveSpeedTest/PolylogarithmPriorityQueueSpeed.PolylogarithmSpeed/3

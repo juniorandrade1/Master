@@ -430,21 +430,21 @@ namespace Retroactivity {
     return lo;
   }
 
-  template <typename T>
-  void PolylogarithmPriorityQueue<T>::showQueryNode(pair< QueryNode, QueryNode > q3) {
-    printf("Q_NOW\n");
-    for(auto p : q3.first.t) {
-      if(p.first % 2 == 0) tr[p.first / 2].qnow.preOrder(p.second);
-      else tr[p.first / 2].qdel.preOrder(p.second);
-    }
-    cout << endl;
-    printf("Q_DEL\n");
-    for(auto p : q3.second.t) {
-      if(p.first % 2 == 0) tr[p.first / 2].qnow.preOrder(p.second);
-      else tr[p.first / 2].qdel.preOrder(p.second);
-    }
-    cout << endl;
-  }
+  // template <typename T>
+  // void PolylogarithmPriorityQueue<T>::showQueryNode(pair< QueryNode, QueryNode > q3) {
+  //   printf("Q_NOW\n");
+  //   for(auto p : q3.first.t) {
+  //     if(p.first % 2 == 0) tr[p.first / 2].qnow.preOrder(p.second);
+  //     else tr[p.first / 2].qdel.preOrder(p.second);
+  //   }
+  //   cout << endl;
+  //   printf("Q_DEL\n");
+  //   for(auto p : q3.second.t) {
+  //     if(p.first % 2 == 0) tr[p.first / 2].qnow.preOrder(p.second);
+  //     else tr[p.first / 2].qdel.preOrder(p.second);
+  //   }
+  //   cout << endl;
+  // }
 
 
   template <typename T>
