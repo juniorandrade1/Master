@@ -28,12 +28,6 @@ bits/stdc++.h
 bits/stdc++.h
 -
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Polylogarithm_Priority_Queue.cpp
-bits/stdc++.h
--
-Priority_queue.hpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.hpp
-
 /home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.cpp
 Priority_queue.hpp
 /home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.hpp
@@ -55,8 +49,6 @@ Priority_queue.cpp
 /home/junior/Dropbox/ArquivosMestrado/Master/codes/tests/Priority_queue/Priority_queue.tests.cpp
 ../../Priority_Queue/Priority_queue.hpp
 /home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.hpp
-../../Priority_Queue/Polylogarithm_Priority_Queue.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Polylogarithm_Priority_Queue.cpp
 gtest/gtest.h
 -
 
