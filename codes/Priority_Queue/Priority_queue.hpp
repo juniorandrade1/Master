@@ -1,6 +1,6 @@
 // Priority_queue.h
-#ifndef QUEUE 
-#define QUEUE_H
+#ifndef PRIORITY_QUEUE 
+#define PRIORITY_QUEUE_H
 
 #pragma once
 
@@ -626,4 +626,4 @@ namespace Brute {
 
 #include "Priority_queue.cpp"
 
-#endif /* QUEUE_H */
+#endif /* PRIORITY_QUEUE_H */
