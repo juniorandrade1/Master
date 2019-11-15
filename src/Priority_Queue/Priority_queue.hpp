@@ -544,11 +544,6 @@ namespace Retroactivity {
 
 };
 
-/**
-  Implementação trivial das operações em uma fila de prioridade retroativa
-  Utilizada para a implementação dos testes
-*/
-
 namespace Brute {
   template <typename T>
   class PartialPriorityQueue {

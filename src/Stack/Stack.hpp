@@ -257,11 +257,6 @@ namespace Retroactivity {
   };
 }
 
-
-/**
-  Implementação trivial das operações em uma stack retroativa
-  Utilizada para a implementação dos testes
-*/
 namespace Brute {
   template<typename T>
   class PartialStack {

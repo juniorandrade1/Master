@@ -303,12 +303,6 @@ namespace Retroactivity {
   };
 }
 
-
-/**
-  Implementação trivial das operações em uma fila retroativa
-  Utilizada para a implementação dos testes
-*/
-
 namespace Brute {
   template<typename T>
   class FullQueue {
