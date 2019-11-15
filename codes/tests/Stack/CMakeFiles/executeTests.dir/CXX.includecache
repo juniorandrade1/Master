@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/IntervalTree.cpp
+bits/stdc++.h
+-
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.cpp
+Stack.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.hpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.hpp
+bits/stdc++.h
+-
+../BST/IntervalTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/IntervalTree.cpp
+Stack.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.cpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/Stack.tests.cpp
+../../Stack/Stack.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.hpp
+gtest/gtest.h
+-
+

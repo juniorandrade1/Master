@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/Treap.cpp
+bits/stdc++.h
+-
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Queue/Queue.cpp
+Queue.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Queue/Queue.hpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Queue/Queue.hpp
+../BST/Treap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/Treap.cpp
+Queue.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Queue/Queue.cpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Queue/Queue.tests.cpp
+../../Queue/Queue.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/codes/Queue/Queue.hpp
+gtest/gtest.h
+-
+vector
+-
+
