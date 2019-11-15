@@ -93,6 +93,10 @@ namespace Retroactivity {
   /* ------------------------------ END = Partial Retroactive Priority Queue -------------------------- */
 
   /* ------------------------------ BEGIN = Full Retroactive Priority Queue --------------------------- */
+  
+  /** Classe para armazenamento das operações de um bloco
+  *
+  */
   template <typename T> 
   class FullPriorityQueue<T>::Operation {
   public:
