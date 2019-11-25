@@ -1,0 +1,146 @@
+\hypertarget{classRetroactivity_1_1FullPriorityQueue}{}\section{Retroactivity\+:\+:Full\+Priority\+Queue$<$ T $>$ Class Template Reference}
+\label{classRetroactivity_1_1FullPriorityQueue}\index{Retroactivity\+::\+Full\+Priority\+Queue$<$ T $>$@{Retroactivity\+::\+Full\+Priority\+Queue$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Priority\+\_\+queue.\+hpp$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classRetroactivity_1_1FullPriorityQueue_1_1Operation}{Operation}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRetroactivity_1_1FullPriorityQueue_ab5b908f4c82280a50679d118966fcc9b}\label{classRetroactivity_1_1FullPriorityQueue_ab5b908f4c82280a50679d118966fcc9b}} 
+{\bfseries Full\+Priority\+Queue} (int \+\_\+m)
+\item 
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue_a8d6c51db7f1e58fe0faacca87281a480}{insert\+Push} (int t, T data)
+\item 
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue_aeafc624a516c36a66a18ba5012866d14}{insert\+Pop} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue_ae82e78f6ede64ae31fef741de01d77bb}{remove\+Push} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue_ac0032e9ff6c2c9cbcd58acf1e359ee9f}{remove\+Pop} (int t)
+\item 
+bool \hyperlink{classRetroactivity_1_1FullPriorityQueue_a9e57d89b5a9a8eb5026cc9d02e1d91dc}{empty} (int t)
+\item 
+T \hyperlink{classRetroactivity_1_1FullPriorityQueue_a4dfffe327fe0f1077a2309f1b69ea392}{get\+Peak} (int t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Retroactivity\+::\+Full\+Priority\+Queue$<$ T $>$}
+
+Fila de prioridade totalmente retroativa em tempo O(sqrt(m) $\ast$ log(m)) por operação 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRetroactivity_1_1FullPriorityQueue_a9e57d89b5a9a8eb5026cc9d02e1d91dc}\label{classRetroactivity_1_1FullPriorityQueue_a9e57d89b5a9a8eb5026cc9d02e1d91dc}} 
+\index{Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}!empty@{empty}}
+\index{empty@{empty}!Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \hyperlink{classRetroactivity_1_1FullPriorityQueue}{Retroactivity\+::\+Full\+Priority\+Queue}$<$ T $>$\+::empty (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna se a fila está vazia no tempo t =$>$ Empty(t)
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que se deseja saber se a fila está vazia \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ \textquotesingle{}true\textquotesingle{} se a fila estiver vazia no tempo t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1FullPriorityQueue_a4dfffe327fe0f1077a2309f1b69ea392}\label{classRetroactivity_1_1FullPriorityQueue_a4dfffe327fe0f1077a2309f1b69ea392}} 
+\index{Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}!get\+Peak@{get\+Peak}}
+\index{get\+Peak@{get\+Peak}!Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Peak()}{getPeak()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1FullPriorityQueue}{Retroactivity\+::\+Full\+Priority\+Queue}$<$ T $>$\+::get\+Peak (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna o menor elemento da fila de prioridade no tempo t =$>$ Get\+Peak(t)
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que se deseja consultar o menor elemento da fila \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ o menor elemento da fila de prioridade após a execução de todas as operações até o tempo t 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ a estrutura deve conter pelo menos um elemento no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1FullPriorityQueue_aeafc624a516c36a66a18ba5012866d14}\label{classRetroactivity_1_1FullPriorityQueue_aeafc624a516c36a66a18ba5012866d14}} 
+\index{Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}!insert\+Pop@{insert\+Pop}}
+\index{insert\+Pop@{insert\+Pop}!Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Pop()}{insertPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue}{Retroactivity\+::\+Full\+Priority\+Queue}$<$ T $>$\+::insert\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Insere uma operação de Pop() no tempo t =$>$ Insert(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1FullPriorityQueue_a8d6c51db7f1e58fe0faacca87281a480}\label{classRetroactivity_1_1FullPriorityQueue_a8d6c51db7f1e58fe0faacca87281a480}} 
+\index{Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}!insert\+Push@{insert\+Push}}
+\index{insert\+Push@{insert\+Push}!Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Push()}{insertPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue}{Retroactivity\+::\+Full\+Priority\+Queue}$<$ T $>$\+::insert\+Push (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{T}]{data }\end{DoxyParamCaption})}
+
+Insere uma operação de Push(data) no tempo t =$>$ Insert(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRetroactivity_1_1FullPriorityQueue_ac0032e9ff6c2c9cbcd58acf1e359ee9f}\label{classRetroactivity_1_1FullPriorityQueue_ac0032e9ff6c2c9cbcd58acf1e359ee9f}} 
+\index{Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}!remove\+Pop@{remove\+Pop}}
+\index{remove\+Pop@{remove\+Pop}!Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Pop()}{removePop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue}{Retroactivity\+::\+Full\+Priority\+Queue}$<$ T $>$\+::remove\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Pop() no tempo t =$>$ Delete(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Delete(t, Pop()) na estrutura 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1FullPriorityQueue_ae82e78f6ede64ae31fef741de01d77bb}\label{classRetroactivity_1_1FullPriorityQueue_ae82e78f6ede64ae31fef741de01d77bb}} 
+\index{Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}!remove\+Push@{remove\+Push}}
+\index{remove\+Push@{remove\+Push}!Retroactivity\+::\+Full\+Priority\+Queue@{Retroactivity\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Push()}{removePush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1FullPriorityQueue}{Retroactivity\+::\+Full\+Priority\+Queue}$<$ T $>$\+::remove\+Push (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Push(data) no tempo t =$>$ Delete(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Insert(t, Push(data)) na estrutura 
+\end{DoxyPrecond}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+cpp\end{DoxyCompactItemize}

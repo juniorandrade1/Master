@@ -1,0 +1,124 @@
+\hypertarget{classRetroactivity_1_1PartialStack}{}\section{Retroactivity\+:\+:Partial\+Stack$<$ T $>$ Class Template Reference}
+\label{classRetroactivity_1_1PartialStack}\index{Retroactivity\+::\+Partial\+Stack$<$ T $>$@{Retroactivity\+::\+Partial\+Stack$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Stack.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classRetroactivity_1_1PartialStack_afe78dbdae52e05e0a006017528d74088}{Insert\+Push} (int t, const T \&x)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialStack_a54fffb09c5aca4b6dba7c6fb62af1302}{Insert\+Pop} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialStack_a91760ea459d619b817f5d819a8afac83}{Delete\+Push} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialStack_a5b0b2282b35bc5d6da67b481cb6fa2cb}{Delete\+Pop} (int t)
+\item 
+T \hyperlink{classRetroactivity_1_1PartialStack_acae5efe5b39b6369f11bb574bc15d73e}{peak} ()
+\item 
+int \hyperlink{classRetroactivity_1_1PartialStack_a770d2d1ebb3e72296caeef6876f37a54}{get\+Size} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Retroactivity\+::\+Partial\+Stack$<$ T $>$}
+
+Pilha parciamente retroativa 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialStack_a5b0b2282b35bc5d6da67b481cb6fa2cb}\label{classRetroactivity_1_1PartialStack_a5b0b2282b35bc5d6da67b481cb6fa2cb}} 
+\index{Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}!Delete\+Pop@{Delete\+Pop}}
+\index{Delete\+Pop@{Delete\+Pop}!Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Delete\+Pop()}{DeletePop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialStack}{Retroactivity\+::\+Partial\+Stack}$<$ T $>$\+::Delete\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação Pop realizada no tempo t =$>$ Delete(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Pop foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Pop no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialStack_a91760ea459d619b817f5d819a8afac83}\label{classRetroactivity_1_1PartialStack_a91760ea459d619b817f5d819a8afac83}} 
+\index{Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}!Delete\+Push@{Delete\+Push}}
+\index{Delete\+Push@{Delete\+Push}!Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Delete\+Push()}{DeletePush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialStack}{Retroactivity\+::\+Partial\+Stack}$<$ T $>$\+::Delete\+Push (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação Push realizada no tempo t =$>$ Delete(t, Push(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Push foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Push no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialStack_a770d2d1ebb3e72296caeef6876f37a54}\label{classRetroactivity_1_1PartialStack_a770d2d1ebb3e72296caeef6876f37a54}} 
+\index{Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}!get\+Size@{get\+Size}}
+\index{get\+Size@{get\+Size}!Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{get\+Size()}{getSize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \hyperlink{classRetroactivity_1_1PartialStack}{Retroactivity\+::\+Partial\+Stack}$<$ T $>$\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Obtem o tamanho da pilha no tempo atual =$>$ \hyperlink{classRetroactivity_1_1PartialStack_a770d2d1ebb3e72296caeef6876f37a54}{get\+Size()}
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ retorna o número de elementos na pilha no tempo atual 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialStack_a54fffb09c5aca4b6dba7c6fb62af1302}\label{classRetroactivity_1_1PartialStack_a54fffb09c5aca4b6dba7c6fb62af1302}} 
+\index{Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}!Insert\+Pop@{Insert\+Pop}}
+\index{Insert\+Pop@{Insert\+Pop}!Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Insert\+Pop()}{InsertPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialStack}{Retroactivity\+::\+Partial\+Stack}$<$ T $>$\+::Insert\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Adiciona a realização da operação Pop no tempo t =$>$ Insert(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de realização da operação Pop() \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialStack_afe78dbdae52e05e0a006017528d74088}\label{classRetroactivity_1_1PartialStack_afe78dbdae52e05e0a006017528d74088}} 
+\index{Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}!Insert\+Push@{Insert\+Push}}
+\index{Insert\+Push@{Insert\+Push}!Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Insert\+Push()}{InsertPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialStack}{Retroactivity\+::\+Partial\+Stack}$<$ T $>$\+::Insert\+Push (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{const T \&}]{x }\end{DoxyParamCaption})}
+
+Insere o objeto x no tempo t na pilha =$>$ Insert(t, Push(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de inserção do objeto \\
+\hline
+{\em x} & -\/$>$ objeto a ser inserido no topo da pilha no tempo t \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialStack_acae5efe5b39b6369f11bb574bc15d73e}\label{classRetroactivity_1_1PartialStack_acae5efe5b39b6369f11bb574bc15d73e}} 
+\index{Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}!peak@{peak}}
+\index{peak@{peak}!Retroactivity\+::\+Partial\+Stack@{Retroactivity\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{peak()}{peak()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1PartialStack}{Retroactivity\+::\+Partial\+Stack}$<$ T $>$\+::peak (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna o topo da pilha no tempo atual =$>$ Peak()
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ retorna objeto no topo da pilha no tempo atual 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+cpp\end{DoxyCompactItemize}

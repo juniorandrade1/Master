@@ -1,0 +1,152 @@
+\hypertarget{classRetroactivity_1_1PartialPriorityQueue}{}\section{Retroactivity\+:\+:Partial\+Priority\+Queue$<$ T $>$ Class Template Reference}
+\label{classRetroactivity_1_1PartialPriorityQueue}\index{Retroactivity\+::\+Partial\+Priority\+Queue$<$ T $>$@{Retroactivity\+::\+Partial\+Priority\+Queue$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Priority\+\_\+queue.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRetroactivity_1_1PartialPriorityQueue_a3619069dac07012d7da62552aa95b407}{Partial\+Priority\+Queue} ()
+\item 
+vector$<$ pair$<$ int, T $>$ $>$ \hyperlink{classRetroactivity_1_1PartialPriorityQueue_aeeb8ac70ed65a8110fa74d14311ef038}{insert\+Push} (int t, T data)
+\item 
+vector$<$ pair$<$ int, T $>$ $>$ \hyperlink{classRetroactivity_1_1PartialPriorityQueue_a4e66874ab3f2b88c5d45dc50acf09386}{insert\+Pop} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialPriorityQueue_a6656a538130dcc2ac9fb25c1c32e1b16}{remove\+Push} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialPriorityQueue_ae2aee692f0e15ecf1e580b2607bc873b}{remove\+Pop} (int t)
+\item 
+bool \hyperlink{classRetroactivity_1_1PartialPriorityQueue_affda050c80b31b4de940183a1b143f59}{empty} ()
+\item 
+T \hyperlink{classRetroactivity_1_1PartialPriorityQueue_a354d975ff01dea8ea138294efb961fc9}{get\+Peak} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Retroactivity\+::\+Partial\+Priority\+Queue$<$ T $>$}
+
+Fila de prioridade parcialmente retroativa em tempo O(log(m)) por operação 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialPriorityQueue_a3619069dac07012d7da62552aa95b407}\label{classRetroactivity_1_1PartialPriorityQueue_a3619069dac07012d7da62552aa95b407}} 
+\index{Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}!Partial\+Priority\+Queue@{Partial\+Priority\+Queue}}
+\index{Partial\+Priority\+Queue@{Partial\+Priority\+Queue}!Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{Partial\+Priority\+Queue()}{PartialPriorityQueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Retroactivity\+::\+Partial\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Partial\+Priority\+Queue} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construtor padrão para fila de prioridade parcialmente retroativa 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialPriorityQueue_affda050c80b31b4de940183a1b143f59}\label{classRetroactivity_1_1PartialPriorityQueue_affda050c80b31b4de940183a1b143f59}} 
+\index{Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}!empty@{empty}}
+\index{empty@{empty}!Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Retroactivity\+::\+Partial\+Priority\+Queue}$<$ T $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna se a fila está vazia no tempo presente =$>$ Empty()
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ \textquotesingle{}true\textquotesingle{} se a fila estiver vazia 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialPriorityQueue_a354d975ff01dea8ea138294efb961fc9}\label{classRetroactivity_1_1PartialPriorityQueue_a354d975ff01dea8ea138294efb961fc9}} 
+\index{Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}!get\+Peak@{get\+Peak}}
+\index{get\+Peak@{get\+Peak}!Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Peak()}{getPeak()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Retroactivity\+::\+Partial\+Priority\+Queue}$<$ T $>$\+::get\+Peak (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna o menor elemento da fila de prioridade no tempo atual =$>$ Get\+Peak()
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ o menor elemento da fila de prioridade após a execução de todas as operações na estrutura. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ a estrutura deve conter pelo menos um elemento 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialPriorityQueue_a4e66874ab3f2b88c5d45dc50acf09386}\label{classRetroactivity_1_1PartialPriorityQueue_a4e66874ab3f2b88c5d45dc50acf09386}} 
+\index{Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}!insert\+Pop@{insert\+Pop}}
+\index{insert\+Pop@{insert\+Pop}!Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Pop()}{insertPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+vector$<$ pair$<$ int, T $>$ $>$ \hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Retroactivity\+::\+Partial\+Priority\+Queue}$<$ T $>$\+::insert\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Insere uma operação de Pop() no tempo t =$>$ Insert(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ vetor de operações realizadas nas filas qnow e nqnow com a execução da função 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialPriorityQueue_aeeb8ac70ed65a8110fa74d14311ef038}\label{classRetroactivity_1_1PartialPriorityQueue_aeeb8ac70ed65a8110fa74d14311ef038}} 
+\index{Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}!insert\+Push@{insert\+Push}}
+\index{insert\+Push@{insert\+Push}!Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Push()}{insertPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+vector$<$ pair$<$ int, T $>$ $>$ \hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Retroactivity\+::\+Partial\+Priority\+Queue}$<$ T $>$\+::insert\+Push (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{T}]{data }\end{DoxyParamCaption})}
+
+Insere uma operação de Push(data) no tempo t =$>$ Insert(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vetor de operações realizadas nas filas qnow e nqnow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialPriorityQueue_ae2aee692f0e15ecf1e580b2607bc873b}\label{classRetroactivity_1_1PartialPriorityQueue_ae2aee692f0e15ecf1e580b2607bc873b}} 
+\index{Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}!remove\+Pop@{remove\+Pop}}
+\index{remove\+Pop@{remove\+Pop}!Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Pop()}{removePop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Retroactivity\+::\+Partial\+Priority\+Queue}$<$ T $>$\+::remove\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Pop() no tempo t =$>$ Delete(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ vetor de operações realizadas nas filas qnow e nqnow 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Delete(t, Pop()) na estrutura 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialPriorityQueue_a6656a538130dcc2ac9fb25c1c32e1b16}\label{classRetroactivity_1_1PartialPriorityQueue_a6656a538130dcc2ac9fb25c1c32e1b16}} 
+\index{Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}!remove\+Push@{remove\+Push}}
+\index{remove\+Push@{remove\+Push}!Retroactivity\+::\+Partial\+Priority\+Queue@{Retroactivity\+::\+Partial\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Push()}{removePush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialPriorityQueue}{Retroactivity\+::\+Partial\+Priority\+Queue}$<$ T $>$\+::remove\+Push (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Push(data) no tempo t =$>$ Delete(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ vetor de operações realizadas nas filas qnow e nqnow 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Insert(t, Push(data)) na estrutura 
+\end{DoxyPrecond}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+cpp\end{DoxyCompactItemize}

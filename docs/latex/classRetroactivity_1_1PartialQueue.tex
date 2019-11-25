@@ -1,0 +1,134 @@
+\hypertarget{classRetroactivity_1_1PartialQueue}{}\section{Retroactivity\+:\+:Partial\+Queue$<$ T $>$ Class Template Reference}
+\label{classRetroactivity_1_1PartialQueue}\index{Retroactivity\+::\+Partial\+Queue$<$ T $>$@{Retroactivity\+::\+Partial\+Queue$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Queue.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classRetroactivity_1_1PartialQueue_a257afb4736ee36bcde458fda072fe9e7}{Insert\+Enqueue} (int t, const T \&x)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialQueue_a5ad20b8de3b387557e9dfa67088353a8}{Insert\+Dequeue} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialQueue_a467666a5abfb3c739addfe128583eb4b}{Delete\+Enqueue} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PartialQueue_ae44ce14220e3c46a37d151d880f01167}{Delete\+Dequeue} (int t)
+\item 
+T \hyperlink{classRetroactivity_1_1PartialQueue_a54a86b012bd72869e2635c6b02ca71f9}{front} ()
+\item 
+T \hyperlink{classRetroactivity_1_1PartialQueue_a5fc143093c1b667dcc0480449fd0c9e5}{back} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Retroactivity\+::\+Partial\+Queue$<$ T $>$}
+
+Fila parcialmente retroativa 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialQueue_a5fc143093c1b667dcc0480449fd0c9e5}\label{classRetroactivity_1_1PartialQueue_a5fc143093c1b667dcc0480449fd0c9e5}} 
+\index{Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}!back@{back}}
+\index{back@{back}!Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{back()}{back()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1PartialQueue}{Retroactivity\+::\+Partial\+Queue}$<$ T $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna o último elemento a ser removido da fila considerando a versão mais atual da estrutura =$>$ Back()
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ O último elemento a ser removido da fila 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ a fila não pode estar vazia 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialQueue_ae44ce14220e3c46a37d151d880f01167}\label{classRetroactivity_1_1PartialQueue_ae44ce14220e3c46a37d151d880f01167}} 
+\index{Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}!Delete\+Dequeue@{Delete\+Dequeue}}
+\index{Delete\+Dequeue@{Delete\+Dequeue}!Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Delete\+Dequeue()}{DeleteDequeue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialQueue}{Retroactivity\+::\+Partial\+Queue}$<$ T $>$\+::Delete\+Dequeue (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação de Dequeue realizada no tempo t =$>$ Delete(t, Dequeue())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Dequeue foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ precisa que uma operação Dequeue no tempo t tenha sido realizada 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialQueue_a467666a5abfb3c739addfe128583eb4b}\label{classRetroactivity_1_1PartialQueue_a467666a5abfb3c739addfe128583eb4b}} 
+\index{Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}!Delete\+Enqueue@{Delete\+Enqueue}}
+\index{Delete\+Enqueue@{Delete\+Enqueue}!Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Delete\+Enqueue()}{DeleteEnqueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialQueue}{Retroactivity\+::\+Partial\+Queue}$<$ T $>$\+::Delete\+Enqueue (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação de Enqueue realizada no tempo t =$>$ Delete(t, Enqueue(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Enqueue foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ precisa que uma operação Enqueue no tempo t tenha sido realizada 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialQueue_a54a86b012bd72869e2635c6b02ca71f9}\label{classRetroactivity_1_1PartialQueue_a54a86b012bd72869e2635c6b02ca71f9}} 
+\index{Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}!front@{front}}
+\index{front@{front}!Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1PartialQueue}{Retroactivity\+::\+Partial\+Queue}$<$ T $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna o proximo elemento a ser removido da fila considerando a versão mais atual da estrutura =$>$ Front()
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ O proximo elemento a ser removido da fila 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ a fila não pode estar vazia 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialQueue_a5ad20b8de3b387557e9dfa67088353a8}\label{classRetroactivity_1_1PartialQueue_a5ad20b8de3b387557e9dfa67088353a8}} 
+\index{Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}!Insert\+Dequeue@{Insert\+Dequeue}}
+\index{Insert\+Dequeue@{Insert\+Dequeue}!Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Insert\+Dequeue()}{InsertDequeue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialQueue}{Retroactivity\+::\+Partial\+Queue}$<$ T $>$\+::Insert\+Dequeue (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Insere uma operação Dequeue() no tempo t =$>$ Insert(t, Dequeue())
+
+Recebe um inteiro t (tempo de inserção da operação) em que a operação Dequeue será inserida
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de inserção da operação Dequeue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRetroactivity_1_1PartialQueue_a257afb4736ee36bcde458fda072fe9e7}\label{classRetroactivity_1_1PartialQueue_a257afb4736ee36bcde458fda072fe9e7}} 
+\index{Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}!Insert\+Enqueue@{Insert\+Enqueue}}
+\index{Insert\+Enqueue@{Insert\+Enqueue}!Retroactivity\+::\+Partial\+Queue@{Retroactivity\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Insert\+Enqueue()}{InsertEnqueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PartialQueue}{Retroactivity\+::\+Partial\+Queue}$<$ T $>$\+::Insert\+Enqueue (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{const T \&}]{x }\end{DoxyParamCaption})}
+
+Insere uma operação Enqueue(x) no tempo t =$>$ Insert(t, Enqueue(x))
+
+Recebe um inteiro t (tempo de inserção da operação) em que a operação Enqueue(x) será inserida
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de inserção da operação Enqueue(x) \\
+\hline
+{\em x} & -\/$>$ objeto a ser inserido na operação \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Queue/Queue.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Queue/Queue.\+cpp\end{DoxyCompactItemize}

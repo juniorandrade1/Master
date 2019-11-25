@@ -1,0 +1,408 @@
+\hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue}{}\section{Retroactivity\+:\+:Polylogarithm\+Priority\+Queue$<$ T $>$ Class Template Reference}
+\label{classRetroactivity_1_1PolylogarithmPriorityQueue}\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue$<$ T $>$@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Priority\+\_\+queue.\+hpp$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1Node}{Node}
+\item 
+class \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_ab925447d20c941a8f126d20c267052da}{Polylogarithm\+Priority\+Queue} (int \+\_\+m)
+\item 
+int \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_ade07f0238cb44def065cac46625b6f1f}{get\+Query\+Node\+Size} (\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} q)
+\item 
+int \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a4d118a35655e4bf4774a1fe1fdb0f884}{get\+Qtd\+GE} (\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} q, T key)
+\item 
+T \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a2ad9a9b51b4be420f0c5a65f6bcc3e41}{get\+Minimum\+Key} (\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} f)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a87b978cc19aee60f21c55e2234e5730a}{add\+Push} (int no, int l, int r, int i, T data)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_afc4926b8969ceb49e18eec4bcfedc054}{add\+Pop} (int no, int l, int r, int i)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a18cda73d1563529c27cf8533c7bcfde2}{get\+Nodes} (int no, int l, int r, int i, int j, vector$<$ int $>$ \&s)
+\item 
+T \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a19a0f1350c94228d0a8d0e3bc8e6fd7f}{get\+Split\+Key} (T A, vector$<$ ii $>$ all)
+\item 
+pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_acb5b4bb0403f953cae696fdd2db2e1e0}{get\+Splited\+Trees} (int x, vector$<$ ii $>$ all)
+\item 
+pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a4b505ade995caff1cdf8c037f492b067}{Fuse} (pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ q1, pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ q2)
+\item 
+pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a464b4358858dcf25a9d4b2c4b3893218}{query} (int no, int l, int r, int i, int j)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_aa93c676dc292c42fc528ade916476b77}{insert\+Push} (int t, T data)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a67192a84402c55ac9d1ed46b424e5bd9}{insert\+Pop} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_ad19cb99726304b5b47213f28e23d24fc}{remove\+Push} (int t)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_acd4a4c7183bcc14a5532818fc772c08b}{remove\+Pop} (int t)
+\item 
+T \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_ab1473c2314768fd86a727cca9507121b}{get\+Peak} (int t)
+\item 
+pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a63c8782f290dd5ae66259401dcbf8e40}{get\+View} (int t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Retroactivity\+::\+Polylogarithm\+Priority\+Queue$<$ T $>$}
+
+Fila de prioridade totalmente retroativa em tempo polilogaritmico 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_ab925447d20c941a8f126d20c267052da}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_ab925447d20c941a8f126d20c267052da}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!Polylogarithm\+Priority\+Queue@{Polylogarithm\+Priority\+Queue}}
+\index{Polylogarithm\+Priority\+Queue@{Polylogarithm\+Priority\+Queue}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{Polylogarithm\+Priority\+Queue()}{PolylogarithmPriorityQueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue} (\begin{DoxyParamCaption}\item[{int}]{\+\_\+m }\end{DoxyParamCaption})}
+
+Função construtora da Fila de prioridade polilogarítmica. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_afc4926b8969ceb49e18eec4bcfedc054}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_afc4926b8969ceb49e18eec4bcfedc054}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!add\+Pop@{add\+Pop}}
+\index{add\+Pop@{add\+Pop}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{add\+Pop()}{addPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::add\+Pop (\begin{DoxyParamCaption}\item[{int}]{no,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+Função que adiciona a operação pop no tempo i =$>$ Insert(i, Pop())
+
+Insere na checkpoint tree uma deleção no tempo i
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & -\/$>$ indice do nó atual da recursao para inserção do elemento \\
+\hline
+{\em l} & -\/$>$ limite inferior do intervalo contido por no \\
+\hline
+{\em r} & -\/$>$ limite superior do intervalo contido por no \\
+\hline
+{\em i} & -\/$>$ tempo em que a operação Pop será inserida na estrutura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ não deve existir nenhuma outra operação no tempo i 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a87b978cc19aee60f21c55e2234e5730a}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a87b978cc19aee60f21c55e2234e5730a}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!add\+Push@{add\+Push}}
+\index{add\+Push@{add\+Push}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{add\+Push()}{addPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::add\+Push (\begin{DoxyParamCaption}\item[{int}]{no,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{i,  }\item[{T}]{data }\end{DoxyParamCaption})}
+
+Função que adiciona um push no tempo i com o elemento data =$>$ Insert(i, Push(data))
+
+Insere na checkpoint tree o elemento data no tempo i
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & -\/$>$ indice do nó atual da recursao para inserção do elemento \\
+\hline
+{\em l} & -\/$>$ limite inferior do intervalo contido por no \\
+\hline
+{\em r} & -\/$>$ limite superior do intervalo contido por no \\
+\hline
+{\em i} & -\/$>$ tempo em que o elemento data será inserido na estrutura \\
+\hline
+{\em data} & -\/$>$ elemento a ser inserido no tempo i \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ não deve existir nenhuma outra operação no tempo i 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a4b505ade995caff1cdf8c037f492b067}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a4b505ade995caff1cdf8c037f492b067}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!Fuse@{Fuse}}
+\index{Fuse@{Fuse}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{Fuse()}{Fuse()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+pair$<$ typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::Fuse (\begin{DoxyParamCaption}\item[{pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$}]{q1,  }\item[{pair$<$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$}]{q2 }\end{DoxyParamCaption})}
+
+Função que une dois conjuntos q1(qnow, qdel) e q2(qnow, qdel) de modo que a união dos conjuntos representem uma fila de prioridade retroativa que abrange o intervalo que q1 e q2 abrangiam.
+
+
+\begin{DoxyParams}{Parameters}
+{\em q1} & -\/$>$ (qnow, qdel) representando o intervalo \mbox{[}l1, r1\mbox{]} \\
+\hline
+{\em q2} & -\/$>$ (qnow, qdel) representando o intervalo \mbox{[}l2, r2\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ (qnow, qdel) representando a união de q1 e q2 com o intervalo \mbox{[}l1, r2\mbox{]} 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ q1 e q2 devem ser intervalos disjuntos continuos (r1 $<$ l2) 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a2ad9a9b51b4be420f0c5a65f6bcc3e41}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a2ad9a9b51b4be420f0c5a65f6bcc3e41}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+Minimum\+Key@{get\+Minimum\+Key}}
+\index{get\+Minimum\+Key@{get\+Minimum\+Key}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Minimum\+Key()}{getMinimumKey()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+Minimum\+Key (\begin{DoxyParamCaption}\item[{\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}}]{f }\end{DoxyParamCaption})}
+
+Função para obtenção do menor elemento dentre todos os conjuntos em f
+
+Obtem o valor do menor elemento nas árvore binárias balanceadas em f (em qnow)
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & -\/$>$ conjunto de elementos na qual deseja-\/se saber o menor elemento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ o tipo abstrato T deve conter uma ordenação consistente. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+-\/$>$ um tipo abstrato T, contendo o menor elemento em todos os qnow\textquotesingle{}s no conjunto f 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a18cda73d1563529c27cf8533c7bcfde2}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a18cda73d1563529c27cf8533c7bcfde2}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+Nodes@{get\+Nodes}}
+\index{get\+Nodes@{get\+Nodes}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Nodes()}{getNodes()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+Nodes (\begin{DoxyParamCaption}\item[{int}]{no,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{i,  }\item[{int}]{j,  }\item[{vector$<$ int $>$ \&}]{s }\end{DoxyParamCaption})}
+
+Função que obtém os indices dos nós contidos em um intervalo \mbox{[}i, j\mbox{]}
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & -\/$>$ indice do nó atual da recursao para inserção do elemento \\
+\hline
+{\em l} & -\/$>$ limite inferior do intervalo contido por no \\
+\hline
+{\em r} & -\/$>$ limite superior do intervalo contido por no \\
+\hline
+{\em i} & -\/$>$ limite inferior da consulta realizada \\
+\hline
+{\em j} & -\/$>$ limite superior da consulta realizada \\
+\hline
+{\em s} & -\/$>$ vetor com os índices retornados pela função \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_ab1473c2314768fd86a727cca9507121b}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_ab1473c2314768fd86a727cca9507121b}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+Peak@{get\+Peak}}
+\index{get\+Peak@{get\+Peak}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Peak()}{getPeak()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+Peak (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna o menor elemento da fila de prioridade no tempo t =$>$ Get\+Peak(t)
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que se deseja consultar o menor elemento da fila \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ o menor elemento da fila de prioridade após a execução de todas as operações até o tempo t 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ a estrutura deve conter pelo menos um elemento no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a4d118a35655e4bf4774a1fe1fdb0f884}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a4d118a35655e4bf4774a1fe1fdb0f884}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+Qtd\+GE@{get\+Qtd\+GE}}
+\index{get\+Qtd\+GE@{get\+Qtd\+GE}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Qtd\+G\+E()}{getQtdGE()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+Qtd\+GE (\begin{DoxyParamCaption}\item[{\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}}]{q,  }\item[{T}]{key }\end{DoxyParamCaption})}
+
+Função para obtenção do numero de elementos em q maiores que key
+
+Obtem a quantidade de elementos em q maiores que key
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & -\/$>$ conjunto de árvores binárias balanceadas \\
+\hline
+{\em key} & -\/$>$ elemento na qual deseja-\/se consultar o número de elementos maiores \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ o tipo abstrato T deve conter uma ordenação consistente. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+-\/$>$ um inteiro, o número de elementos em q maiores que key 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_ade07f0238cb44def065cac46625b6f1f}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_ade07f0238cb44def065cac46625b6f1f}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+Query\+Node\+Size@{get\+Query\+Node\+Size}}
+\index{get\+Query\+Node\+Size@{get\+Query\+Node\+Size}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Query\+Node\+Size()}{getQueryNodeSize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+int \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+Query\+Node\+Size (\begin{DoxyParamCaption}\item[{\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}}]{q }\end{DoxyParamCaption})}
+
+Função para obtenção do numero de elementos em q
+
+Obtem a quantidade de elementos em q
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & -\/$>$ conjunto de árvores binárias balanceadas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ o tipo abstrato T deve conter uma ordenação consistente. 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+-\/$>$ um inteiro, o numero de elementos em q 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_acb5b4bb0403f953cae696fdd2db2e1e0}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_acb5b4bb0403f953cae696fdd2db2e1e0}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+Splited\+Trees@{get\+Splited\+Trees}}
+\index{get\+Splited\+Trees@{get\+Splited\+Trees}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Splited\+Trees()}{getSplitedTrees()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+pair$<$ typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+Splited\+Trees (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{vector$<$ ii $>$}]{all }\end{DoxyParamCaption})}
+
+Função que retorna as árvores após a sua divisão por um valor x
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & -\/$>$ valor na qual deseja-\/se dividir os conjuntos. \\
+\hline
+{\em all} & -\/$>$ conjunto das árvores (qnow, qdel) existentes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ conjunto das árvores após a divisão pelo valor x. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a19a0f1350c94228d0a8d0e3bc8e6fd7f}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a19a0f1350c94228d0a8d0e3bc8e6fd7f}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+Split\+Key@{get\+Split\+Key}}
+\index{get\+Split\+Key@{get\+Split\+Key}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Split\+Key()}{getSplitKey()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+Split\+Key (\begin{DoxyParamCaption}\item[{T}]{A,  }\item[{vector$<$ ii $>$}]{all }\end{DoxyParamCaption})}
+
+Funçao que obtem o valor que os conjuntos qnow e qdel devem ser divididos de modo que existam A elementos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & -\/$>$ número de elementos desejado \\
+\hline
+{\em all} & -\/$>$ conjunto das árvores (qnow, qdel) existentes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ o valor em que deve-\/se dividir as árvores de modo que os menores A elementos estejam separados do restante da árvore 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a63c8782f290dd5ae66259401dcbf8e40}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a63c8782f290dd5ae66259401dcbf8e40}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!get\+View@{get\+View}}
+\index{get\+View@{get\+View}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+View()}{getView()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+pair$<$ typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::get\+View (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna os conjuntos qnow e qdel considerando a fila de prioridade retroativa no tempo t
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que se deseja consultar o menor elemento da fila \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ um par contendo as árvores contendo os conjuntos qnow e qdel respectivamente 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a67192a84402c55ac9d1ed46b424e5bd9}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a67192a84402c55ac9d1ed46b424e5bd9}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!insert\+Pop@{insert\+Pop}}
+\index{insert\+Pop@{insert\+Pop}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Pop()}{insertPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::insert\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Insere uma operação de Pop() no tempo t =$>$ Insert(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_aa93c676dc292c42fc528ade916476b77}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_aa93c676dc292c42fc528ade916476b77}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!insert\+Push@{insert\+Push}}
+\index{insert\+Push@{insert\+Push}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Push()}{insertPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::insert\+Push (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{T}]{data }\end{DoxyParamCaption})}
+
+Insere uma operação de Push(data) no tempo t =$>$ Insert(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+{\em data} & -\/$>$ elemento inserido \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a464b4358858dcf25a9d4b2c4b3893218}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a464b4358858dcf25a9d4b2c4b3893218}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!query@{query}}
+\index{query@{query}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{query()}{query()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+pair$<$ typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node}, typename \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Polylogarithm\+Priority\+Queue}$<$ T $>$\+::\hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode}{Query\+Node} $>$ \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::query (\begin{DoxyParamCaption}\item[{int}]{no,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+Função que obtém os conjuntos dos nós contidos em um intervalo \mbox{[}i, j\mbox{]}
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & -\/$>$ indice do nó atual da recursao para inserção do elemento \\
+\hline
+{\em l} & -\/$>$ limite inferior do intervalo contido por no \\
+\hline
+{\em r} & -\/$>$ limite superior do intervalo contido por no \\
+\hline
+{\em i} & -\/$>$ limite inferior da consulta realizada \\
+\hline
+{\em j} & -\/$>$ limite superior da consulta realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+s -\/$>$ os conjuntos (qnow, qdel) que formam o intervalo \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_acd4a4c7183bcc14a5532818fc772c08b}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_acd4a4c7183bcc14a5532818fc772c08b}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!remove\+Pop@{remove\+Pop}}
+\index{remove\+Pop@{remove\+Pop}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Pop()}{removePop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::remove\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Pop() no tempo t =$>$ Delete(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Delete(t, Pop()) na estrutura 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_ad19cb99726304b5b47213f28e23d24fc}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_ad19cb99726304b5b47213f28e23d24fc}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!remove\+Push@{remove\+Push}}
+\index{remove\+Push@{remove\+Push}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Push()}{removePush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::remove\+Push (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Push(data) no tempo t =$>$ Delete(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Insert(t, Push(data)) na estrutura 
+\end{DoxyPrecond}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+cpp\end{DoxyCompactItemize}
