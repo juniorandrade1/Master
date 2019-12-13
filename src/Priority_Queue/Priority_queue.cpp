@@ -52,35 +52,56 @@ namespace Retroactivity {
 
     return ret;
   }
+
   template <typename T> 
-  void PartialPriorityQueue<T>::removePush(int t) {
+  vector< pair<int, T> > PartialPriorityQueue<T>::removePush(int t) {
+    vector< pair<int, T> > ret;
     if(type[t] == 1) {    
+
+      auto aux = *qnow.lower_bound(t);
+      ret.push_back(make_pair(1, aux.second)); //delete qnow t
+
       qnow.erase(t);
       type.erase(t);
+
     }
     else {
       int tl = bridges.getNextBridge(t);
       pair<T, int> add = qnow.getMinimumValueBefore(tl);
       qnow.erase(add.second);
       nqnow.insert(add.second, add.first);
+
+      ret.push_back(make_pair(1, add.first)); //delete qnow data
+      ret.push_back(make_pair(2, add.first)); //insert qdel data
+
       type[add.second] = 2;
       bridges.update(add.second, 1);
+
+      auto aux = *nqnow.lower_bound(t);
+      ret.push_back(make_pair(3, aux.second)); //delete qnow t
+
       nqnow.erase(t);
       bridges.update(t, -1);
       type.erase(t);
     }
+    return ret;
   }
   template <typename T> 
-  void PartialPriorityQueue<T>::removePop(int t) {
+  vector< pair<int, T> > PartialPriorityQueue<T>::removePop(int t) {
+    vector< pair<int, T> > ret;
     bridges.update(t, 1);
     int tl = bridges.getLastBridge(t);
     pair<T, int> add = nqnow.getMaximumValueAfter(tl);
     nqnow.erase(add.second);
     qnow.insert(add.second, add.first);
+
+    ret.push_back(make_pair(3, add.first)); //delete qdel data
+    ret.push_back(make_pair(0, add.first)); //insert qnow data
+
     type[add.second] = 1;
     bridges.update(add.second, -1);
     type.erase(t);
-    return;
+    return ret;
   }
   template <typename T> 
   bool PartialPriorityQueue<T>::empty() {
@@ -374,7 +395,6 @@ namespace Retroactivity {
   template <typename T>
   void PolylogarithmPriorityQueue<T>::addPop(int no, int l, int r, int i) {
     vector< pair< int, T > > operations = tr[no].pq.insertPop(i);
-    
     for(auto p : operations) {
       if(p.first == 0) tr[no].qnowV = tr[no].qnow.insert(tr[no].qnowV, p.second, 1);
       if(p.first == 1) tr[no].qnowV = tr[no].qnow.erase(tr[no].qnowV, p.second);
@@ -388,21 +408,54 @@ namespace Retroactivity {
   }
 
   template <typename T>
+  void PolylogarithmPriorityQueue<T>::delPush(int no, int l, int r, int i) {
+    vector< pair< int, T > > operations = tr[no].pq.removePush(i);
+    for(auto p : operations) {
+      if(p.first == 0) tr[no].qnowV = tr[no].qnow.insert(tr[no].qnowV, p.second, 1);
+      if(p.first == 1) tr[no].qnowV = tr[no].qnow.erase(tr[no].qnowV, p.second);
+      if(p.first == 2) tr[no].qdelV = tr[no].qdel.insert(tr[no].qdelV, p.second, 1);
+      if(p.first == 3) tr[no].qdelV = tr[no].qdel.erase(tr[no].qdelV, p.second);
+    }
+    if(l == r) return;
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    if(i <= mid) delPush(nxt, l, mid, i);
+    else delPush(nxt + 1, mid + 1, r, i);
+  }
+
+
+  template <typename T>
+  void PolylogarithmPriorityQueue<T>::delPop(int no, int l, int r, int i) {
+    vector< pair< int, T > > operations = tr[no].pq.removePop(i);
+    for(auto p : operations) {
+      if(p.first == 0) tr[no].qnowV = tr[no].qnow.insert(tr[no].qnowV, p.second, 1);
+      if(p.first == 1) tr[no].qnowV = tr[no].qnow.erase(tr[no].qnowV, p.second);
+      if(p.first == 2) tr[no].qdelV = tr[no].qdel.insert(tr[no].qdelV, p.second, 1);
+      if(p.first == 3) tr[no].qdelV = tr[no].qdel.erase(tr[no].qdelV, p.second);
+    }
+    if(l == r) return;
+    int nxt = (no << 1), mid = (l + r) >> 1;
+    if(i <= mid) delPop(nxt, l, mid, i);
+    else delPop(nxt + 1, mid + 1, r, i);
+  }
+
+  template <typename T>
   void PolylogarithmPriorityQueue<T>::insertPush(int t, T data) {
-    addPush(1, 1, m, t, data);
+    addPush(1, 0, m, t, data);
   }
 
   template <typename T>
   void PolylogarithmPriorityQueue<T>::insertPop(int t) {
-    addPop(1, 1, m, t);
+    addPop(1, 0, m, t);
   }
 
   template <typename T>
   void PolylogarithmPriorityQueue<T>::removePush(int t) {
+    delPush(1, 0, m, t);
   }
 
   template <typename T>
   void PolylogarithmPriorityQueue<T>::removePop(int t) {
+    delPop(1, 0, m, t);
   }
 
   template <typename T>
@@ -521,7 +574,7 @@ namespace Retroactivity {
   template <typename T>
   pair< typename PolylogarithmPriorityQueue<T>::QueryNode, typename PolylogarithmPriorityQueue<T>::QueryNode > PolylogarithmPriorityQueue<T>::getView(int t) {
     vector < int > nodes;
-    getNodes(1, 1, m, 1, t, nodes);
+    getNodes(1, 0, m, 0, t, nodes);
     sort(nodes.begin(), nodes.end());
     pair< QueryNode, QueryNode > foo;
     for(auto p : nodes) {

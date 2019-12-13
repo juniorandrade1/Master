@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/junior/Dropbox/ArquivosMestrado/Master/codes/tests/Priority_queue/Priority_queue.tests.cpp" "/home/junior/Dropbox/ArquivosMestrado/Master/codes/tests/Priority_queue/CMakeFiles/executeTests.dir/Priority_queue.tests.cpp.o"
+  "/home/junior/Dropbox/ArquivosMestrado/Master/tests/Priority_queue/Priority_queue.tests.cpp" "/home/junior/Dropbox/ArquivosMestrado/Master/tests/Priority_queue/CMakeFiles/executeTests.dir/Priority_queue.tests.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

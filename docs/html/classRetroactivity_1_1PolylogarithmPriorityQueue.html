@@ -95,6 +95,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a87b978cc19aee60f21c55e2234e5730a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc4926b8969ceb49e18eec4bcfedc054"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRetroactivity_1_1PolylogarithmPriorityQueue.html#afc4926b8969ceb49e18eec4bcfedc054">addPop</a> (int no, int l, int r, int i)</td></tr>
 <tr class="separator:afc4926b8969ceb49e18eec4bcfedc054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9963c071e40c6a3de73d23577598c321"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRetroactivity_1_1PolylogarithmPriorityQueue.html#a9963c071e40c6a3de73d23577598c321">delPush</a> (int no, int l, int r, int i)</td></tr>
+<tr class="separator:a9963c071e40c6a3de73d23577598c321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac443672a0107e3ed713abb7532ae9664"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRetroactivity_1_1PolylogarithmPriorityQueue.html#ac443672a0107e3ed713abb7532ae9664">delPop</a> (int no, int l, int r, int i)</td></tr>
+<tr class="separator:ac443672a0107e3ed713abb7532ae9664"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18cda73d1563529c27cf8533c7bcfde2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRetroactivity_1_1PolylogarithmPriorityQueue.html#a18cda73d1563529c27cf8533c7bcfde2">getNodes</a> (int no, int l, int r, int i, int j, vector&lt; int &gt; &amp;s)</td></tr>
 <tr class="separator:a18cda73d1563529c27cf8533c7bcfde2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19a0f1350c94228d0a8d0e3bc8e6fd7f"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRetroactivity_1_1PolylogarithmPriorityQueue.html#a19a0f1350c94228d0a8d0e3bc8e6fd7f">getSplitKey</a> (T A, vector&lt; ii &gt; all)</td></tr>
@@ -258,6 +262,112 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>-&gt; não deve existir nenhuma outra operação no tempo i </dd></dl>
+
+</div>
+</div>
+<a id="ac443672a0107e3ed713abb7532ae9664"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac443672a0107e3ed713abb7532ae9664">&#9670;&nbsp;</a></span>delPop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classRetroactivity_1_1PolylogarithmPriorityQueue.html">Retroactivity::PolylogarithmPriorityQueue</a>&lt; T &gt;::delPop </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>no</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Função que remove a operação pop do tempo i</p>
+<p>Insere na checkpoint tree uma deleção da operação Pop no tempo i</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">no</td><td>-&gt; indice do nó atual da recursao para inserção do elemento </td></tr>
+    <tr><td class="paramname">l</td><td>-&gt; limite inferior do intervalo contido por no </td></tr>
+    <tr><td class="paramname">r</td><td>-&gt; limite superior do intervalo contido por no </td></tr>
+    <tr><td class="paramname">i</td><td>-&gt; tempo em que a operação Pop será deletada da estrutura </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9963c071e40c6a3de73d23577598c321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9963c071e40c6a3de73d23577598c321">&#9670;&nbsp;</a></span>delPush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classRetroactivity_1_1PolylogarithmPriorityQueue.html">Retroactivity::PolylogarithmPriorityQueue</a>&lt; T &gt;::delPush </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>no</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Função que remove a operação push do tempo i</p>
+<p>Insere na checkpoint tree uma deleção da operação Push no tempo i</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">no</td><td>-&gt; indice do nó atual da recursao para inserção do elemento </td></tr>
+    <tr><td class="paramname">l</td><td>-&gt; limite inferior do intervalo contido por no </td></tr>
+    <tr><td class="paramname">r</td><td>-&gt; limite superior do intervalo contido por no </td></tr>
+    <tr><td class="paramname">i</td><td>-&gt; tempo em que a operação Push será deletada da estrutura </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

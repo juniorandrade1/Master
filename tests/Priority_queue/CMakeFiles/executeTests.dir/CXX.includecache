@@ -6,49 +6,49 @@
 
 #IncludeRegexTransform: 
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/PersistentTreap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/PersistentTreap.cpp
 bits/stdc++.h
 -
 bits/stdc++.h
 -
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/PrioritySearchTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/PrioritySearchTree.cpp
 bits/stdc++.h
 -
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/SegmentTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/SegmentTree.cpp
 bits/stdc++.h
 -
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/Treap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
 bits/stdc++.h
 -
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/IntervalTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Priority_Queue/IntervalTree.cpp
 bits/stdc++.h
 -
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Priority_Queue/Priority_queue.cpp
 Priority_queue.hpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Priority_Queue/Priority_queue.hpp
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Priority_Queue/Priority_queue.hpp
 IntervalTree.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/IntervalTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Priority_Queue/IntervalTree.cpp
 ../BST/Treap.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/Treap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
 ../BST/SegmentTree.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/SegmentTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/SegmentTree.cpp
 ../BST/PrioritySearchTree.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/PrioritySearchTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/PrioritySearchTree.cpp
 ../BST/PersistentTreap.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/PersistentTreap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/PersistentTreap.cpp
 Priority_queue.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Priority_Queue/Priority_queue.cpp
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/tests/Priority_queue/Priority_queue.tests.cpp
-../../Priority_Queue/Priority_queue.hpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Priority_Queue/Priority_queue.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/tests/Priority_queue/Priority_queue.tests.cpp
+../../src/Priority_Queue/Priority_queue.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Priority_Queue/Priority_queue.hpp
 gtest/gtest.h
 -
 

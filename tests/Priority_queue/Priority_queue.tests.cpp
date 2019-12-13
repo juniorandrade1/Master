@@ -1,4 +1,4 @@
-#include "../../Priority_Queue/Priority_queue.hpp"
+#include "../../src/Priority_Queue/Priority_queue.hpp"
 #include <gtest/gtest.h>
 
 class Segtree {
@@ -101,80 +101,51 @@ int GetSample(const std::set<int>& s) {
 
 class PartialPriorityQueueValidation: public ::testing::TestWithParam<int>{};
 
+
 TEST_P(PartialPriorityQueueValidation, Validation) {
   Retroactivity::PartialPriorityQueue< int > rq;
   Brute::PartialPriorityQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.insertPush(t, x);
-    bq.insertPush(t, x);
-    tr.update(t, N, 1);
-    ins.insert(t);
-
-    if(!bq.empty()) ASSERT_EQ(rq.getPeak(), bq.getPeak());
-    else ASSERT_EQ(rq.empty(), bq.empty());
+  string fileName = "../Datasets/Priority_Queue/partial/partialPriorityQueue" + to_string(n) + ".in";
+  printf("%s\n", fileName.c_str());
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 3);
-    if(op == 2 && ins.size() == 0) op = 1;
-    if(op == 3 && del.size() == 0) op = 0;
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
+  fscanf(dataSet, "%d", &n);
+  int maxT = 0;
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      ASSERT_EQ(rq.getPeak(), bq.getPeak());
+    }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        rq.insertPush(t, x);
+        bq.insertPush(t, x);
       }
-      used[t] = 1;
-      rq.insertPush(t, x);
-      bq.insertPush(t, x);
-      tr.update(t, N, 1);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.insertPop(t);
+        bq.insertPop(t);
       }
-      used[t] = 1;
-      bq.insertPop(t);
-      rq.insertPop(t);
-      del.insert(t);
-      tr.update(t, N, -1);
     }
-    else if(op == 2) {
-      int t;
-      while(1) {
-        t = GetSample(ins);
-        if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
-      } 
-      ins.erase(t);
-      rq.removePush(t);
-      bq.removePush(t);
-      tr.update(t, N, -1);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePush(t);
+        bq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePop(t);
+        bq.removePop(t);
+      }
     }
-    else if(op == 3) {
-      int t = GetSample(del);
-      rq.removePop(t);
-      bq.removePop(t);
-      del.erase(t);
-      tr.update(t, N, 1);
-    }
-
-    if(!bq.empty()) ASSERT_EQ(rq.getPeak(), bq.getPeak());
-    else ASSERT_EQ(rq.empty(), bq.empty());
   }
+  fclose(dataSet);
 }
 
 class PartialBrutePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
@@ -182,142 +153,83 @@ class PartialBrutePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 TEST_P(PartialBrutePriorityQueueSpeed, BruteSpeed) {
   Brute::PartialPriorityQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    bq.insertPush(t, x);
-    tr.update(t, N, 1);
-    ins.insert(t);
-
-    if(!bq.empty()) bq.getPeak();
+  string fileName = "../Datasets/Priority_Queue/partial/partialPriorityQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 3);
-    if(op == 2 && ins.size() == 0) op = 1;
-    if(op == 3 && del.size() == 0) op = 0;
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      bq.getPeak();
+    }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        bq.insertPush(t, x);
       }
-      used[t] = 1;
-      bq.insertPush(t, x);
-      tr.update(t, N, 1);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.insertPop(t);
       }
-      used[t] = 1;
-      bq.insertPop(t);
-      del.insert(t);
-      tr.update(t, N, -1);
     }
-    else if(op == 2) {
-      int t;
-      while(1) {
-        t = GetSample(ins);
-        if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
-      } 
-      ins.erase(t);
-      bq.removePush(t);
-      tr.update(t, N, -1);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePop(t);
+      }
     }
-    else if(op == 3) {
-      int t = GetSample(del);
-      bq.removePop(t);
-      del.erase(t);
-      tr.update(t, N, 1);
-    }
-
-    if(!bq.empty()) bq.getPeak();
   }
+  fclose(dataSet);
 }
 
 class PartialRetroactivePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 
 TEST_P(PartialRetroactivePriorityQueueSpeed, RetroactiveSpeed) {
-  Retroactivity::PartialPriorityQueue< int > rq;
+  Retroactivity::PartialPriorityQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.insertPush(t, x);
-    tr.update(t, N, 1);
-    ins.insert(t);
-    if(!rq.empty()) rq.getPeak();
+  string fileName = "../Datasets/Priority_Queue/partial/partialPriorityQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 3);
-    if(op == 2 && ins.size() == 0) op = 1;
-    if(op == 3 && del.size() == 0) op = 0;
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      bq.getPeak();
+    }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        bq.insertPush(t, x);
       }
-      used[t] = 1;
-      rq.insertPush(t, x);
-      tr.update(t, N, 1);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.insertPop(t);
       }
-      used[t] = 1;
-      rq.insertPop(t);
-      del.insert(t);
-      tr.update(t, N, -1);
     }
-    else if(op == 2) {
-      int t;
-      while(1) {
-        t = GetSample(ins);
-        if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
-      } 
-      ins.erase(t);
-      rq.removePush(t);
-      tr.update(t, N, -1);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePop(t);
+      }
     }
-    else if(op == 3) {
-      int t = GetSample(del);
-      rq.removePop(t);
-      del.erase(t);
-      tr.update(t, N, 1);
-    }
-    if(!rq.empty()) rq.getPeak();
   }
+  fclose(dataSet);
 }
 
-// INSTANTIATE_TEST_CASE_P(TestPartialPriorityQueueValidation, PartialPriorityQueueValidation, ::testing::Range(1000, 5000, 1000));
-// INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, PartialRetroactivePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
-// INSTANTIATE_TEST_CASE_P(BruteSpeedTest, PartialBrutePriorityQueueSpeed, ::testing::Range(50, 5000, 50));
 
 
 
@@ -327,162 +239,92 @@ TEST_P(FullPriorityQueueValidation, Validation) {
   Retroactivity::FullPriorityQueue< int > rq;
   Brute::FullPriorityQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-  for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = genRand(1, N);
-    int t;
-    while(1) {
-      t = genRand(1, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.insertPush(t, x);
-    bq.insertPush(t, x);
-    tr.update(t, N, 1);
-    ins.insert(t);
-
-    t = genRand(1, N);
-    ASSERT_EQ(rq.empty(t), bq.empty(t));
-    if(!rq.empty(t)) ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+  string fileName = "../Datasets/Priority_Queue/full/FullPriorityQueue" + to_string(n) + ".in";
+  printf("%s\n", fileName.c_str());
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 1);
-    if(op == 2 && ins.size() == 0) op = 1;
-    if(op == 3 && del.size() == 0) op = 0;
-    //printf("== %d\n", op);
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
+  fscanf(dataSet, "%d", &n);
+  int maxT = 0;
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
+      ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+    }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        rq.insertPush(t, x);
+        bq.insertPush(t, x);
       }
-      used[t] = 1;
-      rq.insertPush(t, x);
-      bq.insertPush(t, x);
-      tr.update(t, N, 1);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) > 1) break;
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.insertPop(t);
+        bq.insertPop(t);
       }
-      used[t] = 1;
-      bq.insertPop(t);
-      rq.insertPop(t);
-      del.insert(t);
-      tr.update(t, N, -1);
     }
-    else if(op == 2) {
-      int t;
-      while(1) {
-        t = GetSample(ins);
-        if(tr.queryMn(t, N) > 1) break;
-      } 
-      ins.erase(t);
-      rq.removePush(t);
-      bq.removePush(t);
-      tr.update(t, N, -1);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePush(t);
+        bq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePop(t);
+        bq.removePop(t);
+      }
     }
-    else if(op == 3) {
-      int t = GetSample(del);
-      rq.removePop(t);
-      bq.removePop(t);
-      del.erase(t);
-      tr.update(t, N, 1);
-    }
-
-    int t = genRand(0, N);
-    ASSERT_EQ(rq.empty(t), bq.empty(t));
-    if(!rq.empty(t)) ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
   }
+  fclose(dataSet);
 }
 
 
 class FullBrutePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 
 TEST_P(FullBrutePriorityQueueSpeed, BruteSpeed) {
-  Brute::FullPriorityQueue< int > rq;
+  Brute::FullPriorityQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-
-  vector< int > p(n + 1);
-  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
-  
-  random_shuffle(p.begin(), p.end());
-
-
-  for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = p[i];
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.insertPush(t, x);
-    tr.update(t, N, 1);
-    ins.insert(t);
-
-    t = genRand(0, N);
-    rq.getPeak(t);
+  string fileName = "../Datasets/Priority_Queue/full/FullPriorityQueue" + to_string(n) + ".in";
+  printf("%s\n", fileName.c_str());
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = (n + 1) / 2; i < n; ++i) {
-    int op = genRand(0, 3);
-    if(op == 2 && ins.size() == 0) op = 1;
-    if(op == 3 && del.size() == 0) op = 0;
-    if(op == 0) {
-      int x = p[i];
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
+  fscanf(dataSet, "%d", &n);
+  int maxT = 0;
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
+      bq.getPeak(t);
+    }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        bq.insertPush(t, x);
       }
-      used[t] = 1;
-      rq.insertPush(t, x);
-      tr.update(t, N, 1);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) > 1) break;
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.insertPop(t);
       }
-      used[t] = 1;
-      rq.insertPop(t);
-      del.insert(t);
-      tr.update(t, N, -1);
     }
-    else if(op == 2) {
-      int t;
-      while(1) {
-        t = GetSample(ins);
-        if(tr.queryMn(t, N) > 1) break;
-      } 
-      ins.erase(t);
-      used[t] = 0;
-      rq.removePush(t);
-      tr.update(t, N, -1);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePop(t);
+      }
     }
-    else if(op == 3) {
-      int t = GetSample(del);
-      rq.removePop(t);
-      del.erase(t);
-      used[t] = 0;
-      tr.update(t, N, 1);
-    }
-
-    int t = genRand(0, N);
-    rq.getPeak(t);
   }
+  fclose(dataSet);
 }
 
 
@@ -490,177 +332,96 @@ TEST_P(FullBrutePriorityQueueSpeed, BruteSpeed) {
 class FullRetroactivePriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 
 TEST_P(FullRetroactivePriorityQueueSpeed, RetroactiveSpeed) {
-  Retroactivity::FullPriorityQueue< int > rq;
+  Retroactivity::FullPriorityQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-
-  vector< int > p(n + 1);
-  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
-  
-  random_shuffle(p.begin(), p.end());
-
-
-  for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = p[i];
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.insertPush(t, x);
-    tr.update(t, N, 1);
-    ins.insert(t);
-
-    t = genRand(0, N);
-    rq.getPeak(t);
+  string fileName = "../Datasets/Priority_Queue/full/FullPriorityQueue" + to_string(n) + ".in";
+  printf("%s\n", fileName.c_str());
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = (n + 1) / 2; i < n; ++i) {
-    int op = genRand(0, 3);
-    if(op == 2 && ins.size() == 0) op = 1;
-    if(op == 3 && del.size() == 0) op = 0;
-    if(op == 0) {
-      int x = p[i];
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
+  fscanf(dataSet, "%d", &n);
+  int maxT = 0;
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
+      bq.getPeak(t);
+    }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        bq.insertPush(t, x);
       }
-      used[t] = 1;
-      rq.insertPush(t, x);
-      tr.update(t, N, 1);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) > 1) break;
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.insertPop(t);
       }
-      used[t] = 1;
-      rq.insertPop(t);
-      del.insert(t);
-      tr.update(t, N, -1);
     }
-    else if(op == 2) {
-      int t;
-      while(1) {
-        t = GetSample(ins);
-        if(tr.queryMn(t, N) > 1) break;
-      } 
-      ins.erase(t);
-      used[t] = 0;
-      rq.removePush(t);
-      tr.update(t, N, -1);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.removePop(t);
+      }
     }
-    else if(op == 3) {
-      int t = GetSample(del);
-      rq.removePop(t);
-      del.erase(t);
-      used[t] = 0;
-      tr.update(t, N, 1);
-    }
-
-    int t = genRand(0, N);
-    rq.getPeak(t);
   }
+  fclose(dataSet);
 }
-
-//INSTANTIATE_TEST_CASE_P(TestFullPriorityQueueValidation, FullPriorityQueueValidation, ::testing::Range(100, 200, 10));
-//INSTANTIATE_TEST_CASE_P(BruteSpeedTest, FullBrutePriorityQueueSpeed, ::testing::Range(3000, 30001, 3000));
-//INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, FullRetroactivePriorityQueueSpeed, ::testing::Range(3000, 30001, 3000));
 
 
 class FullPolylogarithmPriorityQueueValidation: public ::testing::TestWithParam<int>{};
 
 TEST_P(FullPolylogarithmPriorityQueueValidation, Validation) {
-  int n = GetParam();
-  int m = n * 2;
-  Retroactivity::PolylogarithmPriorityQueue< int > rq(m + 1);
+  Retroactivity::PolylogarithmPriorityQueue< int > rq((int)6e4);
   Brute::FullPriorityQueue< int > bq;
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-
-  vector< int > p(n + 1);
-  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
-  
-  random_shuffle(p.begin(), p.end());
-
-  for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = p[i];
-    int t;
-    while(1) {
-      t = genRand(1, m);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.insertPush(t, x);
-    bq.insertPush(t, x);
-    tr.update(t, m, 1);
-    ins.insert(t);
-
-    t = genRand(1, m);
-    rq.getPeak(t);
-    if(!bq.empty(t)) ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+  int n = GetParam();
+  string fileName = "../Datasets/Priority_Queue/full/FullPriorityQueue" + to_string(n) + ".in";
+  printf("%s\n", fileName.c_str());
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = (n + 1) / 2; i < n; ++i) {
-    int op = genRand(0, 1);
-    if(op == 0) {
-      int x = p[i];
-      int t;
-      while(1) {
-        t = genRand(1, m);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-      rq.insertPush(t, x);
-      bq.insertPush(t, x);
-      tr.update(t, m, 1);
-      ins.insert(t);
-    }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(1, m);
-        if(!used[t] && tr.queryMn(t, m) > 2) break;
-      }
-      used[t] = 1;
-      bq.insertPop(t);
-      rq.insertPop(t);
-      del.insert(t);
-      tr.update(t, m, -1);
-    }
-    // else if(op == 2) {
-    //   int t;
-    //   while(1) {
-    //     t = GetSample(ins);
-    //     if(tr.queryMn(t, m) > 1) break;
-    //   } 
-    //   ins.erase(t);
-    //   rq.removePush(t);
-    //   bq.removePush(t);
-    //   tr.update(t, m, -1);
-    // }
-    // else if(op == 3) {
-    //   int t = GetSample(del);
-    //   rq.removePop(t);
-    //   bq.removePop(t);
-    //   del.erase(t);
-    //   tr.update(t, m, 1);
-    // }
-
-    int t = genRand(1, m);
-    if(!bq.empty(t)) {
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
       ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
     }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        rq.insertPush(t, x);
+        bq.insertPush(t, x);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.insertPop(t);
+        bq.insertPop(t);
+      }
+    }
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePush(t);
+        bq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePop(t);
+        bq.removePop(t);
+      }
+    }
   }
+  fclose(dataSet);
 }
 
-//INSTANTIATE_TEST_CASE_P(PolylogarithmPriorityQueueTest, FullPolylogarithmPriorityQueueValidation, ::testing::Range(500, 1000, 100));
 
 
 
@@ -668,96 +429,63 @@ TEST_P(FullPolylogarithmPriorityQueueValidation, Validation) {
 class PolylogarithmPriorityQueueSpeed: public ::testing::TestWithParam<int>{};
 
 TEST_P(PolylogarithmPriorityQueueSpeed, PolylogarithmSpeed) {
+  Retroactivity::PolylogarithmPriorityQueue< int > rq((int)6e4);
   int n = GetParam();
-  int m = n * 2;
-  Retroactivity::PolylogarithmPriorityQueue< int > rq(m + 1);
-  //Brute::FullPriorityQueue< int > bq;
-  map< int, int > used;
-  Segtree tr;
-  set< int > ins;
-  set< int > del;
-
-  vector< int > p(n + 1);
-  for(int i = 0; i < n + 1; ++i) p[i] = i + 1;
-  
-  random_shuffle(p.begin(), p.end());
-
-  for(int i = 0; i < (n + 1) / 2; ++i) {
-    int x = p[i];
-    int t;
-    while(1) {
-      t = genRand(1, m);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.insertPush(t, x);
-    //bq.insertPush(t, x);
-    tr.update(t, m, 1);
-    ins.insert(t);
-
-    t = genRand(1, m);
-    rq.getPeak(t);
-    //if(!bq.empty(t)) ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
+  string fileName = "../Datasets/Priority_Queue/full/FullPriorityQueue" + to_string(n) + ".in";
+  printf("%s\n", fileName.c_str());
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = (n + 1) / 2; i < n; ++i) {
-    int op = genRand(0, 1);
-    if(op == 0) {
-      int x = p[i];
-      int t;
-      while(1) {
-        t = genRand(1, m);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-      rq.insertPush(t, x);
-     // bq.insertPush(t, x);
-      tr.update(t, m, 1);
-      ins.insert(t);
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
+      rq.getPeak(t);
     }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(1, m);
-        if(!used[t] && tr.queryMn(t, m) > 2) break;
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        rq.insertPush(t, x);
       }
-      used[t] = 1;
-      //bq.insertPop(t);
-      rq.insertPop(t);
-      del.insert(t);
-      tr.update(t, m, -1);
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.insertPop(t);
+      }
     }
-    // else if(op == 2) {
-    //   int t;
-    //   while(1) {
-    //     t = GetSample(ins);
-    //     if(tr.queryMn(t, m) > 1) break;
-    //   } 
-    //   ins.erase(t);
-    //   rq.removePush(t);
-    //   bq.removePush(t);
-    //   tr.update(t, m, -1);
-    // }
-    // else if(op == 3) {
-    //   int t = GetSample(del);
-    //   rq.removePop(t);
-    //   bq.removePop(t);
-    //   del.erase(t);
-    //   tr.update(t, m, 1);
-    // }
-
-    int t = genRand(1, m);
-    rq.getPeak(t);
-    //if(!bq.empty(t)) {
-      //ASSERT_EQ(rq.getPeak(t), bq.getPeak(t));
-    //}
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePush(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.removePop(t);
+      }
+    }
   }
+  fclose(dataSet);
 }
 
-INSTANTIATE_TEST_CASE_P(PolylogarithmRetroactiveSpeedTest, PolylogarithmPriorityQueueSpeed, ::testing::Range(3000, 3001, 3000));
+INSTANTIATE_TEST_CASE_P(TestPartialPriorityQueueValidation, PartialPriorityQueueValidation, ::testing::Range(100, 1001, 100));
+//INSTANTIATE_TEST_CASE_P(BruteSpeedTest, PartialBrutePriorityQueueSpeed, ::testing::Range(100, 2001, 100));
+//INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, PartialRetroactivePriorityQueueSpeed, ::testing::Range(100, 2001, 100));
+
+
+INSTANTIATE_TEST_CASE_P(TestFullPriorityQueueValidation, FullPriorityQueueValidation, ::testing::Range(100, 1001, 100));
+//INSTANTIATE_TEST_CASE_P(BruteSpeedTest, FullBrutePriorityQueueSpeed, ::testing::Range(100, 2001, 100));
+//INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, FullRetroactivePriorityQueueSpeed, ::testing::Range(100, 2001, 100));
+
+
+
+INSTANTIATE_TEST_CASE_P(PolylogarithmPriorityQueueTest, FullPolylogarithmPriorityQueueValidation, ::testing::Range(100, 1001, 100));
+//INSTANTIATE_TEST_CASE_P(PolylogarithmRetroactiveSpeedTest, PolylogarithmPriorityQueueSpeed, ::testing::Range(100, 1001, 100));
 
 int main(int argc, char **argv) {
-  srand(42);
-  //srand(time(NULL));
+  //srand(42);
+  srand(time(NULL));
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

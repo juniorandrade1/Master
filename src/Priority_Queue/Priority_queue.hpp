@@ -97,7 +97,7 @@ namespace Retroactivity {
     * @returns -> vetor de operações realizadas nas filas qnow e nqnow
     * @pre -> deve existir uma operação Insert(t, Push(data)) na estrutura
     */
-    void removePush(int t);
+    vector< pair<int, T> > removePush(int t);
 
 
     /** Remove uma operação de Pop() no tempo t
@@ -107,7 +107,7 @@ namespace Retroactivity {
     * @returns -> vetor de operações realizadas nas filas qnow e nqnow
     * @pre -> deve existir uma operação Delete(t, Pop()) na estrutura
     */
-    void removePop(int t);
+    vector< pair<int, T> > removePop(int t);
 
 
     /** Retorna se a fila está vazia no tempo presente
@@ -424,6 +424,30 @@ namespace Retroactivity {
     * @pre -> não deve existir nenhuma outra operação no tempo i
     */
     void addPop(int no, int l, int r, int i);
+
+
+    /** Função que remove a operação push do tempo i
+    * 
+    * Insere na checkpoint tree uma deleção da operação Push no tempo i
+    *
+    * @param no -> indice do nó atual da recursao para inserção do elemento
+    * @param l -> limite inferior do intervalo contido por no
+    * @param r -> limite superior do intervalo contido por no
+    * @param i -> tempo em que a operação Push será deletada da estrutura
+    */
+    void delPush(int no, int l, int r, int i);
+
+
+    /** Função que remove a operação pop do tempo i
+    * 
+    * Insere na checkpoint tree uma deleção da operação Pop no tempo i
+    *
+    * @param no -> indice do nó atual da recursao para inserção do elemento
+    * @param l -> limite inferior do intervalo contido por no
+    * @param r -> limite superior do intervalo contido por no
+    * @param i -> tempo em que a operação Pop será deletada da estrutura
+    */
+    void delPop(int no, int l, int r, int i);
 
 
     /** Função que obtém os indices dos nós contidos em um intervalo [i, j]

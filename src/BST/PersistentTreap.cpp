@@ -108,6 +108,7 @@ private:
   }
 
   pTreapNode erase(pTreapNode t, K key) {
+    if(t == NULL) return NULL;
     if (t->key == key) {
       t = merge(t->l, t->r);
     }

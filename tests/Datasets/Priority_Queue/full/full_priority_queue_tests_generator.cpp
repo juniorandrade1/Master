@@ -8,7 +8,7 @@ namespace Random {
 };
 
 namespace Tests {
-  const int N = (int)2e5 + 10;
+  const int N = (int)3e4;
   class Segtree {
   public:
     int n;
@@ -147,7 +147,7 @@ namespace Tests {
           int t;
           while(1) {
             t = Random::getInt(0, N);
-            if(!used[t] && tr.queryMn(t, N) >= 1) break;
+            if(!used[t] && tr.queryMn(t, N) >= 4) break;
           }
           used[t] = 1;
           del.insert(t);
@@ -168,7 +168,7 @@ namespace Tests {
           int t;
           while(1) {
             t = GetSample(ins);
-            if(tr.querySm(t, t) >= 1 && tr.queryMn(t, N) >= 1) break;
+            if(tr.querySm(t, t) >= 4 && tr.queryMn(t, N) >= 4) break;
           } 
           allOperations.push_back(FullPriorityQueueTestOperation('Q', 'T', t, INT_MIN));
         }

@@ -8,7 +8,7 @@ namespace Random {
 };
 
 namespace Tests {
-  const int N = (int)2e5 + 10;
+  const int N = (int)3e4;
   class Segtree {
   public:
     int n;

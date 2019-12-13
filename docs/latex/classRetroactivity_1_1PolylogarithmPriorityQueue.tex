@@ -26,6 +26,10 @@ void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a87b978cc19aee6
 \item 
 void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_afc4926b8969ceb49e18eec4bcfedc054}{add\+Pop} (int no, int l, int r, int i)
 \item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a9963c071e40c6a3de73d23577598c321}{del\+Push} (int no, int l, int r, int i)
+\item 
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_ac443672a0107e3ed713abb7532ae9664}{del\+Pop} (int no, int l, int r, int i)
+\item 
 void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a18cda73d1563529c27cf8533c7bcfde2}{get\+Nodes} (int no, int l, int r, int i, int j, vector$<$ int $>$ \&s)
 \item 
 T \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue_a19a0f1350c94228d0a8d0e3bc8e6fd7f}{get\+Split\+Key} (T A, vector$<$ ii $>$ all)
@@ -119,6 +123,50 @@ Insere na checkpoint tree o elemento data no tempo i
 \begin{DoxyPrecond}{Precondition}
 -\/$>$ não deve existir nenhuma outra operação no tempo i 
 \end{DoxyPrecond}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_ac443672a0107e3ed713abb7532ae9664}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_ac443672a0107e3ed713abb7532ae9664}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!del\+Pop@{del\+Pop}}
+\index{del\+Pop@{del\+Pop}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{del\+Pop()}{delPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::del\+Pop (\begin{DoxyParamCaption}\item[{int}]{no,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+Função que remove a operação pop do tempo i
+
+Insere na checkpoint tree uma deleção da operação Pop no tempo i
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & -\/$>$ indice do nó atual da recursao para inserção do elemento \\
+\hline
+{\em l} & -\/$>$ limite inferior do intervalo contido por no \\
+\hline
+{\em r} & -\/$>$ limite superior do intervalo contido por no \\
+\hline
+{\em i} & -\/$>$ tempo em que a operação Pop será deletada da estrutura \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a9963c071e40c6a3de73d23577598c321}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a9963c071e40c6a3de73d23577598c321}} 
+\index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!del\+Push@{del\+Push}}
+\index{del\+Push@{del\+Push}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{del\+Push()}{delPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classRetroactivity_1_1PolylogarithmPriorityQueue}{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}$<$ T $>$\+::del\+Push (\begin{DoxyParamCaption}\item[{int}]{no,  }\item[{int}]{l,  }\item[{int}]{r,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+Função que remove a operação push do tempo i
+
+Insere na checkpoint tree uma deleção da operação Push no tempo i
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & -\/$>$ indice do nó atual da recursao para inserção do elemento \\
+\hline
+{\em l} & -\/$>$ limite inferior do intervalo contido por no \\
+\hline
+{\em r} & -\/$>$ limite superior do intervalo contido por no \\
+\hline
+{\em i} & -\/$>$ tempo em que a operação Push será deletada da estrutura \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classRetroactivity_1_1PolylogarithmPriorityQueue_a4b505ade995caff1cdf8c037f492b067}\label{classRetroactivity_1_1PolylogarithmPriorityQueue_a4b505ade995caff1cdf8c037f492b067}} 
 \index{Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}!Fuse@{Fuse}}
 \index{Fuse@{Fuse}!Retroactivity\+::\+Polylogarithm\+Priority\+Queue@{Retroactivity\+::\+Polylogarithm\+Priority\+Queue}}

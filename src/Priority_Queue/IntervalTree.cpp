@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int N = (int)3e4 + 1;
+const int N = (int)70000;
 
 template <typename T>
 class IntervalTreeSum {
