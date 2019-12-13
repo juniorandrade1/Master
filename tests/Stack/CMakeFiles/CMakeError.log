@@ -1,24 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp
+Change Dir: /home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_35b97/fast"
-/usr/bin/make -f CMakeFiles/cmTC_35b97.dir/build.make CMakeFiles/cmTC_35b97.dir/build
-make[1]: Entering directory '/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_35b97.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_35b97.dir/CheckSymbolExists.c.o   -c /home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_35b97
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_35b97.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_35b97.dir/CheckSymbolExists.c.o  -o cmTC_35b97 -rdynamic 
-CMakeFiles/cmTC_35b97.dir/CheckSymbolExists.c.o: In function `main':
-CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+Run Build Command:"/usr/bin/make" "cmTC_26c73/fast"
+/usr/bin/make -f CMakeFiles/cmTC_26c73.dir/build.make CMakeFiles/cmTC_26c73.dir/build
+make[1]: Entering directory '/home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_26c73.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_26c73.dir/CheckSymbolExists.c.o   -c /home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_26c73
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_26c73.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_26c73.dir/CheckSymbolExists.c.o  -o cmTC_26c73 
+CMakeFiles/cmTC_26c73.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_35b97.dir/build.make:97: recipe for target 'cmTC_35b97' failed
-make[1]: *** [cmTC_35b97] Error 1
-make[1]: Leaving directory '/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_35b97/fast' failed
-make: *** [cmTC_35b97/fast] Error 2
+CMakeFiles/cmTC_26c73.dir/build.make:97: recipe for target 'cmTC_26c73' failed
+make[1]: *** [cmTC_26c73] Error 1
+make[1]: Leaving directory '/home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_26c73/fast' failed
+make: *** [cmTC_26c73/fast] Error 2
 
-File /home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -34,22 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp
+Change Dir: /home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1a367/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1a367.dir/build.make CMakeFiles/cmTC_1a367.dir/build
-make[1]: Entering directory '/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1a367.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1a367.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_1a367
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a367.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_1a367.dir/CheckFunctionExists.c.o  -o cmTC_1a367 -rdynamic -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_9041b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9041b.dir/build.make CMakeFiles/cmTC_9041b.dir/build
+make[1]: Entering directory '/home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9041b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_9041b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9041b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9041b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_9041b.dir/CheckFunctionExists.c.o  -o cmTC_9041b -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_1a367.dir/build.make:97: recipe for target 'cmTC_1a367' failed
-make[1]: *** [cmTC_1a367] Error 1
-make[1]: Leaving directory '/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_1a367/fast' failed
-make: *** [cmTC_1a367/fast] Error 2
+CMakeFiles/cmTC_9041b.dir/build.make:97: recipe for target 'cmTC_9041b' failed
+make[1]: *** [cmTC_9041b] Error 1
+make[1]: Leaving directory '/home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9041b/fast' failed
+make: *** [cmTC_9041b/fast] Error 2
 
 

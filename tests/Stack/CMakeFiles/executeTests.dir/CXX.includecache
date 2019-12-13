@@ -6,25 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/IntervalTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.cpp
 bits/stdc++.h
 -
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.cpp
-Stack.hpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
+bits/stdc++.h
+-
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.cpp
+Stack.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.hpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.hpp
 bits/stdc++.h
 -
 ../BST/IntervalTree.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/BST/IntervalTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.cpp
+../BST/Treap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
 Stack.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.cpp
 
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Stack/Stack.tests.cpp
-../../Stack/Stack.hpp
-/home/junior/Dropbox/ArquivosMestrado/Master/codes/Stack/Stack.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/Stack.tests.cpp
+../../src/Stack/Stack.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.hpp
 gtest/gtest.h
 -
 
