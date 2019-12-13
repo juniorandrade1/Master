@@ -1,5 +1,4 @@
-// #include "../../Queue/Queue.cpp"
-#include "../../Queue/Queue.hpp"
+#include "../../src/Queue/Queue.hpp"
 #include <gtest/gtest.h>
 #include <vector>
 
@@ -105,84 +104,47 @@ int genRand(int l, int r) {
 class QueueValidation: public ::testing::TestWithParam<int>{};
 
 TEST_P(QueueValidation, Validation) {
-
-  int DEBUG_FLAG = 0;
-
   Retroactivity::PartialQueue< int > rq;
   Brute::PartialQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-
-  set< int > ins, del;
-
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-
-    ins.insert(t);
-
-    rq.InsertEnqueue(t, x);
-    bq.InsertEnqueue(t, x);
-
-    ASSERT_EQ(rq.front(), bq.front());
-    tr.update(t, N, 1);
+  string fileName = "../Datasets/Queue/partial/partialQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 3);
-    if(op == 2 && ins.size() == 0) op = 0;
-    if(op == 3 && del.size() == 0) op = 1;
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-
-      rq.InsertEnqueue(t, x);
-      bq.InsertEnqueue(t, x);
-
-      ins.insert(t);
-
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
       ASSERT_EQ(rq.front(), bq.front());
-      tr.update(t, N, 1);
     }
-    else if(op == 1) {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        rq.InsertEnqueue(t, x);
+        bq.InsertEnqueue(t, x);
       }
-      used[t] = 1;
-
-      rq.InsertDequeue(t);
-      bq.InsertDequeue(t);
-
-      del.insert(t);
-
-      ASSERT_EQ(rq.front(), bq.front());
-      tr.update(t, N, -1);
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.InsertDequeue(t);
+        bq.InsertDequeue(t);
+      }
     }
-    else if(op == 2) {
-      int x = GetSample(ins);
-      ins.erase(ins.find(x));
-      rq.DeleteEnqueue(x);
-      bq.DeleteEnqueue(x);
-    }
-    else {
-      int x = GetSample(del);
-      del.erase(del.find(x));
-      rq.DeleteDequeue(x);
-      bq.DeleteDequeue(x);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.DeleteEnqueue(t);
+        bq.DeleteEnqueue(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.DeleteDequeue(t);
+        bq.DeleteDequeue(t);
+      }
     }
   }
+  fclose(dataSet);
 }
 
 
@@ -191,99 +153,84 @@ class BruteQueueSpeed: public ::testing::TestWithParam<int>{};
 TEST_P(BruteQueueSpeed, BruteSpeed) {
   Brute::PartialQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    bq.InsertEnqueue(t, x);
-    bq.front();
-    tr.update(t, N, 1);
+  string fileName = "../Datasets/Queue/partial/partialQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 1);
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-      bq.InsertEnqueue(t, x);
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
       bq.front();
-      tr.update(t, N, 1);
     }
-    else {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        bq.InsertEnqueue(t, x);
       }
-      used[t] = 1;
-      bq.InsertDequeue(t);
-      bq.front();
-      tr.update(t, N, -1);
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.InsertDequeue(t);
+      }
+    }
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.DeleteEnqueue(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.DeleteDequeue(t);
+      }
     }
   }
+  fclose(dataSet);
 }
 
 class RetroactiveQueueSpeed: public ::testing::TestWithParam<int>{};
 
 TEST_P(RetroactiveQueueSpeed, RetroactiveSpeed) {
-  Retroactivity::PartialQueue< int > rq;
+  Retroactivity::PartialQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.InsertEnqueue(t, x);
-    rq.front();
-    tr.update(t, N, 1);
+  string fileName = "../Datasets/Queue/partial/partialQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 1);
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-      rq.InsertEnqueue(t, x);
-      rq.front();
-      tr.update(t, N, 1);
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      bq.front();
     }
-    else {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        bq.InsertEnqueue(t, x);
       }
-      used[t] = 1;
-      rq.InsertDequeue(t);
-      rq.front();
-      tr.update(t, N, -1);
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.InsertDequeue(t);
+      }
+    }
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.DeleteEnqueue(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.DeleteDequeue(t);
+      }
     }
   }
+  fclose(dataSet);
 }
 
 
-INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(100, 1000, 100));
-//INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BruteQueueSpeed, ::testing::Range(50, 5000, 50));
-//INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
 
 class FullQueueValidation: public ::testing::TestWithParam<int>{};
 
@@ -411,10 +358,15 @@ TEST_P(FullRetroactiveQueueSpeed, RetroactiveSpeed) {
   }
 }
 
+INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(100, 5000, 100));
+// INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BruteQueueSpeed, ::testing::Range(100, 5000, 100));
+// INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactiveQueueSpeed, ::testing::Range(100, 5000, 100));
 
-INSTANTIATE_TEST_CASE_P(FullTestQueueValidation, FullQueueValidation, ::testing::Range(500, 5000, 50));
-INSTANTIATE_TEST_CASE_P(FullBruteSpeedTest, FullBruteQueueSpeed, ::testing::Range(50, 5000, 50));
-INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
+
+
+INSTANTIATE_TEST_CASE_P(FullTestQueueValidation, FullQueueValidation, ::testing::Range(100, 5000, 100));
+//INSTANTIATE_TEST_CASE_P(FullBruteSpeedTest, FullBruteQueueSpeed, ::testing::Range(50, 5000, 50));
+//INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
 
 
 int main(int argc, char **argv) {

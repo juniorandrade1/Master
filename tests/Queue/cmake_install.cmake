@@ -1,4 +1,4 @@
-# Install script for directory: /home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Queue
+# Install script for directory: /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/junior/Dropbox/ArquivosMestrado/Master/codes/Tests/Queue/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
