@@ -2,105 +2,6 @@
 #include <gtest/gtest.h>
 #include <vector>
 
-const int N = (int)2e5 + 1;
-
-int GetSample(const std::set<int>& s) {
-  double r = rand() % s.size();
-  std::set<int>::iterator it = s.begin();
-  for (; r != 0; r--) it++;
-  return *it;
-}
-
-class Segtree {
-public:
-  int n;
-  vector< int > L, R;
-  vector< int > sm, mn;
-  vector< int > lz;
-  int createNode() {
-    int id = sm.size();
-    sm.emplace_back(0);
-    mn.emplace_back(0);
-    lz.emplace_back(0);
-    L.emplace_back(-1);
-    R.emplace_back(-1);
-    return id;  
-  }
-  Segtree(){
-    n = N;
-    createNode();
-  };
-  void propagate(int no, int l, int r) {
-    if(l != r && L[no] == -1) {
-      int id = createNode();
-      L[no] = id;
-    }
-    if(l != r && R[no] == -1) {
-      int id = createNode();
-      R[no] = id;
-    }
-    sm[no] += (r - l + 1) * lz[no];
-    mn[no] += lz[no];
-    if(l != r) {
-      lz[L[no]] += lz[no];
-      lz[R[no]] += lz[no];
-    }
-    lz[no] = 0;
-  }
-  void join(int no, int nl, int nr) {
-    sm[no] = sm[nl] + sm[nr];
-    mn[no] = min(mn[nl], mn[nr]);
-  }
-  void update(int no, int l, int r, int i, int j, int v) {
-    propagate(no, l, r);
-    if(r < i || l > j) return;
-    if(l >= i && r <= j) {
-      lz[no] += v;
-      propagate(no, l, r);
-      return;
-    }
-    int mid = (l + r) >> 1;
-    update(L[no], l, mid, i, j, v); update(R[no], mid + 1, r, i, j, v);
-    join(no, L[no], R[no]);
-  }
-  int querySm(int no, int l, int r, int i, int j) {
-    propagate(no, l, r);
-    if(r < i || l > j) return 0;
-    if(l >= i && r <= j) return sm[no];
-    int mid = (l + r) >> 1;
-    return querySm(L[no], l, mid, i, j) + querySm(R[no], mid + 1, r, i, j);
-  }
-  int queryMn(int no, int l, int r, int i, int j) {
-    propagate(no, l, r);
-    if(r < i || l > j) return INT_MAX;
-    if(l >= i && r <= j) return mn[no];
-    int mid = (l + r) >> 1;
-    return min(queryMn(L[no], l, mid, i, j), queryMn(R[no], mid + 1, r, i, j));
-  }
-  void update(int l, int r, int v) {
-    update(0, 0, n, l, r, v);
-  }
-  int querySm(int l, int r) {
-    return querySm(0, 0, n, l, r);
-  }
-  int queryMn(int l, int r) {
-    return queryMn(0, 0, n, l, r);
-  }
-};
-
-int getRand() {
-  int x = (rand() << 16) ^ (rand());
-  x = abs(x);
-  assert(x >= 0);
-  return x;
-}
-
-int genRand(int l, int r) {
-  int sz = (r - l + 1);
-  int g = getRand() % sz;
-  return l + g;
-}
-
 class QueueValidation: public ::testing::TestWithParam<int>{};
 
 TEST_P(QueueValidation, Validation) {
@@ -146,7 +47,6 @@ TEST_P(QueueValidation, Validation) {
   }
   fclose(dataSet);
 }
-
 
 class BruteQueueSpeed: public ::testing::TestWithParam<int>{};
 
@@ -230,33 +130,51 @@ TEST_P(RetroactiveQueueSpeed, RetroactiveSpeed) {
   fclose(dataSet);
 }
 
-
-
 class FullQueueValidation: public ::testing::TestWithParam<int>{};
 
 TEST_P(FullQueueValidation, Validation) {
   Retroactivity::FullQueue< int > rq;
   Brute::FullQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  for(int i = 0; i < n; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.InsertEnqueue(t, x);
-    bq.InsertEnqueue(t, x);
-    tr.update(t, N, 1);
-    while(1) {
-    	t = genRand(0, N);
-    	if(tr.querySm(t, t) >= 1) break;
-    }
-    ASSERT_EQ(rq.front(t), bq.front(t));
+  string fileName = "../Datasets/Queue/full/FullQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
+      ASSERT_EQ(rq.front(t), bq.front(t));
+    }
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        rq.InsertEnqueue(t, x);
+        bq.InsertEnqueue(t, x);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        //rq.InsertDequeue(t);
+        //bq.InsertDequeue(t);
+      }
+    }
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        //rq.DeleteEnqueue(t);
+        //bq.DeleteEnqueue(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        //rq.DeleteDequeue(t);
+        //bq.DeleteDequeue(t);
+      }
+    }
+  }
+  fclose(dataSet);
 }
 
 
@@ -265,50 +183,41 @@ class FullBruteQueueSpeed: public ::testing::TestWithParam<int>{};
 TEST_P(FullBruteQueueSpeed, BruteSpeed) {
   Brute::FullQueue< int > bq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    bq.InsertEnqueue(t, x);
-    bq.front(t);
-    tr.update(t, N, 1);
+  string fileName = "../Datasets/Queue/full/FullQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 1);
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-      bq.InsertEnqueue(t, x);
-      tr.update(t, N, 1);
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
+      bq.front(t);
     }
-    else {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        bq.InsertEnqueue(t, x);
       }
-      used[t] = 1;
-      bq.InsertDequeue(t);
-      tr.update(t, N, -1);
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.InsertDequeue(t);
+      }
     }
-	int t;
-	while(1) {
-		t = genRand(0, N);
-		if(tr.querySm(t, t) >= 1) break;
-	}
-	bq.front(t);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.DeleteEnqueue(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        bq.DeleteDequeue(t);
+      }
+    }
   }
+  fclose(dataSet);
 }
 
 class FullRetroactiveQueueSpeed: public ::testing::TestWithParam<int>{};
@@ -316,46 +225,41 @@ class FullRetroactiveQueueSpeed: public ::testing::TestWithParam<int>{};
 TEST_P(FullRetroactiveQueueSpeed, RetroactiveSpeed) {
   Retroactivity::FullQueue< int > rq;
   int n = GetParam();
-  map< int, int > used;
-  Segtree tr;
-  for(int i = 0; i < n / 2; ++i) {
-    int x = genRand(0, N);
-    int t;
-    while(1) {
-      t = genRand(0, N);
-      if(!used[t]) break;
-    }
-    used[t] = 1;
-    rq.InsertEnqueue(t, x);
-    tr.update(t, N, 1);
-    rq.front(t);
+  string fileName = "../Datasets/Queue/full/FullQueue" + to_string(n) + ".in";
+  FILE *dataSet = fopen(fileName.c_str(), "r");
+  if(dataSet == NULL) {
+    printf("FILE NOT FOUND\n");
+    FAIL();
   }
-  for(int i = 0; i < n / 2; ++i) {
-    int op = genRand(0, 1);
-    if(op == 0) {
-      int x = genRand(0, N);
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t]) break;
-      }
-      used[t] = 1;
-      rq.InsertEnqueue(t, x);
-      tr.update(t, N, 1);
+  fscanf(dataSet, "%d", &n);
+  for(int i = 0; i < n; ++i) {
+    char op, type; fscanf(dataSet, " %c %c", &op, &type);
+    if(op == 'Q') {
+      int t; fscanf(dataSet, "%d", &t);
+      rq.front(t);
     }
-    else {
-      int t;
-      while(1) {
-        t = genRand(0, N);
-        if(!used[t] && tr.queryMn(t, N) >= 1) break;
+    else if(op == 'I') {
+      if(type == 'E') {
+        int t, x; fscanf(dataSet, "%d %d", &t, &x);
+        rq.InsertEnqueue(t, x);
       }
-      used[t] = 1;
-      rq.InsertDequeue(t);
-      tr.update(t, N, -1);
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.InsertDequeue(t);
+      }
     }
-    int t = genRand(0, N);
-    rq.front(t);
+    else if(op == 'D') {
+      if(type == 'E') {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.DeleteEnqueue(t);
+      }
+      else {
+        int t; fscanf(dataSet, "%d", &t);
+        rq.DeleteDequeue(t);
+      }
+    }
   }
+  fclose(dataSet);
 }
 
 INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(100, 5000, 100));
@@ -365,8 +269,8 @@ INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(1
 
 
 INSTANTIATE_TEST_CASE_P(FullTestQueueValidation, FullQueueValidation, ::testing::Range(100, 5000, 100));
-//INSTANTIATE_TEST_CASE_P(FullBruteSpeedTest, FullBruteQueueSpeed, ::testing::Range(50, 5000, 50));
-//INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::testing::Range(50, 5000, 50));
+// INSTANTIATE_TEST_CASE_P(FullBruteSpeedTest, FullBruteQueueSpeed, ::testing::Range(100, 5000, 100));
+// INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::testing::Range(100, 5000, 100));
 
 
 int main(int argc, char **argv) {
