@@ -589,3 +589,106 @@ namespace Retroactivity {
 
   /* ------------------------------ END = Polylogarithmic Retroactive Priority Queue --------------------------- */
 };
+
+
+/* ------------------------------ BEGIN = NAMESPACE BRUTE --------------------------- */
+namespace Brute {
+  /* ------------------------------ BEGIN = Partial Retroactive Priority Queue --------------------------- */
+  template <typename T> 
+  void PartialPriorityQueue<T>::insertPush(int t, T data) {
+    vector< pair<int, T> > ret;
+    all.insert(make_pair(t, make_pair(1, data)));
+  }
+  template <typename T> 
+  void  PartialPriorityQueue<T>::insertPop(int t) {
+    all.insert(make_pair(t, make_pair(-1, T())));
+  }
+
+  template <typename T> 
+  void  PartialPriorityQueue<T>::removePush(int t) {
+    auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+    all.erase(f);
+  }
+  template <typename T> 
+  void  PartialPriorityQueue<T>::removePop(int t) {
+    auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+    all.erase(f);
+  }
+  template <typename T> 
+  bool PartialPriorityQueue<T>::empty() {
+    multiset< T > qnow;
+    for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
+      pair<int, pair<int, T> > foo = *it;
+      if(foo.second.first == 1) qnow.insert(foo.second.second);
+      else {
+        qnow.erase(qnow.begin());
+      }
+    }
+    return qnow.size() == 0;
+  }
+  template <typename T> 
+  T PartialPriorityQueue<T>::getPeak() {
+    multiset< T > qnow;
+    for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
+      pair<int, pair<int, T> > foo = *it;
+      if(foo.second.first == 1) qnow.insert(foo.second.second);
+      else {
+        qnow.erase(qnow.begin());
+      }
+    }
+    return *qnow.begin();
+  }
+  /* ------------------------------ END = Partial Retroactive Priority Queue --------------------------- */
+
+  /* ------------------------------ BEGIN = Full Retroactive Priority Queue --------------------------- */
+
+  template <typename T>
+  void FullPriorityQueue<T>::insertPush(int t, T data) {
+    vector< pair<int, T> > ret;
+    all.insert(make_pair(t, make_pair(1, data)));
+  }
+  template <typename T> 
+  void  FullPriorityQueue<T>::insertPop(int t) {
+    all.insert(make_pair(t, make_pair(-1, T())));
+  }
+
+  template <typename T> 
+  void  FullPriorityQueue<T>::removePush(int t) {
+    auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+    all.erase(f);
+  }
+  template <typename T> 
+  void  FullPriorityQueue<T>::removePop(int t) {
+    auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
+    all.erase(f);
+  }
+  template <typename T> 
+  bool FullPriorityQueue<T>::empty(int t) {
+    multiset< T > qnow;
+    for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
+      pair<int, pair<int, T> > foo = *it;
+      if(foo.first > t) continue;
+      if(foo.second.first == 1) qnow.insert(foo.second.second);
+      else {
+        qnow.erase(qnow.begin());
+      }
+    }
+    return qnow.size() == 0;
+  }
+  template <typename T> 
+  T FullPriorityQueue<T>::getPeak(int t) {
+    multiset< T > qnow;
+    for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
+      pair<int, pair<int, T> > foo = *it;
+      if(foo.first > t) continue;
+      if(foo.second.first == 1) qnow.insert(foo.second.second);
+      else {
+        qnow.erase(qnow.begin());
+      }
+    }
+    return *qnow.begin();
+  }
+  /* ------------------------------ END = Full Retroactive Priority Queue --------------------------- */
+}
+
+/* ------------------------------- END = NAMESPACE BRUTE ---------------------------- */

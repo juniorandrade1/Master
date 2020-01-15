@@ -174,3 +174,62 @@ namespace Retroactivity {
   }
   /* ------------------------------ END = Non-Oblivious Retroactive Queue --------------------------- */  
 };
+
+/* ------------------------------ BEGIN = NAMESPACE BRUTE --------------------------- */  
+namespace Brute {
+
+  /* ------------------------------ BEGIN = Partial Retroactive Queue --------------------------- */
+  template <typename T> void PartialQueue<T>::InsertEnqueue(int t, const T &x) {
+    q[t] = x;
+  }
+  template <typename T> void PartialQueue<T>:: InsertDequeue(int t) {
+    q[t] = numeric_limits< T > :: min();
+  }
+  template <typename T> void PartialQueue<T>:: DeleteEnqueue(int t) {
+    q.erase(t);
+  }
+  template <typename T> void PartialQueue<T>:: DeleteDequeue(int t) {
+    q.erase(t);
+  }
+  template <typename T> T PartialQueue<T>:: front() {
+    queue< int > f;
+    for(typename map< int, T > :: iterator it = q.begin(); it != q.end(); it++) {
+      if(it->second == numeric_limits< T > :: min()) f.pop();
+      else f.push(it->second);
+    }
+    assert(f.size() > 0);
+    return f.front();
+  }
+  /* ------------------------------ END = Partial Retroactive Queue -------------------------- */
+
+  /* ------------------------------ BEGIN = Full Retroactive Queue --------------------------- */
+  template <typename T> void FullQueue<T>::InsertEnqueue(int t, const T &x) {
+    q[t] = x;
+  }
+
+  template <typename T> void FullQueue<T>::InsertDequeue(int t) {
+    q[t] = numeric_limits< T > :: min();
+  }
+
+  template <typename T> void FullQueue<T>::DeleteEnqueue(int t) {
+    q.erase(t);
+  }
+
+  template <typename T> void FullQueue<T>::DeleteDequeue(int t) {
+    q.erase(t);
+  }
+
+  template <typename T> T FullQueue<T>::front(int t) {
+    queue< int > f;
+    for(typename map< int, T > :: iterator it = q.begin(); it != q.end(); it++) {
+      if(it->first > t) break;
+      if(it->first == numeric_limits< T > :: min()) f.pop();
+      else f.push(it->second);
+    }
+    return f.front();
+  }
+  /* ------------------------------ END = Full Retroactive Queue --------------------------- */
+
+};
+
+/* ------------------------------ END = NAMESPACE BRUTE --------------------------- */  

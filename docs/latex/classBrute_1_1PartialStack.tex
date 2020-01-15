@@ -3,32 +3,98 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBrute_1_1PartialStack_a9b35f39e3d2a3b6af1599dfe8a9dc83d}\label{classBrute_1_1PartialStack_a9b35f39e3d2a3b6af1599dfe8a9dc83d}} 
-void {\bfseries Insert\+Push} (int t, const T \&x)
+void \hyperlink{classBrute_1_1PartialStack_a9b35f39e3d2a3b6af1599dfe8a9dc83d}{Insert\+Push} (int t, const T \&x)
 \item 
-\mbox{\Hypertarget{classBrute_1_1PartialStack_a347ebf205dac4ad1976180b1ec897af8}\label{classBrute_1_1PartialStack_a347ebf205dac4ad1976180b1ec897af8}} 
-void {\bfseries Insert\+Pop} (int t)
+void \hyperlink{classBrute_1_1PartialStack_a347ebf205dac4ad1976180b1ec897af8}{Insert\+Pop} (int t)
 \item 
-\mbox{\Hypertarget{classBrute_1_1PartialStack_af872304f5d93e50b1e704dc8f6b13d34}\label{classBrute_1_1PartialStack_af872304f5d93e50b1e704dc8f6b13d34}} 
-void {\bfseries Delete\+Push} (int t)
+void \hyperlink{classBrute_1_1PartialStack_af872304f5d93e50b1e704dc8f6b13d34}{Delete\+Push} (int t)
 \item 
+void \hyperlink{classBrute_1_1PartialStack_a345e85a410547bd21dffe1bb05879c49}{Delete\+Pop} (int t)
+\item 
+T \hyperlink{classBrute_1_1PartialStack_a75cea8d95032298fabb08de150190045}{peak} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classBrute_1_1PartialStack_a345e85a410547bd21dffe1bb05879c49}\label{classBrute_1_1PartialStack_a345e85a410547bd21dffe1bb05879c49}} 
-void {\bfseries Delete\+Pop} (int t)
-\item 
+\index{Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}!Delete\+Pop@{Delete\+Pop}}
+\index{Delete\+Pop@{Delete\+Pop}!Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Delete\+Pop()}{DeletePop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialStack}{Brute\+::\+Partial\+Stack}$<$ T $>$\+::Delete\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação Pop realizada no tempo t =$>$ Delete(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Pop foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Pop no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1PartialStack_af872304f5d93e50b1e704dc8f6b13d34}\label{classBrute_1_1PartialStack_af872304f5d93e50b1e704dc8f6b13d34}} 
+\index{Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}!Delete\+Push@{Delete\+Push}}
+\index{Delete\+Push@{Delete\+Push}!Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Delete\+Push()}{DeletePush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialStack}{Brute\+::\+Partial\+Stack}$<$ T $>$\+::Delete\+Push (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação Push realizada no tempo t =$>$ Delete(t, Push(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Push foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Push no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1PartialStack_a347ebf205dac4ad1976180b1ec897af8}\label{classBrute_1_1PartialStack_a347ebf205dac4ad1976180b1ec897af8}} 
+\index{Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}!Insert\+Pop@{Insert\+Pop}}
+\index{Insert\+Pop@{Insert\+Pop}!Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Insert\+Pop()}{InsertPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialStack}{Brute\+::\+Partial\+Stack}$<$ T $>$\+::Insert\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Adiciona a realização da operação Pop no tempo t =$>$ Insert(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de realização da operação Pop() \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBrute_1_1PartialStack_a9b35f39e3d2a3b6af1599dfe8a9dc83d}\label{classBrute_1_1PartialStack_a9b35f39e3d2a3b6af1599dfe8a9dc83d}} 
+\index{Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}!Insert\+Push@{Insert\+Push}}
+\index{Insert\+Push@{Insert\+Push}!Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{Insert\+Push()}{InsertPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialStack}{Brute\+::\+Partial\+Stack}$<$ T $>$\+::Insert\+Push (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{const T \&}]{x }\end{DoxyParamCaption})}
+
+Insere o objeto x no tempo t na pilha =$>$ Insert(t, Push(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de inserção do objeto \\
+\hline
+{\em x} & -\/$>$ objeto a ser inserido no topo da pilha no tempo t \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classBrute_1_1PartialStack_a75cea8d95032298fabb08de150190045}\label{classBrute_1_1PartialStack_a75cea8d95032298fabb08de150190045}} 
-T {\bfseries peak} ()
-\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classBrute_1_1PartialStack_a104945503f4e42d959681d320dd6b261}\label{classBrute_1_1PartialStack_a104945503f4e42d959681d320dd6b261}} 
-set$<$ pair$<$ int, T $>$ $>$ {\bfseries v}
-\item 
-\mbox{\Hypertarget{classBrute_1_1PartialStack_a1c53111c326f1845aed9a4238dae21e4}\label{classBrute_1_1PartialStack_a1c53111c326f1845aed9a4238dae21e4}} 
-vector$<$ T $>$ {\bfseries aux}
-\end{DoxyCompactItemize}
+\index{Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}!peak@{peak}}
+\index{peak@{peak}!Brute\+::\+Partial\+Stack@{Brute\+::\+Partial\+Stack}}
+\subsubsection{\texorpdfstring{peak()}{peak()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classBrute_1_1PartialStack}{Brute\+::\+Partial\+Stack}$<$ T $>$\+::peak (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna o topo da pilha no tempo atual =$>$ Peak()
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ retorna objeto no topo da pilha no tempo atual 
+\end{DoxyReturn}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+hpp\end{DoxyCompactItemize}
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+cpp\end{DoxyCompactItemize}

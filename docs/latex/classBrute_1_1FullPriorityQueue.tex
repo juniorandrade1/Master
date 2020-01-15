@@ -3,32 +3,126 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_ac4a7840f16b0fff5ca90920f3646a504}\label{classBrute_1_1FullPriorityQueue_ac4a7840f16b0fff5ca90920f3646a504}} 
-void {\bfseries insert\+Push} (int t, T data)
+void \hyperlink{classBrute_1_1FullPriorityQueue_ac4a7840f16b0fff5ca90920f3646a504}{insert\+Push} (int t, T data)
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a0dbc488046321d9ef58c7b124d9f71a7}\label{classBrute_1_1FullPriorityQueue_a0dbc488046321d9ef58c7b124d9f71a7}} 
-void {\bfseries insert\+Pop} (int t)
+void \hyperlink{classBrute_1_1FullPriorityQueue_a0dbc488046321d9ef58c7b124d9f71a7}{insert\+Pop} (int t)
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a3faa79fc9fad31f2572d80df3beea392}\label{classBrute_1_1FullPriorityQueue_a3faa79fc9fad31f2572d80df3beea392}} 
-void {\bfseries remove\+Push} (int t)
+void \hyperlink{classBrute_1_1FullPriorityQueue_a3faa79fc9fad31f2572d80df3beea392}{remove\+Push} (int t)
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a4310a7e462f8ef3a6e2078e695a384b2}\label{classBrute_1_1FullPriorityQueue_a4310a7e462f8ef3a6e2078e695a384b2}} 
-void {\bfseries remove\+Pop} (int t)
+void \hyperlink{classBrute_1_1FullPriorityQueue_a4310a7e462f8ef3a6e2078e695a384b2}{remove\+Pop} (int t)
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a696b62029dba8ba7571a124c64ba94ef}\label{classBrute_1_1FullPriorityQueue_a696b62029dba8ba7571a124c64ba94ef}} 
-T {\bfseries get\+Peak} (int t)
+bool \hyperlink{classBrute_1_1FullPriorityQueue_a572c0b02ac94766f83b79ca41ef00d81}{empty} (int t)
 \item 
+T \hyperlink{classBrute_1_1FullPriorityQueue_a696b62029dba8ba7571a124c64ba94ef}{get\+Peak} (int t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a572c0b02ac94766f83b79ca41ef00d81}\label{classBrute_1_1FullPriorityQueue_a572c0b02ac94766f83b79ca41ef00d81}} 
-bool {\bfseries empty} (int t)
-\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a71b4544a5173c8a2c2e549d8d5f34d28}\label{classBrute_1_1FullPriorityQueue_a71b4544a5173c8a2c2e549d8d5f34d28}} 
-std\+::multiset$<$ pair$<$ int, pair$<$ int, T $>$ $>$ $>$ {\bfseries all}
-\end{DoxyCompactItemize}
+\index{Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}!empty@{empty}}
+\index{empty@{empty}!Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \hyperlink{classBrute_1_1FullPriorityQueue}{Brute\+::\+Full\+Priority\+Queue}$<$ T $>$\+::empty (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna se a fila está vazia no tempo t =$>$ Empty(t)
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que se deseja saber se a fila está vazia \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ \textquotesingle{}true\textquotesingle{} se a fila estiver vazia no tempo t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a696b62029dba8ba7571a124c64ba94ef}\label{classBrute_1_1FullPriorityQueue_a696b62029dba8ba7571a124c64ba94ef}} 
+\index{Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}!get\+Peak@{get\+Peak}}
+\index{get\+Peak@{get\+Peak}!Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{get\+Peak()}{getPeak()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classBrute_1_1FullPriorityQueue}{Brute\+::\+Full\+Priority\+Queue}$<$ T $>$\+::get\+Peak (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna o menor elemento da fila de prioridade no tempo t =$>$ Get\+Peak(t)
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que se deseja consultar o menor elemento da fila \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/$>$ o menor elemento da fila de prioridade após a execução de todas as operações até o tempo t 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ a estrutura deve conter pelo menos um elemento no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a0dbc488046321d9ef58c7b124d9f71a7}\label{classBrute_1_1FullPriorityQueue_a0dbc488046321d9ef58c7b124d9f71a7}} 
+\index{Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}!insert\+Pop@{insert\+Pop}}
+\index{insert\+Pop@{insert\+Pop}!Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Pop()}{insertPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullPriorityQueue}{Brute\+::\+Full\+Priority\+Queue}$<$ T $>$\+::insert\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Insere uma operação de Pop() no tempo t =$>$ Insert(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_ac4a7840f16b0fff5ca90920f3646a504}\label{classBrute_1_1FullPriorityQueue_ac4a7840f16b0fff5ca90920f3646a504}} 
+\index{Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}!insert\+Push@{insert\+Push}}
+\index{insert\+Push@{insert\+Push}!Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{insert\+Push()}{insertPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullPriorityQueue}{Brute\+::\+Full\+Priority\+Queue}$<$ T $>$\+::insert\+Push (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{T}]{data }\end{DoxyParamCaption})}
+
+Insere uma operação de Push(data) no tempo t =$>$ Insert(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a4310a7e462f8ef3a6e2078e695a384b2}\label{classBrute_1_1FullPriorityQueue_a4310a7e462f8ef3a6e2078e695a384b2}} 
+\index{Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}!remove\+Pop@{remove\+Pop}}
+\index{remove\+Pop@{remove\+Pop}!Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Pop()}{removePop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullPriorityQueue}{Brute\+::\+Full\+Priority\+Queue}$<$ T $>$\+::remove\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Pop() no tempo t =$>$ Delete(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Pop() foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Delete(t, Pop()) na estrutura 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1FullPriorityQueue_a3faa79fc9fad31f2572d80df3beea392}\label{classBrute_1_1FullPriorityQueue_a3faa79fc9fad31f2572d80df3beea392}} 
+\index{Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}!remove\+Push@{remove\+Push}}
+\index{remove\+Push@{remove\+Push}!Brute\+::\+Full\+Priority\+Queue@{Brute\+::\+Full\+Priority\+Queue}}
+\subsubsection{\texorpdfstring{remove\+Push()}{removePush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullPriorityQueue}{Brute\+::\+Full\+Priority\+Queue}$<$ T $>$\+::remove\+Push (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove uma operação de Push(data) no tempo t =$>$ Delete(t, Push(data))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que a operação Push(data) foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Insert(t, Push(data)) na estrutura 
+\end{DoxyPrecond}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+hpp\end{DoxyCompactItemize}
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Priority\+\_\+\+Queue/Priority\+\_\+queue.\+cpp\end{DoxyCompactItemize}

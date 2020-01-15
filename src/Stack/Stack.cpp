@@ -1,7 +1,9 @@
 #include "Stack.hpp"
 
+
+/* ------------------------------ BEGIN = NAMESPACE RETROACTIVITY ---------------------------- */
 namespace Retroactivity {
-  /* ------------------------------ BEGIN = Partial Retroactive Stack --------------------------- */
+  /* --------------------------- BEGIN = Partial Retroactive Stack --------------------------- */
   template <typename T> void PartialStack<T>::InsertPush(int t, const T &x) {
     v.updateInsert(t, x);
   }
@@ -130,5 +132,71 @@ namespace Retroactivity {
       tpop.showTree2();
       printf("\n\n");
   }
-  /* ------------------------------ END = Non-Oblivious Retroactive Stack --------------------------- */
+  /* ---------------------------------- END = Non-Oblivious Retroactive Stack --------------------------------- */
 };
+/* --------------------------------------- END = NAMESPACE RETROACTIVITY -------------------------------------- */
+
+/* ------------------------------------------ BEGIN = NAMESPACE BRUTE ----------------------------------------- */
+namespace Brute {
+  /* ------------------------------ BEGIN = Partial Retroactive Stack (BRUTE-FORCE) --------------------------- */
+  template <typename T> void PartialStack<T>::InsertPush(int t, const T &x) {
+    v.insert(make_pair(t, x));
+  }
+  template <typename T> void PartialStack<T>::InsertPop(int t) {
+    v.insert(make_pair(t, -INF));
+  }
+  template <typename T> void PartialStack<T>::DeletePush(int t) {
+    auto f = v.lower_bound(make_pair(t, -INF));
+      v.erase(f);
+  }
+  template <typename T> void PartialStack<T>::DeletePop(int t) {
+    auto f = v.lower_bound(make_pair(t, -INF));
+      v.erase(f);
+  }
+  template <typename T> T PartialStack<T>::peak() {
+    vector< T > aux;
+    for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
+      if(it->second == -INF) aux.pop_back();
+      else aux.push_back(it->second);
+    }
+    return aux[(int)aux.size() - 1];
+  }
+  /* ------------------------------ END = Partial Retroactive Stack (BRUTE-FORCE) --------------------------- */
+
+
+  /* ------------------------------ BEGIN = Full Retroactive Stack (BRUTE-FORCE) --------------------------- */
+  template <typename T> void FullStack<T>::InsertPush(int t, const T &x) {
+    v.insert(make_pair(t, x));
+  }
+  template <typename T> void FullStack<T>::InsertPop(int t) {
+    v.insert(make_pair(t, -INF));
+  }
+  template <typename T> void FullStack<T>::DeletePush(int t) {
+    auto f = v.lower_bound(make_pair(t, -INF));
+    v.erase(f);
+  }
+  template <typename T> void FullStack<T>::DeletePop(int t) {
+    auto f = v.lower_bound(make_pair(t, -INF));
+    v.erase(f);
+  }
+  template <typename T> T FullStack<T>::peak(int t) {
+    vector< T > aux;
+    for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
+      if(it->first > t) break;
+      if(it->second == -INF) aux.pop_back();
+      else aux.push_back(it->second);
+    }
+    return aux[(int)aux.size() - 1];
+  }
+  template <typename T> bool FullStack<T>::empty(int t) {
+    vector< T > aux;  
+    for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
+      if(it->first > t) break;
+      if(it->second == -INF) aux.pop_back();
+      else aux.push_back(it->second);
+    }
+    return aux.size() == 0;
+  }
+  /* ------------------------------ END = Full Retroactive Stack (BRUTE-FORCE) --------------------------- */
+};
+/* ---------------------------------------- END = NAMESPACE BRUTE ------------------------------------------- */

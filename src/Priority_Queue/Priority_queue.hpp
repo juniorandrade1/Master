@@ -571,87 +571,123 @@ namespace Retroactivity {
 namespace Brute {
   template <typename T>
   class PartialPriorityQueue {
-  public:
+  private:
     std::multiset< pair<int, pair<int, T> > > all;
-    void insertPush(int t, T data) {
-      all.insert(make_pair(t, make_pair(1, data)));
-    }
-    void insertPop(int t) {
-      all.insert(make_pair(t, make_pair(-1, T())));
-    }
-    void removePush(int t) {
-      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      all.erase(f);
-    }
-    void removePop(int t) {
-      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      all.erase(f);
-    }
-    T getPeak() {
-      multiset< T > qnow;
-      for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
-        pair<int, pair<int, T> > foo = *it;
-        if(foo.second.first == 1) qnow.insert(foo.second.second);
-        else {
-          qnow.erase(qnow.begin());
-        }
-      }
-      return *qnow.begin();
-    }
-    bool empty() {
-      multiset< T > qnow;
-      for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
-        pair<int, pair<int, T> > foo = *it;
-        if(foo.second.first == 1) qnow.insert(foo.second.second);
-        else {
-          qnow.erase(qnow.begin());
-        }
-      }
-      return qnow.size() == 0;
-    }
+  public:
+    /** Insere uma operação de Push(data) no tempo t
+    * => Insert(t, Push(data))
+    *
+    * @param t -> tempo em que a operação Push(data) foi realizada
+    * @returns vetor de operações realizadas nas filas qnow e nqnow
+    */
+    void insertPush(int t, T data);
+
+
+    /** Insere uma operação de Pop() no tempo t
+    * => Insert(t, Pop())
+    *
+    * @param t -> tempo em que a operação Pop() foi realizada
+    * @returns -> vetor de operações realizadas nas filas qnow e nqnow com a execução da função
+    * @pre ->
+    */
+    void insertPop(int t);
+
+
+    /** Remove uma operação de Push(data) no tempo t
+    * => Delete(t, Push(data))
+    *
+    * @param t -> tempo em que a operação Push(data) foi realizada
+    * @returns -> vetor de operações realizadas nas filas qnow e nqnow
+    * @pre -> deve existir uma operação Insert(t, Push(data)) na estrutura
+    */
+    void removePush(int t);
+
+
+    /** Remove uma operação de Pop() no tempo t
+    * => Delete(t, Pop())
+    *
+    * @param t -> tempo em que a operação Pop() foi realizada
+    * @returns -> vetor de operações realizadas nas filas qnow e nqnow
+    * @pre -> deve existir uma operação Delete(t, Pop()) na estrutura
+    */
+    void removePop(int t);
+
+
+    /** Retorna se a fila está vazia no tempo presente
+    * => Empty()
+    *
+    * @returns -> 'true' se a fila estiver vazia
+    */
+    bool empty();
+
+
+
+    /** Retorna o menor elemento da fila de prioridade no tempo atual
+    * => GetPeak()
+    *
+    * @returns -> o menor elemento da fila de prioridade após a execução de todas 
+    *             as operações na estrutura.
+    * @pre -> a estrutura deve conter pelo menos um elemento
+    */
+    T getPeak();
   };
   template < typename T >
   class FullPriorityQueue {
-  public:
     std::multiset< pair<int, pair<int, T> > > all;
-    void insertPush(int t, T data) {
-      all.insert(make_pair(t, make_pair(1, data)));
-    }
-    void insertPop(int t) {
-      all.insert(make_pair(t, make_pair(-1, T())));
-    }
-    void removePush(int t) {
-      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      all.erase(f);
-    }
-    void removePop(int t) {
-      auto f = all.lower_bound(make_pair(t, make_pair(-1, -1)));
-      all.erase(f);
-    }
-    T getPeak(int t) {
-      multiset< T > qnow;
-      for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
-        pair<int, pair<int, T> > foo = *it;
-        if(foo.first > t) continue;
-        if(foo.second.first == 1) qnow.insert(foo.second.second);
-        else {
-          qnow.erase(qnow.begin());
-        }
-      }
-      return *qnow.begin();
-    }
-    bool empty(int t) {
-      multiset< T > qnow;
-      for(typename multiset< pair<int, pair<int, T> > > :: iterator it = all.begin(); it != all.end(); it++) {
-        pair<int, pair<int, T> > foo = *it;
-        if(foo.first > t) continue;
-        if(foo.second.first == 1) qnow.insert(foo.second.second);
-        else {
-          qnow.erase(qnow.begin());
-        }
-      }
-      return qnow.size() == 0;
-    }
+  public:
+    /** Insere uma operação de Push(data) no tempo t
+    * => Insert(t, Push(data))
+    *
+    * @param t -> tempo em que a operação Push(data) foi realizada
+    */
+    void insertPush(int t, T data);
+
+
+     /** Insere uma operação de Pop() no tempo t
+    * => Insert(t, Pop())
+    *
+    * @param t -> tempo em que a operação Pop() foi realizada
+    * @pre ->
+    */
+    void insertPop(int t);
+
+
+     /** Remove uma operação de Push(data) no tempo t
+    * => Delete(t, Push(data))
+    *
+    * @param t -> tempo em que a operação Push(data) foi realizada
+    * @pre -> deve existir uma operação Insert(t, Push(data)) na estrutura
+    */
+    void removePush(int t);
+
+
+    /** Remove uma operação de Pop() no tempo t
+    * => Delete(t, Pop())
+    *
+    * @param t -> tempo em que a operação Pop() foi realizada
+    * @pre -> deve existir uma operação Delete(t, Pop()) na estrutura
+    */
+    void removePop(int t);
+
+
+    /** Retorna se a fila está vazia no tempo t
+    * => Empty(t)
+    *
+    * @param t -> tempo em que se deseja saber se a fila está vazia
+    * @returns -> 'true' se a fila estiver vazia no tempo t
+    */
+    bool empty(int t);
+
+
+    /** Retorna o menor elemento da fila de prioridade no tempo t
+    * => GetPeak(t)
+    *
+    * @param t -> tempo em que se deseja consultar o menor elemento da fila
+    * @returns -> o menor elemento da fila de prioridade após a execução de todas 
+    *             as operações até o tempo t
+    * @pre -> a estrutura deve conter pelo menos um elemento no tempo t
+    */
+    T getPeak(int t);
   };
 };
 

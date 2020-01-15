@@ -3,35 +3,112 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullStack_a1a13a85e8057ab8fd580338302d4bcf2}\label{classBrute_1_1FullStack_a1a13a85e8057ab8fd580338302d4bcf2}} 
-void {\bfseries Insert\+Push} (int t, const T \&x)
+void \hyperlink{classBrute_1_1FullStack_a1a13a85e8057ab8fd580338302d4bcf2}{Insert\+Push} (int t, const T \&x)
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullStack_a58e756878b0de463055270a3842cffb9}\label{classBrute_1_1FullStack_a58e756878b0de463055270a3842cffb9}} 
-void {\bfseries Insert\+Pop} (int t)
+void \hyperlink{classBrute_1_1FullStack_a58e756878b0de463055270a3842cffb9}{Insert\+Pop} (int t)
 \item 
-\mbox{\Hypertarget{classBrute_1_1FullStack_af5b113d29c107b6c6271ed07e2d715c4}\label{classBrute_1_1FullStack_af5b113d29c107b6c6271ed07e2d715c4}} 
-void {\bfseries Delete\+Push} (int t)
+void \hyperlink{classBrute_1_1FullStack_af5b113d29c107b6c6271ed07e2d715c4}{Delete\+Push} (int t)
 \item 
+void \hyperlink{classBrute_1_1FullStack_aa99882df39da166fe8bb6995f4c07213}{Delete\+Pop} (int t)
+\item 
+T \hyperlink{classBrute_1_1FullStack_ae6dfa8e6ea0f0d8de2c50afaf9991aaf}{peak} (int t)
+\item 
+bool \hyperlink{classBrute_1_1FullStack_abad599473f0e06b91d4cf5a5909bb58c}{empty} (int t)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classBrute_1_1FullStack_aa99882df39da166fe8bb6995f4c07213}\label{classBrute_1_1FullStack_aa99882df39da166fe8bb6995f4c07213}} 
-void {\bfseries Delete\+Pop} (int t)
-\item 
+\index{Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}!Delete\+Pop@{Delete\+Pop}}
+\index{Delete\+Pop@{Delete\+Pop}!Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}}
+\subsubsection{\texorpdfstring{Delete\+Pop()}{DeletePop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullStack}{Brute\+::\+Full\+Stack}$<$ T $>$\+::Delete\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação Pop realizada no tempo t =$>$ Delete(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Pop foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Pop no tempo t 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1FullStack_af5b113d29c107b6c6271ed07e2d715c4}\label{classBrute_1_1FullStack_af5b113d29c107b6c6271ed07e2d715c4}} 
+\index{Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}!Delete\+Push@{Delete\+Push}}
+\index{Delete\+Push@{Delete\+Push}!Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}}
+\subsubsection{\texorpdfstring{Delete\+Push()}{DeletePush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullStack}{Brute\+::\+Full\+Stack}$<$ T $>$\+::Delete\+Push (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação Push realizada no tempo t =$>$ Delete(t, Push(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Push foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ deve existir uma operação Push no tempo t 
+\end{DoxyPrecond}
 \mbox{\Hypertarget{classBrute_1_1FullStack_abad599473f0e06b91d4cf5a5909bb58c}\label{classBrute_1_1FullStack_abad599473f0e06b91d4cf5a5909bb58c}} 
-bool {\bfseries empty} (int t)
-\item 
+\index{Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}!empty@{empty}}
+\index{empty@{empty}!Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \hyperlink{classBrute_1_1FullStack}{Brute\+::\+Full\+Stack}$<$ T $>$\+::empty (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna se a pilha está vazia no tempo t =$>$ empty(t)
+
+t -\/$>$ tempo que é desejado o estado da pilha \begin{DoxyReturn}{Returns}
+-\/$>$ retorna se a pilha está vazia no tempo t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBrute_1_1FullStack_a58e756878b0de463055270a3842cffb9}\label{classBrute_1_1FullStack_a58e756878b0de463055270a3842cffb9}} 
+\index{Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}!Insert\+Pop@{Insert\+Pop}}
+\index{Insert\+Pop@{Insert\+Pop}!Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}}
+\subsubsection{\texorpdfstring{Insert\+Pop()}{InsertPop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullStack}{Brute\+::\+Full\+Stack}$<$ T $>$\+::Insert\+Pop (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Adiciona a realização da operação Pop no tempo t =$>$ Insert(t, Pop())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de realização da operação Pop() \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBrute_1_1FullStack_a1a13a85e8057ab8fd580338302d4bcf2}\label{classBrute_1_1FullStack_a1a13a85e8057ab8fd580338302d4bcf2}} 
+\index{Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}!Insert\+Push@{Insert\+Push}}
+\index{Insert\+Push@{Insert\+Push}!Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}}
+\subsubsection{\texorpdfstring{Insert\+Push()}{InsertPush()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1FullStack}{Brute\+::\+Full\+Stack}$<$ T $>$\+::Insert\+Push (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{const T \&}]{x }\end{DoxyParamCaption})}
+
+Insere o objeto x no tempo t na pilha =$>$ Insert(t, Push(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de inserção do objeto \\
+\hline
+{\em x} & -\/$>$ objeto a ser inserido no topo da pilha no tempo t \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classBrute_1_1FullStack_ae6dfa8e6ea0f0d8de2c50afaf9991aaf}\label{classBrute_1_1FullStack_ae6dfa8e6ea0f0d8de2c50afaf9991aaf}} 
-T {\bfseries peak} (int t)
-\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classBrute_1_1FullStack_ade00538eef6112ab62fab559e3d1c2a4}\label{classBrute_1_1FullStack_ade00538eef6112ab62fab559e3d1c2a4}} 
-set$<$ pair$<$ int, T $>$ $>$ {\bfseries v}
-\item 
-\mbox{\Hypertarget{classBrute_1_1FullStack_a1d7549b040cc7bd8ca2d2f774d37b7c9}\label{classBrute_1_1FullStack_a1d7549b040cc7bd8ca2d2f774d37b7c9}} 
-vector$<$ T $>$ {\bfseries aux}
-\end{DoxyCompactItemize}
+\index{Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}!peak@{peak}}
+\index{peak@{peak}!Brute\+::\+Full\+Stack@{Brute\+::\+Full\+Stack}}
+\subsubsection{\texorpdfstring{peak()}{peak()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classBrute_1_1FullStack}{Brute\+::\+Full\+Stack}$<$ T $>$\+::peak (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Retorna o topo da pilha no tempo t =$>$ peak(t)
+
+t -\/$>$ tempo que é desejado o elemento ao topo da pilha \begin{DoxyReturn}{Returns}
+-\/$>$ retorna objeto no topo da pilha no tempo t 
+\end{DoxyReturn}
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+hpp\end{DoxyCompactItemize}
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Stack/Stack.\+cpp\end{DoxyCompactItemize}

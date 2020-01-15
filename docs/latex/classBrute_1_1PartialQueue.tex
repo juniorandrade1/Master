@@ -3,29 +3,105 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBrute_1_1PartialQueue_adaa00384721f3801ede6ecc7a7203100}\label{classBrute_1_1PartialQueue_adaa00384721f3801ede6ecc7a7203100}} 
-void {\bfseries Insert\+Enqueue} (int t, const T \&x)
+void \hyperlink{classBrute_1_1PartialQueue_adaa00384721f3801ede6ecc7a7203100}{Insert\+Enqueue} (int t, const T \&x)
 \item 
-\mbox{\Hypertarget{classBrute_1_1PartialQueue_a9c5a4ffa1216d759f6339d2f56983618}\label{classBrute_1_1PartialQueue_a9c5a4ffa1216d759f6339d2f56983618}} 
-void {\bfseries Insert\+Dequeue} (int t)
+void \hyperlink{classBrute_1_1PartialQueue_a9c5a4ffa1216d759f6339d2f56983618}{Insert\+Dequeue} (int t)
 \item 
-\mbox{\Hypertarget{classBrute_1_1PartialQueue_a4541c69cc2624fb28ffadd1f1cfc84e9}\label{classBrute_1_1PartialQueue_a4541c69cc2624fb28ffadd1f1cfc84e9}} 
-void {\bfseries Delete\+Enqueue} (int t)
+void \hyperlink{classBrute_1_1PartialQueue_a4541c69cc2624fb28ffadd1f1cfc84e9}{Delete\+Enqueue} (int t)
 \item 
+void \hyperlink{classBrute_1_1PartialQueue_ab3dbd1645e133e8e01297ce0265dfac8}{Delete\+Dequeue} (int t)
+\item 
+T \hyperlink{classBrute_1_1PartialQueue_ab90169266f018db61fa665d8cfba2e85}{front} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
 \mbox{\Hypertarget{classBrute_1_1PartialQueue_ab3dbd1645e133e8e01297ce0265dfac8}\label{classBrute_1_1PartialQueue_ab3dbd1645e133e8e01297ce0265dfac8}} 
-void {\bfseries Delete\+Dequeue} (int t)
-\item 
+\index{Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}!Delete\+Dequeue@{Delete\+Dequeue}}
+\index{Delete\+Dequeue@{Delete\+Dequeue}!Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Delete\+Dequeue()}{DeleteDequeue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialQueue}{Brute\+::\+Partial\+Queue}$<$ T $>$\+::Delete\+Dequeue (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação de Dequeue realizada no tempo t =$>$ Delete(t, Dequeue())
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Dequeue foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ precisa que uma operação Dequeue no tempo t tenha sido realizada 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1PartialQueue_a4541c69cc2624fb28ffadd1f1cfc84e9}\label{classBrute_1_1PartialQueue_a4541c69cc2624fb28ffadd1f1cfc84e9}} 
+\index{Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}!Delete\+Enqueue@{Delete\+Enqueue}}
+\index{Delete\+Enqueue@{Delete\+Enqueue}!Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Delete\+Enqueue()}{DeleteEnqueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialQueue}{Brute\+::\+Partial\+Queue}$<$ T $>$\+::Delete\+Enqueue (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Remove a operação de Enqueue realizada no tempo t =$>$ Delete(t, Enqueue(x))
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo em que uma operação Enqueue foi realizada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ precisa que uma operação Enqueue no tempo t tenha sido realizada 
+\end{DoxyPrecond}
 \mbox{\Hypertarget{classBrute_1_1PartialQueue_ab90169266f018db61fa665d8cfba2e85}\label{classBrute_1_1PartialQueue_ab90169266f018db61fa665d8cfba2e85}} 
-T {\bfseries front} ()
-\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{classBrute_1_1PartialQueue_a49bb4bf3e1669136e3fdefdf37df3d8e}\label{classBrute_1_1PartialQueue_a49bb4bf3e1669136e3fdefdf37df3d8e}} 
-map$<$ int, T $>$ {\bfseries q}
-\end{DoxyCompactItemize}
+\index{Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}!front@{front}}
+\index{front@{front}!Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \hyperlink{classBrute_1_1PartialQueue}{Brute\+::\+Partial\+Queue}$<$ T $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retorna o proximo elemento a ser removido da fila considerando a versão mais atual da estrutura =$>$ Front()
+
+\begin{DoxyReturn}{Returns}
+-\/$>$ O proximo elemento a ser removido da fila 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/$>$ a fila não pode estar vazia 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{classBrute_1_1PartialQueue_a9c5a4ffa1216d759f6339d2f56983618}\label{classBrute_1_1PartialQueue_a9c5a4ffa1216d759f6339d2f56983618}} 
+\index{Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}!Insert\+Dequeue@{Insert\+Dequeue}}
+\index{Insert\+Dequeue@{Insert\+Dequeue}!Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Insert\+Dequeue()}{InsertDequeue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialQueue}{Brute\+::\+Partial\+Queue}$<$ T $>$\+::Insert\+Dequeue (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+Insere uma operação Dequeue() no tempo t =$>$ Insert(t, Dequeue())
+
+Recebe um inteiro t (tempo de inserção da operação) em que a operação Dequeue será inserida
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de inserção da operação Dequeue \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBrute_1_1PartialQueue_adaa00384721f3801ede6ecc7a7203100}\label{classBrute_1_1PartialQueue_adaa00384721f3801ede6ecc7a7203100}} 
+\index{Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}!Insert\+Enqueue@{Insert\+Enqueue}}
+\index{Insert\+Enqueue@{Insert\+Enqueue}!Brute\+::\+Partial\+Queue@{Brute\+::\+Partial\+Queue}}
+\subsubsection{\texorpdfstring{Insert\+Enqueue()}{InsertEnqueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classBrute_1_1PartialQueue}{Brute\+::\+Partial\+Queue}$<$ T $>$\+::Insert\+Enqueue (\begin{DoxyParamCaption}\item[{int}]{t,  }\item[{const T \&}]{x }\end{DoxyParamCaption})}
+
+Insere uma operação Enqueue(x) no tempo t =$>$ Insert(t, Enqueue(x))
+
+Recebe um inteiro t (tempo de inserção da operação) em que a operação Enqueue(x) será inserida
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & -\/$>$ tempo de inserção da operação Enqueue(x) \\
+\hline
+{\em x} & -\/$>$ objeto a ser inserido na operação \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Queue/Queue.\+hpp\end{DoxyCompactItemize}
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Queue/Queue.\+hpp\item 
+/home/junior/\+Dropbox/\+Arquivos\+Mestrado/\+Master/src/\+Queue/Queue.\+cpp\end{DoxyCompactItemize}

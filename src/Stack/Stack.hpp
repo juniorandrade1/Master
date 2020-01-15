@@ -260,70 +260,134 @@ namespace Retroactivity {
 namespace Brute {
   template<typename T>
   class PartialStack {
-  public:
+    /** Árvore binária de busca que mantém as operações de Push e Pop realizadas ordenadas por tempo
+    * 
+    * Contém uma chave (inteiro) representando o tempo de inserção de uma operação e,
+    * caso seja uma operação Push(x), o elemento x inserido. Se a operação inserida for Pop, é inserido
+    * o elemento -infinito
+    */
     set< pair< int, T > > v;
-    vector< T > aux;
-    void InsertPush(int t, const T &x) {
-      v.insert(make_pair(t, x));
-    }
-    void InsertPop(int t) {
-      v.insert(make_pair(t, -INF));
-    }
-    void DeletePush(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    void DeletePop(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    T peak() {
-      aux.clear();
-      for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
-        if(it->second == -INF) aux.pop_back();
-        else aux.push_back(it->second);
-      }
-      return aux[(int)aux.size() - 1];
-    }
+    
+
+  public:
+    /** Insere o objeto x no tempo t na pilha
+    * => Insert(t, Push(x))
+    * 
+    *
+    * @param t -> tempo de inserção do objeto
+    * @param x -> objeto a ser inserido no topo da pilha no tempo t
+    */
+    void InsertPush(int t, const T &x);
+
+
+    /** Adiciona a realização da operação Pop no tempo t
+    * => Insert(t, Pop())
+    * 
+    * 
+    * @param t -> tempo de realização da operação Pop()
+    */
+    void InsertPop(int t);
+
+
+    /** Remove a operação Push realizada no tempo t
+    * => Delete(t, Push(x))
+    * 
+    * 
+    * @param t -> tempo em que uma operação Push foi realizada
+    * @pre -> deve existir uma operação Push no tempo t
+    */
+    void DeletePush(int t);
+
+
+    /** Remove a operação Pop realizada no tempo t
+    * => Delete(t, Pop())
+    * 
+    * 
+    * @param t -> tempo em que uma operação Pop foi realizada
+    * @pre -> deve existir uma operação Pop no tempo t
+    */
+    void DeletePop(int t);
+
+
+    /** Retorna o topo da pilha no tempo atual
+    * => Peak()
+    * 
+    *
+    * @returns -> retorna objeto no topo da pilha no tempo atual
+    */
+    T peak();
   };
 
   template<typename T>
   class FullStack {
-  public:
+  private:
+    /** Árvore binária de busca que mantém as operações de Push e Pop realizadas ordenadas por tempo
+    * 
+    * Contém uma chave (inteiro) representando o tempo de inserção de uma operação e,
+    * caso seja uma operação Push(x), o elemento x inserido. Se a operação inserida for Pop, é inserido
+    * o elemento -infinito
+    */
     set< pair< int, T > > v;
-    vector< T > aux;
-    void InsertPush(int t, const T &x) {
-      v.insert(make_pair(t, x));
-    }
-    void InsertPop(int t) {
-      v.insert(make_pair(t, -INF));
-    }
-    void DeletePush(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    void DeletePop(int t) {
-      auto f = v.lower_bound(make_pair(t, -INF));
-      v.erase(f);
-    }
-    bool empty(int t) {
-      aux.clear();
-      for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
-        if(it->first > t) break;
-        if(it->second == -INF) aux.pop_back();
-        else aux.push_back(it->second);
-      }
-      return aux.size() == 0;
-    }
-    T peak(int t) {
-      aux.clear();
-      for(typename set< pair< int, T > > :: iterator it = v.begin(); it != v.end(); it++) {
-        if(it->first > t) break;
-        if(it->second == -INF) aux.pop_back();
-        else aux.push_back(it->second);
-      }
-      return aux[(int)aux.size() - 1];
-    }
+
+
+  public:
+    /** Insere o objeto x no tempo t na pilha
+    * => Insert(t, Push(x))
+    * 
+    *
+    * @param t -> tempo de inserção do objeto
+    * @param x -> objeto a ser inserido no topo da pilha no tempo t
+    */
+    void InsertPush(int t, const T &x);
+
+
+    /** Adiciona a realização da operação Pop no tempo t
+    * => Insert(t, Pop())
+    * 
+    * 
+    * @param t -> tempo de realização da operação Pop()
+    */
+    void InsertPop(int t);
+
+
+    /** Remove a operação Push realizada no tempo t
+    * => Delete(t, Push(x))
+    * 
+    * 
+    * @param t -> tempo em que uma operação Push foi realizada
+    * @pre -> deve existir uma operação Push no tempo t
+    */
+    void DeletePush(int t);
+
+
+    /** Remove a operação Pop realizada no tempo t
+    * => Delete(t, Pop())
+    * 
+    * 
+    * @param t -> tempo em que uma operação Pop foi realizada
+    * @pre -> deve existir uma operação Pop no tempo t
+    */
+    void DeletePop(int t);
+
+
+    /** Retorna o topo da pilha no tempo t
+    * => peak(t)
+    * 
+    *
+    * @params t -> tempo que é desejado o elemento ao topo da pilha
+    * @returns -> retorna objeto no topo da pilha no tempo t
+    */
+    T peak(int t);
+
+
+    /** Retorna se a pilha está vazia no tempo t
+    * => empty(t)
+    * 
+    *
+    * @params t -> tempo que é desejado o estado da pilha
+    * @returns -> retorna se a pilha está vazia no tempo t
+    */
+    bool empty(int t);
   };
 };
 
