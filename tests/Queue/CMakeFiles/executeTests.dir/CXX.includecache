@@ -7,16 +7,22 @@
 #IncludeRegexTransform: 
 
 /home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
+Treap.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.hpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.hpp
 bits/stdc++.h
 -
+Treap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
 
 /home/junior/Dropbox/ArquivosMestrado/Master/src/Queue/Queue.cpp
 Queue.hpp
 /home/junior/Dropbox/ArquivosMestrado/Master/src/Queue/Queue.hpp
 
 /home/junior/Dropbox/ArquivosMestrado/Master/src/Queue/Queue.hpp
-../BST/Treap.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
+../BST/Treap.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.hpp
 Queue.cpp
 /home/junior/Dropbox/ArquivosMestrado/Master/src/Queue/Queue.cpp
 

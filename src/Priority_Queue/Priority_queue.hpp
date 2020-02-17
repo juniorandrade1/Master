@@ -1,16 +1,14 @@
-/*! A test class */
-
 // Priority_queue.h
 #ifndef PRIORITY_QUEUE 
 #define PRIORITY_QUEUE_H
 
 #pragma once
 
-#include "IntervalTree.cpp"
-#include "../BST/Treap.cpp"
-#include "../BST/SegmentTree.cpp"
-#include "../BST/PrioritySearchTree.cpp"
-#include "../BST/PersistentTreap.cpp"
+#include "IntervalTree.hpp"
+#include "../BST/Treap.hpp"
+#include "../BST/SegmentTree.hpp"
+#include "../BST/PrioritySearchTree.hpp"
+#include "../BST/PersistentTreap.hpp"
 
 enum Operation {
   insertpush, insertpop, deletepush, deletepop

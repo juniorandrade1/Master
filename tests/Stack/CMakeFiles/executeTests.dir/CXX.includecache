@@ -7,12 +7,24 @@
 #IncludeRegexTransform: 
 
 /home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.cpp
+IntervalTree.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.hpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.hpp
 bits/stdc++.h
 -
+IntervalTree.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.cpp
 
 /home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
+Treap.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.hpp
+
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.hpp
 bits/stdc++.h
 -
+Treap.cpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
 
 /home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.cpp
 Stack.hpp
@@ -21,10 +33,10 @@ Stack.hpp
 /home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.hpp
 bits/stdc++.h
 -
-../BST/IntervalTree.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.cpp
-../BST/Treap.cpp
-/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
+../BST/IntervalTree.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.hpp
+../BST/Treap.hpp
+/home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.hpp
 Stack.cpp
 /home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.cpp
 

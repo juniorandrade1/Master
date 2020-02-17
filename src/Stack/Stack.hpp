@@ -5,8 +5,8 @@
 #pragma once
 
 #include <bits/stdc++.h>
-#include "../BST/IntervalTree.cpp"
-#include "../BST/Treap.cpp"
+#include "../BST/IntervalTree.hpp"
+#include "../BST/Treap.hpp"
 
 
 /**

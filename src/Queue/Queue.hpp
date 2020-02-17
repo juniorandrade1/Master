@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "../BST/Treap.cpp"
+#include "../BST/Treap.hpp"
 
 using namespace std;
 

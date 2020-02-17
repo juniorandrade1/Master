@@ -3,7 +3,9 @@
 
 CMakeFiles/executeTests.dir/Stack.tests.cpp.o
  /home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.cpp
+ /home/junior/Dropbox/ArquivosMestrado/Master/src/BST/IntervalTree.hpp
  /home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.cpp
+ /home/junior/Dropbox/ArquivosMestrado/Master/src/BST/Treap.hpp
  /home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.cpp
  /home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.hpp
  /home/junior/Dropbox/ArquivosMestrado/Master/tests/Stack/Stack.tests.cpp
