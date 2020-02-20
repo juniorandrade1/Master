@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['addpop',['addPop',['../classRetroactivity_1_1PolylogarithmPriorityQueue.html#afc4926b8969ceb49e18eec4bcfedc054',1,'Retroactivity::PolylogarithmPriorityQueue']]],
-  ['addpush',['addPush',['../classRetroactivity_1_1PolylogarithmPriorityQueue.html#a87b978cc19aee60f21c55e2234e5730a',1,'Retroactivity::PolylogarithmPriorityQueue']]]
+  ['addpop_0',['addPop',['../class_retroactivity_1_1_polylogarithm_priority_queue.html#afc4926b8969ceb49e18eec4bcfedc054',1,'Retroactivity::PolylogarithmPriorityQueue']]],
+  ['addpush_1',['addPush',['../class_retroactivity_1_1_polylogarithm_priority_queue.html#a87b978cc19aee60f21c55e2234e5730a',1,'Retroactivity::PolylogarithmPriorityQueue']]]
 ];

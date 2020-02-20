@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['querynode',['QueryNode',['../classRetroactivity_1_1PolylogarithmPriorityQueue_1_1QueryNode.html',1,'Retroactivity::PolylogarithmPriorityQueue']]]
+  ['querynode_68',['QueryNode',['../class_retroactivity_1_1_polylogarithm_priority_queue_1_1_query_node.html',1,'Retroactivity::PolylogarithmPriorityQueue']]]
 ];

@@ -1,0 +1,289 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.17"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>Estruturas de dados retroativas: Código-Fonte de /home/junior/Dropbox/ArquivosMestrado/Master/src/Stack/Stack.hpp</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="jquery.smartmenus.bootstrap.css" rel="stylesheet">
+        <script type="text/javascript" src="jquery.smartmenus.js"></script>
+        <!-- SmartMenus jQuery Bootstrap Addon -->
+        <script type="text/javascript" src="jquery.smartmenus.bootstrap.js"></script>
+        <!-- SmartMenus jQuery plugin -->
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Estruturas de dados retroativas 1.0.0</a>
+                </div>
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel " style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4db5440eb69f214ff9843a833c24e88c.html">Stack</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Stack.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Stack.h</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef QUEUE </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define QUEUE_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;bits/stdc++.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../BST/IntervalTree.hpp&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../BST/Treap.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_retroactivity.html">Retroactivity</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_retroactivity_1_1_partial_stack.html">   20</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_retroactivity_1_1_partial_stack.html">PartialStack</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    BST::IntervalTree&lt; T &gt; v;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_partial_stack.html#afe78dbdae52e05e0a006017528d74088">InsertPush</a>(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_partial_stack.html#a54fffb09c5aca4b6dba7c6fb62af1302">InsertPop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_partial_stack.html#a91760ea459d619b817f5d819a8afac83">DeletePush</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_partial_stack.html#a5b0b2282b35bc5d6da67b481cb6fa2cb">DeletePop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    T <a class="code" href="class_retroactivity_1_1_partial_stack.html#acae5efe5b39b6369f11bb574bc15d73e">peak</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_retroactivity_1_1_partial_stack.html#a770d2d1ebb3e72296caeef6876f37a54">getSize</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  };</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_retroactivity_1_1_full_stack.html">   91</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_retroactivity_1_1_full_stack.html">FullStack</a> {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    BST::IntervalTree&lt; T &gt; v;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_full_stack.html#a21e431dc5beaaba13e7ad4052ea590b4">InsertPush</a>(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_full_stack.html#a9187befbb123f18cf843cfb78f8ba2ae">InsertPop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_full_stack.html#ae3817cbeed3650f16f86fc1bccc73a0d">DeletePush</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_full_stack.html#a4bc32042eb75846d744190540265f823">DeletePop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    T <a class="code" href="class_retroactivity_1_1_full_stack.html#abfbe785565c41e62688a5edeea1becc0">peak</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_retroactivity_1_1_full_stack.html#aaaeedeaad4afd857bc2e28af1b2ad5c6">getSize</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="class_retroactivity_1_1_non_oblivious_stack.html">  164</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html">NonObliviousStack</a> {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    BST::IntervalTree&lt; T &gt; prefixTree;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    BST::Treap&lt; int, std::pair&lt;T, int&gt; &gt; tpush;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    BST::Treap&lt; int, T &gt; tpop;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> NULLVALUE = -1;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html#a51ae6ac67c430e6456d5dbeecc519ce5">InsertPush</a>(<span class="keywordtype">int</span> t, T x);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html#ae6efaa3ffb84206f0ffc8171df994cc9">InsertPop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html#a8b35e4694da19ceb5cfe86b692f22fee">DeletePush</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html#ab50e11a16a4c8ed79b305e6e6d33cdd9">DeletePop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html#aa7710e91e99204175b1bf8f15b580f13">fixPopOperation</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html#aabc118d3007e7d56ddf25d71b64f2538">showtpush</a>();</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_retroactivity_1_1_non_oblivious_stack.html#a3e6f31a8d574a50fa828e90cd43bb64f">showtpop</a>();</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  };</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="keyword">namespace </span>Brute {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="class_brute_1_1_partial_stack.html">  262</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_brute_1_1_partial_stack.html">PartialStack</a> {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    set&lt; pair&lt; int, T &gt; &gt; v;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_partial_stack.html#a9b35f39e3d2a3b6af1599dfe8a9dc83d">InsertPush</a>(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_partial_stack.html#a347ebf205dac4ad1976180b1ec897af8">InsertPop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_partial_stack.html#af872304f5d93e50b1e704dc8f6b13d34">DeletePush</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_partial_stack.html#a345e85a410547bd21dffe1bb05879c49">DeletePop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    T <a class="code" href="class_brute_1_1_partial_stack.html#a75cea8d95032298fabb08de150190045">peak</a>();</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  };</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="class_brute_1_1_full_stack.html">  322</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_brute_1_1_full_stack.html">FullStack</a> {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    set&lt; pair&lt; int, T &gt; &gt; v;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_full_stack.html#a1a13a85e8057ab8fd580338302d4bcf2">InsertPush</a>(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_full_stack.html#a58e756878b0de463055270a3842cffb9">InsertPop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_full_stack.html#af5b113d29c107b6c6271ed07e2d715c4">DeletePush</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_brute_1_1_full_stack.html#aa99882df39da166fe8bb6995f4c07213">DeletePop</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    T <a class="code" href="class_brute_1_1_full_stack.html#ae6dfa8e6ea0f0d8de2c50afaf9991aaf">peak</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_brute_1_1_full_stack.html#abad599473f0e06b91d4cf5a5909bb58c">empty</a>(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  };</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;};</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#include &quot;Stack.cpp&quot;</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* STACK_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_retroactivity_1_1_partial_stack_html_a91760ea459d619b817f5d819a8afac83"><div class="ttname"><a href="class_retroactivity_1_1_partial_stack.html#a91760ea459d619b817f5d819a8afac83">Retroactivity::PartialStack::DeletePush</a></div><div class="ttdeci">void DeletePush(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:13</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_stack_html_aa99882df39da166fe8bb6995f4c07213"><div class="ttname"><a href="class_brute_1_1_full_stack.html#aa99882df39da166fe8bb6995f4c07213">Brute::FullStack::DeletePop</a></div><div class="ttdeci">void DeletePop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:178</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html_a3e6f31a8d574a50fa828e90cd43bb64f"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html#a3e6f31a8d574a50fa828e90cd43bb64f">Retroactivity::NonObliviousStack::showtpop</a></div><div class="ttdeci">void showtpop()</div><div class="ttdef"><b>Definition:</b> Stack.cpp:130</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_full_stack_html_a4bc32042eb75846d744190540265f823"><div class="ttname"><a href="class_retroactivity_1_1_full_stack.html#a4bc32042eb75846d744190540265f823">Retroactivity::FullStack::DeletePop</a></div><div class="ttdeci">void DeletePop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:40</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html">Retroactivity::NonObliviousStack</a></div><div class="ttdef"><b>Definition:</b> Stack.hpp:164</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html_ab50e11a16a4c8ed79b305e6e6d33cdd9"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html#ab50e11a16a4c8ed79b305e6e6d33cdd9">Retroactivity::NonObliviousStack::DeletePop</a></div><div class="ttdeci">int DeletePop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:81</div></div>
+<div class="ttc" id="aclass_brute_1_1_partial_stack_html_a347ebf205dac4ad1976180b1ec897af8"><div class="ttname"><a href="class_brute_1_1_partial_stack.html#a347ebf205dac4ad1976180b1ec897af8">Brute::PartialStack::InsertPop</a></div><div class="ttdeci">void InsertPop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:145</div></div>
+<div class="ttc" id="aclass_brute_1_1_partial_stack_html"><div class="ttname"><a href="class_brute_1_1_partial_stack.html">Brute::PartialStack</a></div><div class="ttdef"><b>Definition:</b> Stack.hpp:262</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html_aa7710e91e99204175b1bf8f15b580f13"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html#aa7710e91e99204175b1bf8f15b580f13">Retroactivity::NonObliviousStack::fixPopOperation</a></div><div class="ttdeci">void fixPopOperation(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:98</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_partial_stack_html"><div class="ttname"><a href="class_retroactivity_1_1_partial_stack.html">Retroactivity::PartialStack</a></div><div class="ttdef"><b>Definition:</b> Stack.hpp:20</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_stack_html"><div class="ttname"><a href="class_brute_1_1_full_stack.html">Brute::FullStack</a></div><div class="ttdef"><b>Definition:</b> Stack.hpp:322</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html_ae6efaa3ffb84206f0ffc8171df994cc9"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html#ae6efaa3ffb84206f0ffc8171df994cc9">Retroactivity::NonObliviousStack::InsertPop</a></div><div class="ttdeci">int InsertPop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:60</div></div>
+<div class="ttc" id="aclass_brute_1_1_partial_stack_html_a345e85a410547bd21dffe1bb05879c49"><div class="ttname"><a href="class_brute_1_1_partial_stack.html#a345e85a410547bd21dffe1bb05879c49">Brute::PartialStack::DeletePop</a></div><div class="ttdeci">void DeletePop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:152</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_full_stack_html_a9187befbb123f18cf843cfb78f8ba2ae"><div class="ttname"><a href="class_retroactivity_1_1_full_stack.html#a9187befbb123f18cf843cfb78f8ba2ae">Retroactivity::FullStack::InsertPop</a></div><div class="ttdeci">void InsertPop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:34</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html_a8b35e4694da19ceb5cfe86b692f22fee"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html#a8b35e4694da19ceb5cfe86b692f22fee">Retroactivity::NonObliviousStack::DeletePush</a></div><div class="ttdeci">int DeletePush(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:74</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_partial_stack_html_a770d2d1ebb3e72296caeef6876f37a54"><div class="ttname"><a href="class_retroactivity_1_1_partial_stack.html#a770d2d1ebb3e72296caeef6876f37a54">Retroactivity::PartialStack::getSize</a></div><div class="ttdeci">int getSize()</div><div class="ttdef"><b>Definition:</b> Stack.cpp:23</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_partial_stack_html_a5b0b2282b35bc5d6da67b481cb6fa2cb"><div class="ttname"><a href="class_retroactivity_1_1_partial_stack.html#a5b0b2282b35bc5d6da67b481cb6fa2cb">Retroactivity::PartialStack::DeletePop</a></div><div class="ttdeci">void DeletePop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:16</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_full_stack_html_ae3817cbeed3650f16f86fc1bccc73a0d"><div class="ttname"><a href="class_retroactivity_1_1_full_stack.html#ae3817cbeed3650f16f86fc1bccc73a0d">Retroactivity::FullStack::DeletePush</a></div><div class="ttdeci">void DeletePush(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:37</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_stack_html_a58e756878b0de463055270a3842cffb9"><div class="ttname"><a href="class_brute_1_1_full_stack.html#a58e756878b0de463055270a3842cffb9">Brute::FullStack::InsertPop</a></div><div class="ttdeci">void InsertPop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:171</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html_a51ae6ac67c430e6456d5dbeecc519ce5"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html#a51ae6ac67c430e6456d5dbeecc519ce5">Retroactivity::NonObliviousStack::InsertPush</a></div><div class="ttdeci">int InsertPush(int t, T x)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:53</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_stack_html_aabc118d3007e7d56ddf25d71b64f2538"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_stack.html#aabc118d3007e7d56ddf25d71b64f2538">Retroactivity::NonObliviousStack::showtpush</a></div><div class="ttdeci">void showtpush()</div><div class="ttdef"><b>Definition:</b> Stack.cpp:125</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_partial_stack_html_afe78dbdae52e05e0a006017528d74088"><div class="ttname"><a href="class_retroactivity_1_1_partial_stack.html#afe78dbdae52e05e0a006017528d74088">Retroactivity::PartialStack::InsertPush</a></div><div class="ttdeci">void InsertPush(int t, const T &amp;x)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:7</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_stack_html_a1a13a85e8057ab8fd580338302d4bcf2"><div class="ttname"><a href="class_brute_1_1_full_stack.html#a1a13a85e8057ab8fd580338302d4bcf2">Brute::FullStack::InsertPush</a></div><div class="ttdeci">void InsertPush(int t, const T &amp;x)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:168</div></div>
+<div class="ttc" id="aclass_brute_1_1_partial_stack_html_a9b35f39e3d2a3b6af1599dfe8a9dc83d"><div class="ttname"><a href="class_brute_1_1_partial_stack.html#a9b35f39e3d2a3b6af1599dfe8a9dc83d">Brute::PartialStack::InsertPush</a></div><div class="ttdeci">void InsertPush(int t, const T &amp;x)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:142</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_stack_html_af5b113d29c107b6c6271ed07e2d715c4"><div class="ttname"><a href="class_brute_1_1_full_stack.html#af5b113d29c107b6c6271ed07e2d715c4">Brute::FullStack::DeletePush</a></div><div class="ttdeci">void DeletePush(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:174</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_stack_html_ae6dfa8e6ea0f0d8de2c50afaf9991aaf"><div class="ttname"><a href="class_brute_1_1_full_stack.html#ae6dfa8e6ea0f0d8de2c50afaf9991aaf">Brute::FullStack::peak</a></div><div class="ttdeci">T peak(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:182</div></div>
+<div class="ttc" id="aclass_brute_1_1_partial_stack_html_a75cea8d95032298fabb08de150190045"><div class="ttname"><a href="class_brute_1_1_partial_stack.html#a75cea8d95032298fabb08de150190045">Brute::PartialStack::peak</a></div><div class="ttdeci">T peak()</div><div class="ttdef"><b>Definition:</b> Stack.cpp:156</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_full_stack_html"><div class="ttname"><a href="class_retroactivity_1_1_full_stack.html">Retroactivity::FullStack</a></div><div class="ttdef"><b>Definition:</b> Stack.hpp:91</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_full_stack_html_abfbe785565c41e62688a5edeea1becc0"><div class="ttname"><a href="class_retroactivity_1_1_full_stack.html#abfbe785565c41e62688a5edeea1becc0">Retroactivity::FullStack::peak</a></div><div class="ttdeci">T peak(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:43</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_full_stack_html_aaaeedeaad4afd857bc2e28af1b2ad5c6"><div class="ttname"><a href="class_retroactivity_1_1_full_stack.html#aaaeedeaad4afd857bc2e28af1b2ad5c6">Retroactivity::FullStack::getSize</a></div><div class="ttdeci">int getSize(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:46</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_partial_stack_html_a54fffb09c5aca4b6dba7c6fb62af1302"><div class="ttname"><a href="class_retroactivity_1_1_partial_stack.html#a54fffb09c5aca4b6dba7c6fb62af1302">Retroactivity::PartialStack::InsertPop</a></div><div class="ttdeci">void InsertPop(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:10</div></div>
+<div class="ttc" id="anamespace_retroactivity_html"><div class="ttname"><a href="namespace_retroactivity.html">Retroactivity</a></div><div class="ttdef"><b>Definition:</b> Priority_queue.cpp:3</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_partial_stack_html_acae5efe5b39b6369f11bb574bc15d73e"><div class="ttname"><a href="class_retroactivity_1_1_partial_stack.html#acae5efe5b39b6369f11bb574bc15d73e">Retroactivity::PartialStack::peak</a></div><div class="ttdeci">T peak()</div><div class="ttdef"><b>Definition:</b> Stack.cpp:19</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_stack_html_abad599473f0e06b91d4cf5a5909bb58c"><div class="ttname"><a href="class_brute_1_1_full_stack.html#abad599473f0e06b91d4cf5a5909bb58c">Brute::FullStack::empty</a></div><div class="ttdeci">bool empty(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:191</div></div>
+<div class="ttc" id="aclass_retroactivity_1_1_full_stack_html_a21e431dc5beaaba13e7ad4052ea590b4"><div class="ttname"><a href="class_retroactivity_1_1_full_stack.html#a21e431dc5beaaba13e7ad4052ea590b4">Retroactivity::FullStack::InsertPush</a></div><div class="ttdeci">void InsertPush(int t, const T &amp;x)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:31</div></div>
+<div class="ttc" id="aclass_brute_1_1_partial_stack_html_af872304f5d93e50b1e704dc8f6b13d34"><div class="ttname"><a href="class_brute_1_1_partial_stack.html#af872304f5d93e50b1e704dc8f6b13d34">Brute::PartialStack::DeletePush</a></div><div class="ttdeci">void DeletePush(int t)</div><div class="ttdef"><b>Definition:</b> Stack.cpp:148</div></div>
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Gerado em Quinta, 20 de Fevereiro de 2020 15:26:29 para Estruturas de dados retroativas por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+</html>
