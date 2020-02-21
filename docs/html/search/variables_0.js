@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['enumptr_20',['enumPtr',['../class_test.html#ad742130759744efb4c5e1a290b46aba3',1,'Test']]],
-  ['enumvar_21',['enumVar',['../class_test.html#a5c7a44a947cf04523bc6cdc1ee3e876c',1,'Test']]]
+  ['data_151',['data',['../class_retroactivity_1_1_full_priority_queue_1_1_operation.html#aef1fa7a5d4ad8a9dd0feeb0514889c11',1,'Retroactivity::FullPriorityQueue::Operation']]]
 ];

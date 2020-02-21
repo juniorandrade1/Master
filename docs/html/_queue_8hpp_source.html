@@ -205,64 +205,63 @@ $(function() {
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="keyword">namespace </span>Brute {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="class_brute_1_1_partial_queue.html">  308</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_brute_1_1_partial_queue.html">PartialQueue</a> {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    map&lt; int, T &gt; q;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordtype">void</span> InsertEnqueue(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordtype">void</span> InsertDequeue(<span class="keywordtype">int</span> t);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordtype">void</span> DeleteEnqueue(<span class="keywordtype">int</span> t);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordtype">void</span> DeleteDequeue(<span class="keywordtype">int</span> t);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    T front();</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  };</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="class_brute_1_1_full_queue.html">  373</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_brute_1_1_full_queue.html">FullQueue</a> {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    map&lt; int, T &gt; q;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordtype">void</span> InsertEnqueue(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="keywordtype">void</span> InsertDequeue(<span class="keywordtype">int</span> t);</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordtype">void</span> DeleteEnqueue(<span class="keywordtype">int</span> t);</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordtype">void</span> DeleteDequeue(<span class="keywordtype">int</span> t);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    T front(<span class="keywordtype">int</span> t);</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  };</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;}</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">#include &quot;Queue.cpp&quot;</span></div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* QUEUE_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="class_brute_1_1_partial_queue.html">  311</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_brute_1_1_partial_queue.html">PartialQueue</a> {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    map&lt; int, T &gt; q;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <span class="keywordtype">void</span> InsertEnqueue(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordtype">void</span> InsertDequeue(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keywordtype">void</span> DeleteEnqueue(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordtype">void</span> DeleteDequeue(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    T front();</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  };</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="class_brute_1_1_full_queue.html">  378</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_brute_1_1_full_queue.html">FullQueue</a> {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    map&lt; int, T &gt; q;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordtype">void</span> InsertEnqueue(<span class="keywordtype">int</span> t, <span class="keyword">const</span> T &amp;x);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordtype">void</span> InsertDequeue(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordtype">void</span> DeleteEnqueue(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordtype">void</span> DeleteDequeue(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    T front(<span class="keywordtype">int</span> t);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  };</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;}</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">#include &quot;Queue.cpp&quot;</span></div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* QUEUE_H */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_retroactivity_1_1_non_oblivious_queue_html"><div class="ttname"><a href="class_retroactivity_1_1_non_oblivious_queue.html">Retroactivity::NonObliviousQueue</a></div><div class="ttdef"><b>Definition:</b> Queue.hpp:197</div></div>
-<div class="ttc" id="aclass_brute_1_1_partial_queue_html"><div class="ttname"><a href="class_brute_1_1_partial_queue.html">Brute::PartialQueue</a></div><div class="ttdef"><b>Definition:</b> Queue.hpp:308</div></div>
+<div class="ttc" id="aclass_brute_1_1_partial_queue_html"><div class="ttname"><a href="class_brute_1_1_partial_queue.html">Brute::PartialQueue</a></div><div class="ttdef"><b>Definition:</b> Queue.hpp:311</div></div>
 <div class="ttc" id="aclass_retroactivity_1_1_full_queue_html"><div class="ttname"><a href="class_retroactivity_1_1_full_queue.html">Retroactivity::FullQueue</a></div><div class="ttdef"><b>Definition:</b> Queue.hpp:111</div></div>
 <div class="ttc" id="aclass_retroactivity_1_1_partial_queue_html"><div class="ttname"><a href="class_retroactivity_1_1_partial_queue.html">Retroactivity::PartialQueue</a></div><div class="ttdef"><b>Definition:</b> Queue.hpp:24</div></div>
 <div class="ttc" id="anamespace_retroactivity_html"><div class="ttname"><a href="namespace_retroactivity.html">Retroactivity</a></div><div class="ttdef"><b>Definition:</b> Priority_queue.cpp:3</div></div>
-<div class="ttc" id="aclass_brute_1_1_full_queue_html"><div class="ttname"><a href="class_brute_1_1_full_queue.html">Brute::FullQueue</a></div><div class="ttdef"><b>Definition:</b> Queue.hpp:373</div></div>
+<div class="ttc" id="aclass_brute_1_1_full_queue_html"><div class="ttname"><a href="class_brute_1_1_full_queue.html">Brute::FullQueue</a></div><div class="ttdef"><b>Definition:</b> Queue.hpp:378</div></div>
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>
@@ -271,7 +270,7 @@ $(function() {
 </div>
 </div>
 <hr class="footer"/><address class="footer"><small>
-Gerado em Quinta, 20 de Fevereiro de 2020 15:26:29 para Estruturas de dados retroativas por &#160;<a href="http://www.doxygen.org/index.html">
+Gerado em Sexta, 21 de Fevereiro de 2020 03:32:35 para Estruturas de dados retroativas por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

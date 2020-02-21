@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['showtd_50',['showTd',['../class_retroactivity_1_1_non_oblivious_queue.html#a006b0d3710fad54f61e620f95dd3c67c',1,'Retroactivity::NonObliviousQueue']]],
-  ['showte_51',['showTe',['../class_retroactivity_1_1_non_oblivious_queue.html#a4682494399cc4da59dcef0d0cbb1df14',1,'Retroactivity::NonObliviousQueue']]],
-  ['showtpop_52',['showtpop',['../class_retroactivity_1_1_non_oblivious_stack.html#a3e6f31a8d574a50fa828e90cd43bb64f',1,'Retroactivity::NonObliviousStack']]],
-  ['showtpush_53',['showtpush',['../class_retroactivity_1_1_non_oblivious_stack.html#aabc118d3007e7d56ddf25d71b64f2538',1,'Retroactivity::NonObliviousStack']]]
+  ['partialpriorityqueue_54',['PartialPriorityQueue',['../class_brute_1_1_partial_priority_queue.html',1,'Brute::PartialPriorityQueue&lt; T &gt;'],['../class_retroactivity_1_1_partial_priority_queue.html',1,'Retroactivity::PartialPriorityQueue&lt; T &gt;'],['../class_retroactivity_1_1_partial_priority_queue.html#a3619069dac07012d7da62552aa95b407',1,'Retroactivity::PartialPriorityQueue::PartialPriorityQueue()']]],
+  ['partialqueue_55',['PartialQueue',['../class_brute_1_1_partial_queue.html',1,'Brute::PartialQueue&lt; T &gt;'],['../class_retroactivity_1_1_partial_queue.html',1,'Retroactivity::PartialQueue&lt; T &gt;']]],
+  ['partialstack_56',['PartialStack',['../class_retroactivity_1_1_partial_stack.html',1,'Retroactivity::PartialStack&lt; T &gt;'],['../class_brute_1_1_partial_stack.html',1,'Brute::PartialStack&lt; T &gt;']]],
+  ['peak_57',['peak',['../class_retroactivity_1_1_partial_stack.html#acae5efe5b39b6369f11bb574bc15d73e',1,'Retroactivity::PartialStack::peak()'],['../class_retroactivity_1_1_full_stack.html#abfbe785565c41e62688a5edeea1becc0',1,'Retroactivity::FullStack::peak()'],['../class_brute_1_1_partial_stack.html#a75cea8d95032298fabb08de150190045',1,'Brute::PartialStack::peak()'],['../class_brute_1_1_full_stack.html#ae6dfa8e6ea0f0d8de2c50afaf9991aaf',1,'Brute::FullStack::peak()'],['../class_retroactivity_1_1_non_oblivious_priority_queue.html#ad08c048ac7647ea395654a373b03b3d8',1,'Retroactivity::NonObliviousPriorityQueue::Peak()']]],
+  ['polylogarithmpriorityqueue_58',['PolylogarithmPriorityQueue',['../class_retroactivity_1_1_polylogarithm_priority_queue.html',1,'Retroactivity::PolylogarithmPriorityQueue&lt; T &gt;'],['../class_retroactivity_1_1_polylogarithm_priority_queue.html#ab925447d20c941a8f126d20c267052da',1,'Retroactivity::PolylogarithmPriorityQueue::PolylogarithmPriorityQueue()']]],
+  ['pq_59',['pq',['../class_retroactivity_1_1_polylogarithm_priority_queue_1_1_node.html#a26daf36516b62ada967b6d4e26c09e95',1,'Retroactivity::PolylogarithmPriorityQueue::Node']]],
+  ['propagate_60',['propagate',['../class_interval_tree_sum.html#a8c0caea5630b5b8aba4144cfe5c123e2',1,'IntervalTreeSum']]],
+  ['ps_61',['ps',['../struct_interval_tree_sum_01_1_1_node.html#a2d06509ed50e4cdd45197ff2d7a3b3c8',1,'IntervalTreeSum ::Node']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['showtd_105',['showTd',['../class_retroactivity_1_1_non_oblivious_queue.html#a006b0d3710fad54f61e620f95dd3c67c',1,'Retroactivity::NonObliviousQueue']]],
-  ['showte_106',['showTe',['../class_retroactivity_1_1_non_oblivious_queue.html#a4682494399cc4da59dcef0d0cbb1df14',1,'Retroactivity::NonObliviousQueue']]],
-  ['showtpop_107',['showtpop',['../class_retroactivity_1_1_non_oblivious_stack.html#a3e6f31a8d574a50fa828e90cd43bb64f',1,'Retroactivity::NonObliviousStack']]],
-  ['showtpush_108',['showtpush',['../class_retroactivity_1_1_non_oblivious_stack.html#aabc118d3007e7d56ddf25d71b64f2538',1,'Retroactivity::NonObliviousStack']]]
+  ['partialpriorityqueue_136',['PartialPriorityQueue',['../class_retroactivity_1_1_partial_priority_queue.html#a3619069dac07012d7da62552aa95b407',1,'Retroactivity::PartialPriorityQueue']]],
+  ['peak_137',['peak',['../class_retroactivity_1_1_partial_stack.html#acae5efe5b39b6369f11bb574bc15d73e',1,'Retroactivity::PartialStack::peak()'],['../class_retroactivity_1_1_full_stack.html#abfbe785565c41e62688a5edeea1becc0',1,'Retroactivity::FullStack::peak()'],['../class_brute_1_1_partial_stack.html#a75cea8d95032298fabb08de150190045',1,'Brute::PartialStack::peak()'],['../class_brute_1_1_full_stack.html#ae6dfa8e6ea0f0d8de2c50afaf9991aaf',1,'Brute::FullStack::peak()'],['../class_retroactivity_1_1_non_oblivious_priority_queue.html#ad08c048ac7647ea395654a373b03b3d8',1,'Retroactivity::NonObliviousPriorityQueue::Peak()']]],
+  ['polylogarithmpriorityqueue_138',['PolylogarithmPriorityQueue',['../class_retroactivity_1_1_polylogarithm_priority_queue.html#ab925447d20c941a8f126d20c267052da',1,'Retroactivity::PolylogarithmPriorityQueue']]],
+  ['propagate_139',['propagate',['../class_interval_tree_sum.html#a8c0caea5630b5b8aba4144cfe5c123e2',1,'IntervalTreeSum']]]
 ];
