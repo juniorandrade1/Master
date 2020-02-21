@@ -22,10 +22,7 @@ for the JavaScript code in this file
 */
 var menudata={children:[
 {text:"Página Principal",url:"index.html"},
-{text:"<em>Namespaces</em>",url:"namespaces.html",children:[
-{text:"Lista de Namespaces",url:"namespaces.html"},
-{text:"Membros do <em>Namespace</em>",url:"namespacemembers.html",children:[
-{text:"Todos",url:"namespacemembers.html"},
-{text:"Definições de Tipos",url:"namespacemembers_type.html"}]}]},
-{text:"Classes",url:"annotated.html",children:[
+{text:"Tipos de implementação",url:"namespaces.html",children:[
+{text:"Lista de Namespaces",url:"namespaces.html"}]},
+{text:"Estruturas de dados",url:"annotated.html",children:[
 {text:"Lista de Classes",url:"annotated.html"}]}]}
