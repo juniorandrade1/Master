@@ -121,15 +121,43 @@ namespace Retroactivity {
   template <typename T> 
   class FullPriorityQueue<T>::Operation {
   public:
+    /**
+    * Tempo da operação realizada
+    */
     int t;
+
+    /**
+    * Tipo da operação realizada
+    */
     int op;
+
+    /**
+    * Dado alterado pela operação
+    */
     T data;
+
+    /**
+    * Construtor padrão para a classe
+    */
     Operation(){};
+
+    /**
+    * Construtor especial para a classe que representa uma operação
+    * @param _t -> tempo da operação realizada
+    * @param _op -> tipo da operação realizada
+    * @param _data -> objeto da operação
+    */
     Operation(int _t, int _op, T _data) {
       t = _t;
       op = _op;
       data = _data;
     }
+
+    /**
+    * Operador que compara o tempo de duas operações distintas
+    * @param o -> operação a ser comparada
+    * @returns -> true se a operação atual é considerada menor que a operação o
+    */
     bool operator < (Operation o) const {
       if(t != o.t) return t < o.t;
       if(op != o.op) return op < o.op;
@@ -320,28 +348,76 @@ namespace Retroactivity {
     m = _m;
     tr.resize(4 * m);
   }
-    
+  
+  /** Estrutura que representa um nó na checkpoint tree.
+
+  * 
+  * Em um nó é mantido uma fila de prioridade parcialmente retroativa correspondente ao intervalo
+  * contido por esse nó, e duas árvores binárias balanceadas persistentes, qnow e qdel, 
+  * contendo os elementos inseridos e os tempos de deleção desses elementos respectivamente
+  */
   template <typename T>
   class PolylogarithmPriorityQueue<T>::Node {
     public:
+
+    /**
+    * Fila de prioridade parcialmente retroativa 
+    */
     Retroactivity::PartialPriorityQueue< T > pq;
+
+    /**
+    * Conjunto dos elementos na fila de prioridade no tempo mais recente
+    */
     PersistentTreap< T, int > qnow;
+
+    /**
+    * Conjunto dos elementos removidos da fila de prioridade no tempo mais recente
+    */
     PersistentTreap< T, int > qdel;
-    int qnowV, qdelV;
+
+    /**
+    * Numero de elementos em qnow
+    */
+    int qnowV;
+
+    /**
+    * Numero de elementos em qdel
+    */
+    int qdelV;
     Node(){
       qnowV = qdelV = 0;
     };
   };
 
+   /** Estrutura auxiliar para a manutenção dos conjuntos qnow e qdel de cada nó
+
+    * 
+    * Contém um array t de pares (qnow, qdel)
+    */
   template <typename T>
   class PolylogarithmPriorityQueue<T>::QueryNode {
   public:
+    /**
+    * Vetor os indices dos conjuntos relacionados em uma consulta
+    */
     vector< ii > t;
+
+    /**
+    * Construtor padrão para a class
+    */
     QueryNode(){
     };
+
+    /**
+    * Função que adiciona um novo conjunto referente a consulta atual
+    */
     void add(ii f) {
       t.emplace_back(f);
     }
+
+    /**
+    * Função que adiciona um novo conjunto referente a consulta atual
+    */
     void add(QueryNode f) {
       for(auto p : f.t) add(p);
     }

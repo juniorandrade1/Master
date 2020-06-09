@@ -73,6 +73,7 @@ namespace Retroactivity {
     * => Insert(t, Push(data))
     *
     * @param t -> tempo em que a operação Push(data) foi realizada
+    * @param data -> objeto inserido no tempo t
     * @returns vetor de operações realizadas nas filas qnow e nqnow
     */
     vector< pair<int, T> > insertPush(int t, T data);
@@ -163,22 +164,29 @@ namespace Retroactivity {
     */
     std::set< Operation > all;
   public:
+
+    /** Construtor padrão para a fila de prioridade totalmente retroativa que mantém fixa o tamanho da linha temporal por uma constante N
+    *
+    */
     FullPriorityQueue(){
       m = N;
       b = sqrt(m);
       p.resize((m + b - 1) / b);
     };
+
+    /** Construtor especial para a fila de prioridade totalmente retroativa com uma linha temporal de tamanho _m
+    * @param _m -> tamanho da linha temporal
+    */
     FullPriorityQueue(int _m) {
       m = _m;
       b = sqrt(m);
       p.resize((m + b - 1) / b);
     }
 
-
-
     /** Insere uma operação de Push(data) no tempo t
     * => Insert(t, Push(data))
     *
+    * @param data -> objeto inserido no tempo t
     * @param t -> tempo em que a operação Push(data) foi realizada
     */
     void insertPush(int t, T data);
@@ -268,6 +276,7 @@ namespace Retroactivity {
     * => Insert(t, Push(data))
     *
     * @param t -> tempo em que a operação Push(data) foi realizada
+    * @param x -> objeto inserido no tempo t
     * @return -> primeira operação inconsistente apos a execução da operação 
     */
     int InsertPush(int t, T x);
@@ -313,10 +322,14 @@ namespace Retroactivity {
     /** Corrige a estrutura após uma inconsistencia no tempo t
     *
     * @param t -> tempo em que ocorreu uma inconsistencia na estrutura
+    * @param type -> tipo da operação a ser consertada
     */
     void fixOperation(int t, Operation type);
   };
 
+  /**
+  * Typedef para melhora na legibilidade do código
+  */
   typedef pair<int, int> ii;
 
   /** 
@@ -567,6 +580,9 @@ namespace Retroactivity {
 };
 
 namespace Brute {
+  /** 
+  * Fila de prioridade parcialmente retroativa por força-bruta
+  */
   template <typename T>
   class PartialPriorityQueue {
   private:
@@ -576,6 +592,7 @@ namespace Brute {
     * => Insert(t, Push(data))
     *
     * @param t -> tempo em que a operação Push(data) foi realizada
+    * @param data -> objeto inserido
     * @returns vetor de operações realizadas nas filas qnow e nqnow
     */
     void insertPush(int t, T data);
@@ -629,6 +646,9 @@ namespace Brute {
     */
     T getPeak();
   };
+  /** 
+  * Fila de prioridade totalmente retroativa por força-bruta
+  */
   template < typename T >
   class FullPriorityQueue {
     std::multiset< pair<int, pair<int, T> > > all;
@@ -637,6 +657,7 @@ namespace Brute {
     * => Insert(t, Push(data))
     *
     * @param t -> tempo em que a operação Push(data) foi realizada
+    * @param data -> objeto inserido no tempo t
     */
     void insertPush(int t, T data);
 

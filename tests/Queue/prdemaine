@@ -1,0 +1,504 @@
+desc: --time-unit=ms --massif-out-file=prdemaine
+cmd: ./executeTests
+time_unit: ms
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1031
+mem_heap_B=72704
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=1082
+mem_heap_B=73208
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=1093
+mem_heap_B=73288
+mem_heap_extra_B=96
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=1104
+mem_heap_B=73369
+mem_heap_extra_B=127
+mem_stacks_B=0
+heap_tree=detailed
+n2: 73369 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 665 in 8 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=5
+#-----------
+time=1114
+mem_heap_B=73651
+mem_heap_extra_B=181
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1132
+mem_heap_B=73674
+mem_heap_extra_B=222
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=1143
+mem_heap_B=74036
+mem_heap_extra_B=284
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=1158
+mem_heap_B=74426
+mem_heap_extra_B=430
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=1170
+mem_heap_B=74747
+mem_heap_extra_B=525
+mem_stacks_B=0
+heap_tree=detailed
+n2: 74747 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 2043 in 25 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=10
+#-----------
+time=1185
+mem_heap_B=75132
+mem_heap_extra_B=668
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=1196
+mem_heap_B=75498
+mem_heap_extra_B=782
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=1213
+mem_heap_B=76342
+mem_heap_extra_B=818
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=1223
+mem_heap_B=75468
+mem_heap_extra_B=788
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=1236
+mem_heap_B=75500
+mem_heap_extra_B=796
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=1248
+mem_heap_B=75524
+mem_heap_extra_B=812
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=1262
+mem_heap_B=76029
+mem_heap_extra_B=875
+mem_stacks_B=0
+heap_tree=detailed
+n2: 76029 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 3325 in 42 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=17
+#-----------
+time=1277
+mem_heap_B=77298
+mem_heap_extra_B=1070
+mem_stacks_B=0
+heap_tree=detailed
+n2: 77298 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 4594 in 46 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=18
+#-----------
+time=1287
+mem_heap_B=77511
+mem_heap_extra_B=1081
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1300
+mem_heap_B=77523
+mem_heap_extra_B=1133
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=1315
+mem_heap_B=76343
+mem_heap_extra_B=1041
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1334
+mem_heap_B=76362
+mem_heap_extra_B=1038
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1350
+mem_heap_B=77343
+mem_heap_extra_B=1033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1360
+mem_heap_B=77735
+mem_heap_extra_B=1049
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1372
+mem_heap_B=77735
+mem_heap_extra_B=1049
+mem_stacks_B=0
+heap_tree=detailed
+n3: 77735 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 4007 in 52 places, all below massif's threshold (1.00%)
+ n1: 1024 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x5681377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5680496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x567E9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x564E532: vfprintf (vfprintf.c:1328)
+      n1: 1024 0x5657F24: printf (printf.c:33)
+       n1: 1024 0x1AF2E1: testing::internal::ColoredPrintf(testing::internal::GTestColor, char const*, ...) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 1024 0x1AF519: testing::internal::PrettyUnitTestResultPrinter::OnTestIterationStart(testing::UnitTest const&, int) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 1024 0x1B072E: testing::internal::TestEventRepeater::OnTestIterationStart(testing::UnitTest const&, int) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 1024 0x1B587D: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 1024 0x1D0951: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 1024 0x1CA825: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 1024 0x1B44EA: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 1024 0x18DEF2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n0: 1024 0x18D499: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+#-----------
+snapshot=25
+#-----------
+time=1380
+mem_heap_B=77375
+mem_heap_extra_B=1065
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1396
+mem_heap_B=77666
+mem_heap_extra_B=1094
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1415
+mem_heap_B=82428
+mem_heap_extra_B=1140
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1430
+mem_heap_B=82500
+mem_heap_extra_B=1156
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1442
+mem_heap_B=92740
+mem_heap_extra_B=5252
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=1454
+mem_heap_B=103948
+mem_heap_extra_B=9748
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=1466
+mem_heap_B=114828
+mem_heap_extra_B=14100
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=1478
+mem_heap_B=130028
+mem_heap_extra_B=20180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=1490
+mem_heap_B=149388
+mem_heap_extra_B=27924
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=1502
+mem_heap_B=169788
+mem_heap_extra_B=36084
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=1514
+mem_heap_B=184748
+mem_heap_extra_B=42068
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=1526
+mem_heap_B=201140
+mem_heap_extra_B=48612
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=1538
+mem_heap_B=219788
+mem_heap_extra_B=56084
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=1550
+mem_heap_B=236828
+mem_heap_extra_B=62900
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=1562
+mem_heap_B=255868
+mem_heap_extra_B=70516
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=1574
+mem_heap_B=277708
+mem_heap_extra_B=79252
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=1586
+mem_heap_B=285572
+mem_heap_extra_B=83588
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=1598
+mem_heap_B=295332
+mem_heap_extra_B=90436
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=1610
+mem_heap_B=305692
+mem_heap_extra_B=98612
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=1622
+mem_heap_B=318412
+mem_heap_extra_B=108692
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=1639
+mem_heap_B=333804
+mem_heap_extra_B=120020
+mem_stacks_B=0
+heap_tree=peak
+n5: 333804 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 216000 0x191907: BST::Treap<int, int>::insert(int, int) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n1: 216000 0x18FA11: Retroactivity::PartialQueue<int>::InsertEnqueue(int, int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 216000 0x18C4BB: RetroactiveQueueSpeed_RetroactiveSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 216000 0x1CF799: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 216000 0x1C99E9: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n1: 216000 0x1ADA9A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 216000 0x1AE3D0: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 216000 0x1AEA5A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 216000 0x1B5926: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 216000 0x1D0951: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 216000 0x1CA825: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 216000 0x1B44EA: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 216000 0x18DEF2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n0: 216000 0x18D499: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n2: 35448 0x191645: BST::Treap<int, int>::iterator::operator*() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n1: 23992 0x18FA61: Retroactivity::PartialQueue<int>::InsertEnqueue(int, int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 23992 0x18C4BB: RetroactiveQueueSpeed_RetroactiveSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 23992 0x1CF799: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 23992 0x1C99E9: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n1: 23992 0x1ADA9A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 23992 0x1AE3D0: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 23992 0x1AEA5A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 23992 0x1B5926: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 23992 0x1D0951: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 23992 0x1CA825: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 23992 0x1B44EA: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 23992 0x18DEF2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n0: 23992 0x18D499: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n0: 11456 in 3 places, all below massif's threshold (1.00%)
+ n1: 5120 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 5120 0x5681377: _IO_doallocbuf (genops.c:365)
+   n0: 5120 in 2 places, all below massif's threshold (1.00%)
+ n0: 4532 in 56 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=46
+#-----------
+time=1651
+mem_heap_B=329191
+mem_heap_extra_B=119961
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=1666
+mem_heap_B=328768
+mem_heap_extra_B=119936
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=1684
+mem_heap_B=327898
+mem_heap_extra_B=119638
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=1691
+mem_heap_B=327227
+mem_heap_extra_B=119485
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=1698
+mem_heap_B=326416
+mem_heap_extra_B=119184
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=1705
+mem_heap_B=325680
+mem_heap_extra_B=118928
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=1715
+mem_heap_B=252472
+mem_heap_extra_B=118904
+mem_stacks_B=0
+heap_tree=empty

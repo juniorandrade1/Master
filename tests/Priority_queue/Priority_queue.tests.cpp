@@ -377,7 +377,7 @@ INSTANTIATE_TEST_CASE_P(TestFullPriorityQueueValidation, FullPriorityQueueValida
 
 
 INSTANTIATE_TEST_CASE_P(PolylogarithmPriorityQueueTest, FullPolylogarithmPriorityQueueValidation, ::testing::Range(100, 1001, 100));
-//INSTANTIATE_TEST_CASE_P(PolylogarithmRetroactiveSpeedTest, PolylogarithmPriorityQueueSpeed, ::testing::Range(100, 1001, 100));
+//INSTANTIATE_TEST_CASE_P(PolylogarithmRetroactiveSpeedTest, PolylogarithmPriorityQueueSpeed, ::testing::Range(100, 2001, 100));
 
 int main(int argc, char **argv) {
   //srand(42);

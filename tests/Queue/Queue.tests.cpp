@@ -262,15 +262,15 @@ TEST_P(FullRetroactiveQueueSpeed, RetroactiveSpeed) {
   fclose(dataSet);
 }
 
-INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(100, 5000, 100));
+// INSTANTIATE_TEST_CASE_P(TestQueueValidation, QueueValidation, ::testing::Range(100, 5000, 100));
 // INSTANTIATE_TEST_CASE_P(BruteSpeedTest, BruteQueueSpeed, ::testing::Range(100, 5000, 100));
 // INSTANTIATE_TEST_CASE_P(RetroactiveSpeedTest, RetroactiveQueueSpeed, ::testing::Range(100, 5000, 100));
 
 
 
-INSTANTIATE_TEST_CASE_P(FullTestQueueValidation, FullQueueValidation, ::testing::Range(100, 5000, 100));
-// INSTANTIATE_TEST_CASE_P(FullBruteSpeedTest, FullBruteQueueSpeed, ::testing::Range(100, 5000, 100));
-// INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::testing::Range(100, 5000, 100));
+// INSTANTIATE_TEST_CASE_P(FullTestQueueValidation, FullQueueValidation, ::testing::Range(100, 5000, 100));
+//INSTANTIATE_TEST_CASE_P(FullBruteSpeedTest, FullBruteQueueSpeed, ::testing::Range(100, 5000, 100));
+INSTANTIATE_TEST_CASE_P(FullRetroactiveSpeedTest, FullRetroactiveQueueSpeed, ::testing::Range(5000, 5001, 100));
 
 
 int main(int argc, char **argv) {

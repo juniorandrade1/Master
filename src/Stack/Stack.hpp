@@ -141,7 +141,7 @@ namespace Retroactivity {
     * => Peak(t)
     * 
     *
-    * @params t -> tempo que é desejado o elemento ao topo da pilha
+    * @param t -> tempo que é desejado o elemento ao topo da pilha
     * @returns -> retorna objeto no topo da pilha no tempo t
     */
     T peak(int t);
@@ -151,7 +151,7 @@ namespace Retroactivity {
     * => getSize(t)
     * 
     *
-    * @params t -> tempo que é desejado o tamanho da pilha
+    * @param t -> tempo que é desejado o tamanho da pilha
     * @returns -> retorna o número de elementos na pilha no tempo t
     */
     int getSize(int t);
@@ -257,7 +257,13 @@ namespace Retroactivity {
   };
 }
 
+/** 
+* Implementações força-bruta das estruturas
+*/
 namespace Brute {
+  /** 
+  * Pilha parciamente retroativa por força-bruta
+  */
   template<typename T>
   class PartialStack {
     /** Árvore binária de busca que mantém as operações de Push e Pop realizadas ordenadas por tempo
@@ -318,6 +324,9 @@ namespace Brute {
     T peak();
   };
 
+  /** 
+  * Pilha totalmente retroativa por força-bruta
+  */
   template<typename T>
   class FullStack {
   private:
@@ -374,7 +383,7 @@ namespace Brute {
     * => peak(t)
     * 
     *
-    * @params t -> tempo que é desejado o elemento ao topo da pilha
+    * @param t -> tempo que é desejado o elemento ao topo da pilha
     * @returns -> retorna objeto no topo da pilha no tempo t
     */
     T peak(int t);
@@ -384,7 +393,7 @@ namespace Brute {
     * => empty(t)
     * 
     *
-    * @params t -> tempo que é desejado o estado da pilha
+    * @param t -> tempo que é desejado o estado da pilha
     * @returns -> retorna se a pilha está vazia no tempo t
     */
     bool empty(int t);

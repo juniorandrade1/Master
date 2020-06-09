@@ -1,0 +1,762 @@
+desc: --time-unit=ms --massif-out-file=frbruteforce
+cmd: ./executeTests
+time_unit: ms
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=973
+mem_heap_B=72704
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=1016
+mem_heap_B=73208
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=1040
+mem_heap_B=73651
+mem_heap_extra_B=181
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=1053
+mem_heap_B=73674
+mem_heap_extra_B=222
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=1073
+mem_heap_B=74426
+mem_heap_extra_B=430
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1090
+mem_heap_B=75116
+mem_heap_extra_B=660
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=1118
+mem_heap_B=75827
+mem_heap_extra_B=797
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=1134
+mem_heap_B=75435
+mem_heap_extra_B=781
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=1160
+mem_heap_B=75522
+mem_heap_extra_B=814
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=1181
+mem_heap_B=76172
+mem_heap_extra_B=900
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=1196
+mem_heap_B=76824
+mem_heap_extra_B=1064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=1221
+mem_heap_B=76387
+mem_heap_extra_B=1029
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=1234
+mem_heap_B=76290
+mem_heap_extra_B=998
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=1257
+mem_heap_B=77706
+mem_heap_extra_B=1022
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=1275
+mem_heap_B=77346
+mem_heap_extra_B=1038
+mem_stacks_B=0
+heap_tree=detailed
+n3: 77346 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 3618 in 54 places, all below massif's threshold (1.00%)
+ n1: 1024 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x5681377: _IO_doallocbuf (genops.c:365)
+   n1: 1024 0x5680496: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:759)
+    n1: 1024 0x567E9EB: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1266)
+     n1: 1024 0x564E532: vfprintf (vfprintf.c:1328)
+      n1: 1024 0x5657F24: printf (printf.c:33)
+       n1: 1024 0x1AF291: testing::internal::ColoredPrintf(testing::internal::GTestColor, char const*, ...) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 1024 0x1AF4C9: testing::internal::PrettyUnitTestResultPrinter::OnTestIterationStart(testing::UnitTest const&, int) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 1024 0x1B06DE: testing::internal::TestEventRepeater::OnTestIterationStart(testing::UnitTest const&, int) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 1024 0x1B582D: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 1024 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 1024 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 1024 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 1024 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n0: 1024 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+#-----------
+snapshot=16
+#-----------
+time=1291
+mem_heap_B=82315
+mem_heap_extra_B=1093
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=1312
+mem_heap_B=82355
+mem_heap_extra_B=1109
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=1337
+mem_heap_B=105995
+mem_heap_extra_B=10581
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1353
+mem_heap_B=142955
+mem_heap_extra_B=25365
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=1373
+mem_heap_B=182419
+mem_heap_extra_B=41133
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1390
+mem_heap_B=182355
+mem_heap_extra_B=41125
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1418
+mem_heap_B=184459
+mem_heap_extra_B=40965
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1434
+mem_heap_B=190803
+mem_heap_extra_B=41045
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1450
+mem_heap_B=187459
+mem_heap_extra_B=41149
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1466
+mem_heap_B=186515
+mem_heap_extra_B=41165
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1482
+mem_heap_B=183523
+mem_heap_extra_B=41181
+mem_stacks_B=0
+heap_tree=detailed
+n4: 183523 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 100120 0x19DCB8: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const, int> > >::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n1: 100120 0x19CB2F: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<int const, int> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<int const, int> > >&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 100120 0x199FED: std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_get_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 100120 0x1964C1: std::_Rb_tree_node<std::pair<int const, int> >* std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_create_node<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 100120 0x193FE9: std::_Rb_tree_iterator<std::pair<int const, int> > std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<int const, int> >, std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n2: 100120 0x191BF4: std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > >::operator[](int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 99840 0x1906D2: Brute::FullQueue<int>::InsertEnqueue(int, int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 99840 0x18CDC9: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 99840 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 99840 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 99840 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 99840 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 99840 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 99840 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 99840 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 99840 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 99840 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n1: 99840 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                   n0: 99840 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n0: 280 in 1 place, below massif's threshold (1.00%)
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n0: 5579 in 57 places, all below massif's threshold (1.00%)
+ n1: 5120 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 5120 0x5681377: _IO_doallocbuf (genops.c:365)
+   n1: 4096 0x5680252: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:495)
+    n1: 4096 0x56813F0: _IO_default_uflow (genops.c:380)
+     n1: 4096 0x565EBE8: _IO_vfscanf (vfscanf.c:630)
+      n1: 4096 0x566E012: fscanf (fscanf.c:31)
+       n1: 4096 0x18CCDA: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 4096 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 4096 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 4096 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 4096 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 4096 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 4096 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 4096 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 4096 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 4096 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 4096 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n0: 4096 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=27
+#-----------
+time=1498
+mem_heap_B=188251
+mem_heap_extra_B=41269
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1514
+mem_heap_B=185923
+mem_heap_extra_B=41125
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1530
+mem_heap_B=186755
+mem_heap_extra_B=41261
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=1546
+mem_heap_B=187307
+mem_heap_extra_B=41285
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=1562
+mem_heap_B=189067
+mem_heap_extra_B=41285
+mem_stacks_B=0
+heap_tree=detailed
+n5: 189067 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 100160 0x19DCB8: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const, int> > >::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n1: 100160 0x19CB2F: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<int const, int> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<int const, int> > >&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 100160 0x199FED: std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_get_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 100160 0x1964C1: std::_Rb_tree_node<std::pair<int const, int> >* std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_create_node<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 100160 0x193FE9: std::_Rb_tree_iterator<std::pair<int const, int> > std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<int const, int> >, std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n2: 100160 0x191BF4: std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > >::operator[](int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 99880 0x1906D2: Brute::FullQueue<int>::InsertEnqueue(int, int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 99880 0x18CDC9: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 99880 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 99880 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 99880 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 99880 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 99880 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 99880 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 99880 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 99880 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 99880 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n1: 99880 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                   n0: 99880 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n0: 280 in 1 place, below massif's threshold (1.00%)
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 6152 0x19DC46: __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n2: 6152 0x19C97F: std::allocator_traits<std::allocator<int> >::allocate(std::allocator<int>&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n2: 6144 0x199B66: std::_Deque_base<int, std::allocator<int> >::_M_allocate_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 5632 0x195E16: void std::deque<int, std::allocator<int> >::_M_push_back_aux<int const&>(int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 5632 0x193A65: std::deque<int, std::allocator<int> >::push_back(int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n1: 5632 0x1917DF: std::queue<int, std::deque<int, std::allocator<int> > >::push(int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 5632 0x190611: Brute::FullQueue<int>::front(int) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 5632 0x18CD63: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 5632 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 5632 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 5632 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 5632 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 5632 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 5632 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 5632 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 5632 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 5632 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n1: 5632 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                   n0: 5632 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n0: 512 in 1 place, below massif's threshold (1.00%)
+   n0: 8 in 1 place, below massif's threshold (1.00%)
+ n1: 5120 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 5120 0x5681377: _IO_doallocbuf (genops.c:365)
+   n1: 4096 0x5680252: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:495)
+    n1: 4096 0x56813F0: _IO_default_uflow (genops.c:380)
+     n1: 4096 0x565EBE8: _IO_vfscanf (vfscanf.c:630)
+      n1: 4096 0x566E012: fscanf (fscanf.c:31)
+       n1: 4096 0x18CCDA: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 4096 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 4096 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 4096 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 4096 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 4096 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 4096 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 4096 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 4096 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 4096 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 4096 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n0: 4096 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n0: 1024 in 1 place, below massif's threshold (1.00%)
+ n0: 4931 in 56 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=32
+#-----------
+time=1582
+mem_heap_B=188171
+mem_heap_extra_B=41237
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=1610
+mem_heap_B=187507
+mem_heap_extra_B=41365
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=1638
+mem_heap_B=187627
+mem_heap_extra_B=41413
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=1666
+mem_heap_B=186131
+mem_heap_extra_B=41405
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=1694
+mem_heap_B=184195
+mem_heap_extra_B=41253
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=1722
+mem_heap_B=192083
+mem_heap_extra_B=41557
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=1750
+mem_heap_B=183723
+mem_heap_extra_B=41261
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=1778
+mem_heap_B=184867
+mem_heap_extra_B=41325
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=1801
+mem_heap_B=193819
+mem_heap_extra_B=41661
+mem_stacks_B=0
+heap_tree=peak
+n5: 193819 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 100960 0x19DCB8: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const, int> > >::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n1: 100960 0x19CB2F: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<int const, int> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<int const, int> > >&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 100960 0x199FED: std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_get_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 100960 0x1964C1: std::_Rb_tree_node<std::pair<int const, int> >* std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_create_node<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 100960 0x193FE9: std::_Rb_tree_iterator<std::pair<int const, int> > std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<int const, int> >, std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n2: 100960 0x191BF4: std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > >::operator[](int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 100440 0x1906D2: Brute::FullQueue<int>::InsertEnqueue(int, int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 100440 0x18CDC9: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 100440 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 100440 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 100440 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 100440 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 100440 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 100440 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 100440 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 100440 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 100440 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n1: 100440 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                   n0: 100440 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n0: 520 in 1 place, below massif's threshold (1.00%)
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 10248 0x19DC46: __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n2: 10248 0x19C97F: std::allocator_traits<std::allocator<int> >::allocate(std::allocator<int>&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n2: 10240 0x199B66: std::_Deque_base<int, std::allocator<int> >::_M_allocate_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 9728 0x195E16: void std::deque<int, std::allocator<int> >::_M_push_back_aux<int const&>(int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 9728 0x193A65: std::deque<int, std::allocator<int> >::push_back(int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n1: 9728 0x1917DF: std::queue<int, std::deque<int, std::allocator<int> > >::push(int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 9728 0x190611: Brute::FullQueue<int>::front(int) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 9728 0x18CD63: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 9728 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 9728 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 9728 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 9728 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 9728 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 9728 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 9728 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 9728 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 9728 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n1: 9728 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                   n0: 9728 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n0: 512 in 1 place, below massif's threshold (1.00%)
+   n0: 8 in 1 place, below massif's threshold (1.00%)
+ n1: 5120 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 5120 0x5681377: _IO_doallocbuf (genops.c:365)
+   n1: 4096 0x5680252: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:495)
+    n1: 4096 0x56813F0: _IO_default_uflow (genops.c:380)
+     n1: 4096 0x565EBE8: _IO_vfscanf (vfscanf.c:630)
+      n1: 4096 0x566E012: fscanf (fscanf.c:31)
+       n1: 4096 0x18CCDA: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 4096 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 4096 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 4096 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 4096 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 4096 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 4096 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 4096 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 4096 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 4096 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 4096 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n0: 4096 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n0: 1024 in 1 place, below massif's threshold (1.00%)
+ n0: 4787 in 56 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=1815
+mem_heap_B=186443
+mem_heap_extra_B=41709
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=1829
+mem_heap_B=189611
+mem_heap_extra_B=41813
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=1843
+mem_heap_B=183755
+mem_heap_extra_B=41685
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=1857
+mem_heap_B=184763
+mem_heap_extra_B=41677
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=1871
+mem_heap_B=183875
+mem_heap_extra_B=41733
+mem_stacks_B=0
+heap_tree=detailed
+n4: 183875 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 101560 0x19DCB8: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const, int> > >::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n1: 101560 0x19CB2F: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<int const, int> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<int const, int> > >&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 101560 0x199FED: std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_get_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 101560 0x1964C1: std::_Rb_tree_node<std::pair<int const, int> >* std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_create_node<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 101560 0x193FE9: std::_Rb_tree_iterator<std::pair<int const, int> > std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<int const, int> >, std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n2: 101560 0x191BF4: std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > >::operator[](int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 101040 0x1906D2: Brute::FullQueue<int>::InsertEnqueue(int, int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 101040 0x18CDC9: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 101040 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 101040 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 101040 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 101040 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 101040 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 101040 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 101040 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 101040 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 101040 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n1: 101040 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                   n0: 101040 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n0: 520 in 1 place, below massif's threshold (1.00%)
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 5120 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 5120 0x5681377: _IO_doallocbuf (genops.c:365)
+   n1: 4096 0x5680252: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:495)
+    n1: 4096 0x56813F0: _IO_default_uflow (genops.c:380)
+     n1: 4096 0x565EBE8: _IO_vfscanf (vfscanf.c:630)
+      n1: 4096 0x566E012: fscanf (fscanf.c:31)
+       n1: 4096 0x18CCDA: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 4096 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 4096 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 4096 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 4096 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 4096 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 4096 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 4096 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 4096 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 4096 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 4096 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n0: 4096 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n0: 1024 in 1 place, below massif's threshold (1.00%)
+ n0: 4491 in 57 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=46
+#-----------
+time=1885
+mem_heap_B=193115
+mem_heap_extra_B=41773
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=1899
+mem_heap_B=184803
+mem_heap_extra_B=41693
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=1913
+mem_heap_B=188395
+mem_heap_extra_B=41917
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=1927
+mem_heap_B=184491
+mem_heap_extra_B=41765
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=1940
+mem_heap_B=186683
+mem_heap_extra_B=41805
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=1953
+mem_heap_B=186179
+mem_heap_extra_B=41653
+mem_stacks_B=0
+heap_tree=detailed
+n5: 186179 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 101240 0x19DCB8: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const, int> > >::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n1: 101240 0x19CB2F: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<int const, int> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<int const, int> > >&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 101240 0x199FED: std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_get_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n1: 101240 0x1964C1: std::_Rb_tree_node<std::pair<int const, int> >* std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_create_node<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+     n1: 101240 0x193FE9: std::_Rb_tree_iterator<std::pair<int const, int> > std::_Rb_tree<int, std::pair<int const, int>, std::_Select1st<std::pair<int const, int> >, std::less<int>, std::allocator<std::pair<int const, int> > >::_M_emplace_hint_unique<std::piecewise_construct_t const&, std::tuple<int const&>, std::tuple<> >(std::_Rb_tree_const_iterator<std::pair<int const, int> >, std::piecewise_construct_t const&, std::tuple<int const&>&&, std::tuple<>&&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+      n2: 101240 0x191BF4: std::map<int, int, std::less<int>, std::allocator<std::pair<int const, int> > >::operator[](int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n1: 100960 0x1906D2: Brute::FullQueue<int>::InsertEnqueue(int, int const&) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 100960 0x18CDC9: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 100960 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 100960 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 100960 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 100960 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 100960 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 100960 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 100960 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 100960 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 100960 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n1: 100960 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                   n0: 100960 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+       n0: 280 in 1 place, below massif's threshold (1.00%)
+ n1: 72704 0x50E1414: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+  n1: 72704 0x4010731: _dl_init (dl-init.c:72)
+   n0: 72704 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+ n1: 5120 0x567118A: _IO_file_doallocate (filedoalloc.c:101)
+  n2: 5120 0x5681377: _IO_doallocbuf (genops.c:365)
+   n1: 4096 0x5680252: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:495)
+    n1: 4096 0x56813F0: _IO_default_uflow (genops.c:380)
+     n1: 4096 0x565EBE8: _IO_vfscanf (vfscanf.c:630)
+      n1: 4096 0x566E012: fscanf (fscanf.c:31)
+       n1: 4096 0x18CCDA: FullBruteQueueSpeed_BruteSpeed_Test::TestBody() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+        n1: 4096 0x1CF749: void testing::internal::HandleSehExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+         n1: 4096 0x1C9999: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+          n1: 4096 0x1ADA4A: testing::Test::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+           n1: 4096 0x1AE380: testing::TestInfo::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+            n1: 4096 0x1AEA0A: testing::TestCase::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+             n1: 4096 0x1B58D6: testing::internal::UnitTestImpl::RunAllTests() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+              n1: 4096 0x1D0901: bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+               n1: 4096 0x1CA7D5: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                n1: 4096 0x1B449A: testing::UnitTest::Run() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                 n1: 4096 0x18DEA2: RUN_ALL_TESTS() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+                  n0: 4096 0x18D449: main (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n0: 1024 in 1 place, below massif's threshold (1.00%)
+ n0: 4547 in 56 places, all below massif's threshold (1.00%)
+ n1: 2568 0x19DC46: __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+  n2: 2568 0x19C97F: std::allocator_traits<std::allocator<int> >::allocate(std::allocator<int>&, unsigned long) (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+   n1: 2560 0x199B66: std::_Deque_base<int, std::allocator<int> >::_M_allocate_node() (in /home/junior/Dropbox/ArquivosMestrado/Master/tests/Queue/executeTests)
+    n0: 2560 in 2 places, all below massif's threshold (1.00%)
+   n0: 8 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=52
+#-----------
+time=1966
+mem_heap_B=178794
+mem_heap_extra_B=41550
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=1980
+mem_heap_B=77714
+mem_heap_extra_B=1038
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=2001
+mem_heap_B=77291
+mem_heap_extra_B=1013
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=2014
+mem_heap_B=76504
+mem_heap_extra_B=792
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=2030
+mem_heap_B=75854
+mem_heap_extra_B=586
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=2043
+mem_heap_B=74305
+mem_heap_extra_B=55
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=2057
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty

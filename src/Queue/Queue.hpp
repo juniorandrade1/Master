@@ -304,6 +304,9 @@ namespace Retroactivity {
 }
 
 namespace Brute {
+  /** 
+  * Fila de prioridade parcialmente retroativa por força-bruta
+  */
   template<typename T>
   class PartialQueue {
     /** Árvore binária que mantém as operações realizadas em uma fila retroativa
@@ -368,7 +371,9 @@ namespace Brute {
   };
 
 
-
+  /** 
+  * Fila de prioridade totalmente retroativa por força-bruta
+  */
   template<typename T>
   class FullQueue {
      /** Árvore binária que mantém as operações realizadas em uma fila retroativa

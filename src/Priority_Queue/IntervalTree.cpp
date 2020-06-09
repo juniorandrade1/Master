@@ -1,21 +1,85 @@
 #include "IntervalTree.hpp"
 
+/** 
+* Estrutura que mantem um nó da árvore de intervalos
+*/
 template <typename T>
 struct IntervalTreeSum < T > :: Node {
-  T ps, mx, mn;
+  /**
+  * Soma do prefixo até o nó atual
+  */
+  T ps;
+
+  /**
+  * Maximo das somas de prefixo até o nó atual
+  */
+  T mx;
+
+  /**
+  * Mínimo das somas de prefixo até o nó atual
+  */
+  T mn;
+
+
+  T maxIndexMinimum;
+  T minIndexMinimum;
+
+  /**
+  * Construtor padrão para o nó
+  */
   Node(){
     ps = mx = mn = 0;
+    maxIndexMinimum = 0;
+    minIndexMinimum = N;
   };
-  Node(int _ps, int _mn, int _mx) {
+
+  /**
+  * Construtor especial para o nó
+  * @param _ps -> soma de prefixo até o nó atual
+  * @param _mn -> mínimo das somas de prefixo até o nó atual
+  * @param _mx -> máximo das somas de prefixo até o nó atual 
+  */
+  Node(T _ps, T _mn, T _mx) {
     ps = _ps;
     mn = _mn;
     mx = _mx;
+    maxIndexMinimum = 0;
+    minIndexMinimum = N;
   }
+
+  Node(T _ps, T _mn, T _mx, T _minIndexMinimum, T _maxIndexMinimum) {
+    ps = _ps;
+    mn = _mn;
+    mx = _mx;
+    minIndexMinimum = _minIndexMinimum;
+    maxIndexMinimum = _maxIndexMinimum;
+  }
+
+  Node(T l, T r) {
+    ps = 0;
+    mn = 0;
+    mx = 0;
+    minIndexMinimum = r;
+    maxIndexMinimum = l;
+  }
+
+  /**
+  * Operador de união para dois nós subsequentes
+  * @param other -> Nó a direita do nó atual a ser unido
+  */
   Node operator + (Node other) const {
+    T fooMin = (mn == other.mn) ? min(minIndexMinimum, other.minIndexMinimum) : (mn < other.mn ? minIndexMinimum : other.minIndexMinimum);
+    T fooMax = (mn == other.mn) ? max(maxIndexMinimum, other.maxIndexMinimum) : (mn < other.mn ? maxIndexMinimum : other.maxIndexMinimum);
     return Node(ps + other.ps, 
       min(mn, other.mn),
-      max(mx, other.mx));
+      max(mx, other.mx), 
+      fooMin,
+      fooMax);
   }
+
+  /**
+  * Função para demonstração do nó atual para o usuário
+  */
   void showInfo() {
     printf("{%2d, %2d, %2d}\n", ps, mn, mx);
   }
@@ -23,9 +87,9 @@ struct IntervalTreeSum < T > :: Node {
 
 
 template <typename T>
-int IntervalTreeSum < T > :: createNode() {
+int IntervalTreeSum < T > :: createNode(int l, int r) {
   int id = tr.size();
-  tr.emplace_back(Node());
+  tr.emplace_back(Node(l, r));
   lz.emplace_back(0);
   L.emplace_back(-1);
   R.emplace_back(-1);
@@ -35,17 +99,17 @@ int IntervalTreeSum < T > :: createNode() {
 template <typename T>
 IntervalTreeSum < T > :: IntervalTreeSum () {
   n = N;
-  createNode();
+  createNode(0, n);
 };
 
 template <typename T>
 void IntervalTreeSum < T > :: propagate(int no, int l, int r) {
   if(l != r && L[no] == -1) {
-    int id = createNode();
+    int id = createNode(l, r);
     L[no] = id;
   }
   if(l != r && R[no] == -1) {
-    int id = createNode();
+    int id = createNode(l, r);
     R[no] = id;
   }
   if(!lz[no]) return;
@@ -117,22 +181,12 @@ void IntervalTreeSum < T > :: showTree() {
 
 template <typename T>
 int IntervalTreeSum < T > :: getLastBridge(int t) {
-  int lo = 1, hi = t;
-  while(lo < hi) {
-    int md = (lo + hi + 1) >> 1;
-    if(query(md, t).mn) hi = md - 1;
-    else lo = md;
-  }
-  return lo;
+  Node sol = query(0, 0, n, 0, t);
+  return sol.mn ? 1 : sol.maxIndexMinimum;
 }
 
 template <typename T>
 int IntervalTreeSum < T > :: getNextBridge(int t) {
-  int lo = t, hi = n;
-  while(lo < hi) {
-    int md = (lo + hi) >> 1;
-    if(query(t, md).mn) lo = md + 1;
-    else hi = md;
-  }
-  return lo;
+  Node sol = query(0, 0, n, t, n);
+  return sol.mn ? n : sol.minIndexMinimum;
 }
